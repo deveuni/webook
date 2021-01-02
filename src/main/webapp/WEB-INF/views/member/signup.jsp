@@ -22,7 +22,7 @@
    	<h1><a href="/webook" class="webook-main">webook</a></h1>
    </div>
    <br>
-    <form id="Login">
+    <form action="/member/signup" method="post" id="Login">
     
        <label>아이디</label>
        <div class="form-group">
@@ -60,7 +60,7 @@
        </div>
        
        <br>
-       <button type="submit" class="btn btn-primary">가입하기</button>
+       <input type="submit" value="가입하기" class="btn btn-primary">
 
     </form>
     </div>
