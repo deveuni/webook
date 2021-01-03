@@ -48,21 +48,16 @@
        <div class="form-group">
          <input type="text" class="form-control" name="userEmail">
        </div>
-       
+     
        <label>주소</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="userAddr1">
-       </div>
-       
-       <label>상세주소</label>
-       <div class="form-group">
-         <input type="text" class="form-control" name="userAddr2">
-       </div>
-       
-       <label>우편번호</label>
-       <div class="form-group">
-         <input type="text" class="form-control" id="sample4_postcode" name="postcode" placeholder="우편번호" style="width: 204px; important; display: inline; margin-left: 0px;">
-         <input type="button" class="form-control" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="width: 150px; important; display: inline;"><br>
+         <input type="text" class="form-control" id="sample4_postcode" name="postcode" placeholder="우편번호" style="width: 204px; important; display: inline; margin-bottom: 5px;">
+         <input type="button" class="btn btn-primary" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="width: 150px; important; display: inline; margin-bottom: 5px;"><br>
+         <input type="text" class="form-control" name="userAddr1" id="sample4_roadAddress" placeholder="도로명주소" style="margin-bottom: 5px; important;" >
+         <input type="text" class="form-control" id="sample4_jibunAddress" placeholder="지번주소" style="margin-bottom: 5px; important;" >
+         <span id="guide" style="color:#999;display:none"></span>
+         <input type="text" class="form-control" name="userAddr2" id="sample4_detailAddress" placeholder="상세주소" style="width: 176px; important; display: inline; margin-bottom: 5px;">
+         <input type="text" class="form-control" id="sample4_extraAddress" placeholder="참고항목" style="width: 176px; important; display: inline; margin-left: 1px;">
        </div>
        
        <label>휴대전화</label>
@@ -72,18 +67,6 @@
        
        <br>
        <input type="submit" value="가입하기" class="btn btn-primary">
-       
-       
-       <!-- -- -->
-       <input type="text" id="sample4_postcode" placeholder="우편번호">
-<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-<span id="guide" style="color:#999;display:none"></span>
-<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-<input type="text" id="sample4_extraAddress" placeholder="참고항목">
-       <!-- -- -->
-
     </form>
     </div>
 	</div>
