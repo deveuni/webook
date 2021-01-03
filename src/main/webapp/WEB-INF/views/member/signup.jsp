@@ -26,32 +26,42 @@
     
        <label>아이디</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="userid">
+         <input type="text" class="form-control" name="userId">
        </div>
 
 	   <label>비밀번호</label>
        <div class="form-group">
-         <input type="password" class="form-control" name="userpass">
+         <input type="password" class="form-control" name="userPass">
        </div>
        
        <label>비밀번호 재확인</label>
        <div class="form-group">
-         <input type="password" class="form-control" name="userpasscheck">
+         <input type="password" class="form-control" name="userPassCheck">
        </div>
        
        <label>이름</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="username">
+         <input type="text" class="form-control" name="userName">
        </div>
        
        <label>이메일</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="useremail">
+         <input type="text" class="form-control" name="userEmail">
        </div>
        
        <label>주소</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="useraddr">
+         <input type="text" class="form-control" name="userAddr1">
+       </div>
+       
+       <label>상세주소</label>
+       <div class="form-group">
+         <input type="text" class="form-control" name="userAddr2">
+       </div>
+       
+       <label>우편번호</label>
+       <div class="form-group">
+         <input type="text" class="form-control" name="postcode">
        </div>
        
        <label>휴대전화</label>
