@@ -46,7 +46,12 @@
        
        <label>이메일</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="userEmail">
+         <input type="email" class="form-control" name="userEmail">
+       </div>
+       
+       <label>전화번호</label>
+       <div class="form-group">
+         <input type="text" class="form-control" id="userPhon" name="userPhon">
        </div>
      
        <label>주소</label>
@@ -59,12 +64,6 @@
          <input type="text" class="form-control" name="userAddr2" id="sample4_detailAddress" placeholder="상세주소" style="width: 176px; important; display: inline; margin-bottom: 5px;">
          <input type="text" class="form-control" id="sample4_extraAddress" placeholder="참고항목" style="width: 176px; important; display: inline; margin-left: 1px;">
        </div>
-       
-       <label>휴대전화</label>
-       <div class="form-group">
-         <input type="text" class="form-control" id="userPhon">
-       </div>
-       
        <br>
        <input type="submit" value="가입하기" class="btn btn-primary">
     </form>
