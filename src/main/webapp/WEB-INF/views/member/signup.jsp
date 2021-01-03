@@ -66,7 +66,7 @@
        
        <label>휴대전화</label>
        <div class="form-group">
-         <input type="text" class="form-control" id="userid">
+         <input type="text" class="form-control" id="userPhon">
        </div>
        
        <br>
