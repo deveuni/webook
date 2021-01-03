@@ -14,6 +14,13 @@
 	values (#{userId},#{userPass},#{userName},#{userPhon},#{userEmail},#{userAddr1},#{userAddr2},#{postcode},now())
 </insert>
 
+<!-- 아이디 중복 확인 -->
+<select id="idCheck" parameterType="String" resultType="com.webook.domain.MemberVO">
+	select userId
+	from tbl_member
+	where userId = #{userId}
+</select>
+
 
 
 

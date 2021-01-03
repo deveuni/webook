@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webook.domain.MemberVO;
 import com.webook.service.MemberService;
@@ -54,6 +56,17 @@ public class MemberController {
 		// 로그인 페이지로 이동
 		return "redirect:/member/signin";
 		
+	}
+	
+	// 아이디 중복 체크
+	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int idCheck(@RequestParam("userId") String userId) throws Exception {
+		
+		MemberVO idCheck = service.userIdCheck(userId);
+		
+		if(idCheck != null) return 1;
+		else return 0;
 	}
 	
 	// 로그인 get

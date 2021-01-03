@@ -22,36 +22,37 @@
    	<h1><a href="/webook" class="webook-main">webook</a></h1>
    </div>
    <br>
-    <form action="/member/signup" method="post" id="Login">
+    <form action="/member/signup" method="post" id="signForm">
     
        <label>아이디</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="userId">
+         <input type="text" class="form-control" name="userId" id="userId">
+         <div class="check_font" id="userIdCheck"></div>
        </div>
 
 	   <label>비밀번호</label>
        <div class="form-group">
-         <input type="password" class="form-control" name="userPass">
+         <input type="password" class="form-control" name="userPass" id="userPass">
        </div>
        
        <label>비밀번호 재확인</label>
        <div class="form-group">
-         <input type="password" class="form-control" name="userPassCheck">
+         <input type="password" class="form-control" name="userPassCheck" id="userPassCheck">
        </div>
        
        <label>이름</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="userName">
+         <input type="text" class="form-control" name="userName" id="userName">
        </div>
        
        <label>이메일</label>
        <div class="form-group">
-         <input type="email" class="form-control" name="userEmail">
+         <input type="email" class="form-control" name="userEmail" id="userEmail">
        </div>
        
        <label>전화번호</label>
        <div class="form-group">
-         <input type="text" class="form-control" id="userPhon" name="userPhon">
+         <input type="text" class="form-control" id="userPhon" name="userPhon" id="userPhon">
        </div>
      
        <label>주소</label>
@@ -65,7 +66,7 @@
          <input type="text" class="form-control" id="sample4_extraAddress" placeholder="참고항목" style="width: 176px; important; display: inline; margin-left: 1px;">
        </div>
        <br>
-       <input type="submit" value="가입하기" class="btn btn-primary">
+       <input type="submit" value="가입하기" id="signUp" class="btn btn-primary">
     </form>
     </div>
 	</div>
@@ -74,6 +75,48 @@
 <!-- 카카오 주소 API -->	
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+
+// 아이디 중복 체크 (1 = 중복 / 0 != 중복) 
+$("#userId").blur(function(){
+
+	var userId = $('#userId').val();
+	
+	$.ajax({
+		url : '${pageContext.request.contextPath}/member/idCheck?userId=' + userId,
+		type : 'get',
+		success : function(data){
+			console.log("1 = 중복o / 0 = 중복x : " + data);
+
+			if(data == 1){
+				// 1 : 아이디가 중복되는 문구 
+				$("#userIdCheck").text("이미 사용중인 아이디입니다.");
+				$("#userIdCheck").css("color", "red");
+				$("#userIdCheck").attr("disabled", true);
+			} else {
+
+				if(userId.length == 0){
+
+					$("#userIdCheck").text("아이디를 입력하세요.");
+					$("#userIdCheck").css("color", "red");
+					$("#signUp").attr("disabled", true);
+
+				} else if(userId.length < 4) {
+
+					$("#userIdCheck").text("아이디를 4자리이상 입력하세요.");
+					$("#userIdCheck").css("color", "red");
+					$("#signUp").attr("disabled", true);
+				} else {
+
+					$("#userIdCheck").text("사용 가능한 아이디입니다.");
+					$("#userIdCheck").css("color", "blue");
+					$("#signUp").attr("disabled", false);
+				}
+			}
+		}, error : function(){
+				console.log("실패");
+		}
+	});
+});
 
 
 // 카카오 주소 API

@@ -33,6 +33,14 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	
+	// 아이디 중복 확인
+	@Override
+	public MemberVO userIdCheck(String userId) throws Exception {
+
+		return mdao.userIdCheck(userId); 
+		
+	}
+	
 	
 	
 	
