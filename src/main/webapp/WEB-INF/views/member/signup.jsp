@@ -121,30 +121,43 @@ $("#userId").blur(function(){
 });
 
 // 비밀번호 체크
-let isUserPassValF = false;
 function userPassVal(){
-	//var pass1 = document.signForm.userPass.value;
-	var pass1 = $('#userPass').val()
+	var pass1 = $('#userPass').val();
 	var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 	// 비밀번호 유효성 체크
-	if(pass1.length < 8 || pass1.length >16 ){
-		$("#userPassValCheck").text("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+	if(pass1.length < 8 || pass1.length > 16 ){
+		$("#userPassValCheck").text("8~16자 영문, 숫자, 특수문자를 사용하세요.");
 		$("#userPassValCheck").css("color", "red");
 		$("#signUp").attr("disabled", true);
 	} else if(reg.test(pass1) == false){
-		$("#userPassValCheck").text("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+		$("#userPassValCheck").text("8~16자 영문, 숫자, 특수문자를 사용하세요.");
 		$("#userPassValCheck").css("color", "red");
 		$("#signUp").attr("disabled", true);
 	} else {
 		$("#userPassValCheck").text("");
-		$("#userPassValCheck").css("color", "blue");
-		isUserPassValF = true;
+		$("#signUp").attr("disabled", false);
 	}
-
-
-	
 }
+
+// 비밀번호 재확인 체크
+function userPassReVal(){
+	var pass1 = $('#userPass').val();
+	var pass2 = $('#userPassRe').val();
+	var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+
+	// 비밀번호 재확이 일치 체크
+	if(pass1 == pass2){
+		$("#userPassReValCheck").text("비밀번호가 일치합니다.");
+		$("#userPassReValCheck").css("color", "blue");
+		$("#signUp").attr("disabled", false);
+	} else {
+		$("#userPassReValCheck").text("비밀번호가 일치하지 않습니다.");
+		$("#userPassReValCheck").css("color", "red");
+		$("#signUp").attr("disabled", true);
+	}
+}
+
 
 // 카카오 주소 API
 function sample4_execDaumPostcode() {
