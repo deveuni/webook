@@ -32,12 +32,14 @@
 
 	   <label>비밀번호</label>
        <div class="form-group">
-         <input type="password" class="form-control" name="userPass" id="userPass">
+         <input type="password" class="form-control" name="userPass" id="userPass" onkeyup="userPassVal()">
+         <div class="check_font" id="userPassValCheck"></div>
        </div>
        
        <label>비밀번호 재확인</label>
        <div class="form-group">
-         <input type="password" class="form-control" name="userPassCheck" id="userPassCheck">
+         <input type="password" class="form-control" name="userPassRe" id="userPassRe" onkeyup="userPassReVal()">
+         <div class="check_font" id="userPassReValCheck"></div>
        </div>
        
        <label>이름</label>
@@ -91,7 +93,7 @@ $("#userId").blur(function(){
 				// 1 : 아이디가 중복되는 문구 
 				$("#userIdCheck").text("이미 사용중인 아이디입니다.");
 				$("#userIdCheck").css("color", "red");
-				$("#userIdCheck").attr("disabled", true);
+				$("#signUp").attr("disabled", true);
 			} else {
 
 				if(userId.length == 0){
@@ -118,6 +120,31 @@ $("#userId").blur(function(){
 	});
 });
 
+// 비밀번호 체크
+let isUserPassValF = false;
+function userPassVal(){
+	//var pass1 = document.signForm.userPass.value;
+	var pass1 = $('#userPass').val()
+	var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+
+	// 비밀번호 유효성 체크
+	if(pass1.length < 8 || pass1.length >16 ){
+		$("#userPassValCheck").text("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+		$("#userPassValCheck").css("color", "red");
+		$("#signUp").attr("disabled", true);
+	} else if(reg.test(pass1) == false){
+		$("#userPassValCheck").text("8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+		$("#userPassValCheck").css("color", "red");
+		$("#signUp").attr("disabled", true);
+	} else {
+		$("#userPassValCheck").text("");
+		$("#userPassValCheck").css("color", "blue");
+		isUserPassValF = true;
+	}
+
+
+	
+}
 
 // 카카오 주소 API
 function sample4_execDaumPostcode() {

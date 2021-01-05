@@ -69,6 +69,7 @@ public class MemberController {
 		else return 0;
 	}
 	
+	
 	// 로그인 get
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public void getSignin() throws Exception{
