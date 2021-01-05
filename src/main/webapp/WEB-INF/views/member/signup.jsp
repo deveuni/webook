@@ -45,16 +45,25 @@
        <label>이름</label>
        <div class="form-group">
          <input type="text" class="form-control" name="userName" id="userName">
+         <div class="check_font" id="userNameCheck"></div>
+       </div>
+       
+       <label>생년월일</label>
+       <div class="form-group">
+         <input type="text" class="form-control" name="userBirth" id="userBirth" placeholder="ex) 19920101">
+         <div class="check_font" id="userBirthCheck"></div>
        </div>
        
        <label>이메일</label>
        <div class="form-group">
          <input type="email" class="form-control" name="userEmail" id="userEmail">
+         <div class="check_font" id="userEmailCheck"></div>
        </div>
        
        <label>전화번호</label>
        <div class="form-group">
-         <input type="text" class="form-control" id="userPhon" name="userPhon" id="userPhon">
+         <input type="text" class="form-control" id="userPhon" name="userPhon" id="userPhon" placeholder="'-' 없이 번호만 입력하세요.">
+         <div class="check_font" id="userPhonCheck"></div>
        </div>
      
        <label>주소</label>
@@ -82,6 +91,7 @@
 $("#userId").blur(function(){
 
 	var userId = $('#userId').val();
+	var idJ = /^[a-z0-9]{4,12}$/;
 	
 	$.ajax({
 		url : '${pageContext.request.contextPath}/member/idCheck?userId=' + userId,
@@ -96,22 +106,22 @@ $("#userId").blur(function(){
 				$("#signUp").attr("disabled", true);
 			} else {
 
-				if(userId.length == 0){
+				if(idJ.test(userId)){
+					$("#userIdCheck").text("사용 가능한 아이디 입니다.");
+					$("#userIdCheck").css("color", "blue");
+					$("#signUp").attr("disabled", false);
+
+				} else if(userId.length == 0){
 
 					$("#userIdCheck").text("아이디를 입력하세요.");
 					$("#userIdCheck").css("color", "red");
 					$("#signUp").attr("disabled", true);
 
-				} else if(userId.length < 4) {
-
-					$("#userIdCheck").text("아이디를 4자리이상 입력하세요.");
-					$("#userIdCheck").css("color", "red");
-					$("#signUp").attr("disabled", true);
 				} else {
 
-					$("#userIdCheck").text("사용 가능한 아이디입니다.");
-					$("#userIdCheck").css("color", "blue");
-					$("#signUp").attr("disabled", false);
+					$("#userIdCheck").text("4~12자 영소문자와 숫자를 사용하세요.");
+					$("#userIdCheck").css("color", "red");
+					$("#signUp").attr("disabled", true);
 				}
 			}
 		}, error : function(){
@@ -146,7 +156,7 @@ function userPassReVal(){
 	var pass2 = $('#userPassRe').val();
 	var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
-	// 비밀번호 재확이 일치 체크
+	// 비밀번호 재확인 일치 체크
 	if(pass1 == pass2){
 		$("#userPassReValCheck").text("비밀번호가 일치합니다.");
 		$("#userPassReValCheck").css("color", "blue");
@@ -158,7 +168,57 @@ function userPassReVal(){
 	}
 }
 
+// 나머지 회원가입 유효성 체크(정규식)
+// 공백 체크 정규식 
+	// 이름 정규식
+	var nameJ = /^[가-힣]{2,6}$/;
+	// 이메일 검사 정규식
+	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	// 전화번호 정규식
+	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	
+	// 이름에 특수문자가 들어가지 않도록 설정
+	$("#userName").blur(function(){
+		if(nameJ.test($(this).val())) {
+			console.log(nameJ.test($(this).val()));
+			$("#userNameCheck").text('');
+		} else {
+			$("#userNameCheck").text('이름을 정확하게 입력하세요.');
+			$("#userNameCheck").css('color','red');
+			$("#signUp").attr("disabled", true);
+		}
+	});
 
+	// 전화번호 유효성 검사
+	$("#userPhon").blur(function(){
+		if(phoneJ.test($(this).val())) {
+			console.log(phoneJ.test($(this).val()));
+			$("#userPhonCheck").text('');
+		} else {
+			$("#userPhonCheck").text("전화번호를 정확하게 입력하세요.");
+			$("#userPhonCheck").css('color','red');
+			$("#signUp").attr("disabled", true);
+		}
+
+	});
+
+// 생년월일 유효성 검사
+	var birthJ = false;
+
+	$("#userBirth").blur(function(){
+		var dateStr = $(this).val();
+		var year = Number(dateStr.substr(0,4)); // 입력한 값의 연도
+		var month = Number(dateStr.substr(4,2)); // 입력한 값의 월
+		var day = Number(dateStr.substr(6,2)); // 입력한 값의 일
+		var today = new Date();
+		
+		
+		var yearNow = today.
+		
+	});
+		
+
+	
 // 카카오 주소 API
 function sample4_execDaumPostcode() {
     new daum.Postcode({

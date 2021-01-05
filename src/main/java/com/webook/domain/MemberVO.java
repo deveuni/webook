@@ -7,6 +7,7 @@ public class MemberVO {
 	private String userId;
 	private String userPass;
 	private String userName;
+	private String userBirth;
 	private String userPhon;
 	private String userEmail;
 	private String userAddr1;
@@ -16,12 +17,13 @@ public class MemberVO {
 	
 	// 생성자
 	public MemberVO() {}
-	public MemberVO(String userId, String userPass, String userName, String userPhon, String userEmail,
-			String userAddr1, String userAddr2, String postcode, Timestamp reg_date) {
+	public MemberVO(String userId, String userPass, String userName, String userBirth, String userPhon,
+			String userEmail, String userAddr1, String userAddr2, String postcode, Timestamp reg_date) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
 		this.userName = userName;
+		this.userBirth = userBirth;
 		this.userPhon = userPhon;
 		this.userEmail = userEmail;
 		this.userAddr1 = userAddr1;
@@ -31,7 +33,6 @@ public class MemberVO {
 	}
 	
 	// set(), get() 메소드
-
 	public String getUserId() {
 		return userId;
 	}
@@ -49,6 +50,12 @@ public class MemberVO {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public String getUserBirth() {
+		return userBirth;
+	}
+	public void setUserBirth(String userBirth) {
+		this.userBirth = userBirth;
 	}
 	public String getUserPhon() {
 		return userPhon;
@@ -88,14 +95,15 @@ public class MemberVO {
 	}
 	
 	
-	
-	// toString()
 	@Override
 	public String toString() {
-		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", userPhon="
-				+ userPhon + ", userEmail=" + userEmail + ", userAddr1=" + userAddr1 + ", userAddr2=" + userAddr2
-				+ ", postcode=" + postcode + ", reg_date=" + reg_date + "]";
+		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", userBirth="
+				+ userBirth + ", userPhon=" + userPhon + ", userEmail=" + userEmail + ", userAddr1=" + userAddr1
+				+ ", userAddr2=" + userAddr2 + ", postcode=" + postcode + ", reg_date=" + reg_date + "]";
 	}
+
+	
+	
 	
 
 }
