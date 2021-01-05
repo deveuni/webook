@@ -12,6 +12,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+
 </head>
 <body id="LoginForm">
 
@@ -22,7 +23,7 @@
    	<h1><a href="/webook" class="webook-main">webook</a></h1>
    </div>
    <br>
-    <form action="/member/signup" method="post" id="signForm">
+    <form action="/member/signup" method="post" id="signForm" role="form">
     
        <label>아이디</label>
        <div class="form-group">
@@ -87,6 +88,7 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
+
 // 아이디 중복 체크 (1 = 중복 / 0 != 중복) 
 $("#userId").blur(function(){
 
@@ -133,14 +135,14 @@ $("#userId").blur(function(){
 // 비밀번호 체크
 function userPassVal(){
 	var pass1 = $('#userPass').val();
-	var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 	// 비밀번호 유효성 체크
 	if(pass1.length < 8 || pass1.length > 16 ){
 		$("#userPassValCheck").text("8~16자 영문, 숫자, 특수문자를 사용하세요.");
 		$("#userPassValCheck").css("color", "red");
 		$("#signUp").attr("disabled", true);
-	} else if(reg.test(pass1) == false){
+	} else if(pwJ.test(pass1) == false){
 		$("#userPassValCheck").text("8~16자 영문, 숫자, 특수문자를 사용하세요.");
 		$("#userPassValCheck").css("color", "red");
 		$("#signUp").attr("disabled", true);
@@ -154,7 +156,7 @@ function userPassVal(){
 function userPassReVal(){
 	var pass1 = $('#userPass').val();
 	var pass2 = $('#userPassRe').val();
-	var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 	// 비밀번호 재확인 일치 체크
 	if(pass1 == pass2){
@@ -169,13 +171,16 @@ function userPassReVal(){
 }
 
 // 나머지 회원가입 유효성 체크(정규식)
-// 공백 체크 정규식 
+	// 모든 공백 체크 정규식 
+	var empJ = /\s/g;
 	// 이름 정규식
 	var nameJ = /^[가-힣]{2,6}$/;
 	// 이메일 검사 정규식
 	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	// 전화번호 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	// 도로명 주소 
+	var address = $('#sample4_roadAddress');
 	
 	// 이름에 특수문자가 들어가지 않도록 설정
 	$("#userName").blur(function(){
@@ -210,13 +215,119 @@ function userPassReVal(){
 		var year = Number(dateStr.substr(0,4)); // 입력한 값의 연도
 		var month = Number(dateStr.substr(4,2)); // 입력한 값의 월
 		var day = Number(dateStr.substr(6,2)); // 입력한 값의 일
-		var today = new Date();
-		
-		
-		var yearNow = today.
-		
+		var today = new Date(); // 날짜 변수 선언
+		var yearNow = today.getFullYear(); // 올해 연도
+
+		if(dateStr.length <= 8) {
+
+			// 연도가 1900보다 작거나 올해연도보다 크다면 false를 반환한다.
+			if(1900 > year || year > yearNow){
+				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.");
+				$("#userBirthCheck").css('color','red');
+			} else if(month < 1 || month > 12) {
+				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.");
+				$("#userBirthCheck").css('color','red');
+			} else if(day < 1 || day > 31) {
+				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.");
+				$("#userBirthCheck").css('color','red');
+			} else if((month == 4 || month == 6 || month == 9 || month == 11) && day == 31) {
+				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.");
+				$("#userBirthCheck").css('color','red');
+			} else if(month == 2) {
+				var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+
+				if(day > 29 || (day == 29 && !isleap)) {
+					$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.");
+					$("#userBirthCheck").css('color','red');
+				} else {
+					$("#userBirthCheck").text('');
+					birthJ = true;
+				} //end of if (day>29 || (day==29 && !isleap))
+			} else {
+				$("#userBirthCheck").text('');
+				birthJ = true;
+			} //end of if
+		} else {
+			// 입력된 값이 8자를 초과할 때
+			$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.");
+			$("#userBirthCheck").css('color','red');
+		}
 	});
 		
+// 공백 유효성 검사 
+$('#signUp').click(function(){
+	var inval_Arr = new Array(7).fill(false);
+
+	// 아아디 정규식
+	if(idJ.test($('#userId').val())) {
+		inval_Arr[0] = true;
+	} else {
+		inval_Arr[0] = false;
+		//alert("아이디를 확인하세요.");
+		return false;
+	} 
+
+	// 비밀번호가 같은 경우 && 비밀번호 정규식
+	if(($('#userPass').val() == ($('#userPassRe').val())) 
+			&& pwJ.test($('userPass').val())) {
+		inval_Arr[1] = true;
+	} else {
+		inval_Arr[1] = false;
+	}
+
+	// 이름 정규식
+	if(nameJ.test($('#userName').val())) {
+		inval_Arr[2] = true;
+	} else {
+		inval_Arr[2] = false;
+	} 
+
+	// 생년월일 정규식
+	if(birthJ) {
+		console.log(birthJ);
+		inval_Arr[3] = true;
+	} else {
+		inval_Arr[3] = false;
+		//alert("생년월일을 확인하세요.")
+	}
+	
+	// 이메일 정규식
+	if(mailJ.test($('#userEmail').val())) {
+		console.log(mailJ.test($('#userEmail').val()));
+		inval_Arr[4] = true;
+	} else {
+		inval_Arr[4] = false;
+	}
+
+	// 전화번호 정규식
+	if(phoneJ.test($('#userPhon').val())) {
+		console.log(phoneJ.test($('#userPhon').val()));
+		inval_Arr[5] = true;
+	} else {
+		inval_Arr[5] = false;
+	}
+
+	// 주소 확인
+	if(address.val() == '') {
+		inval_Arr[6] = false;
+	} else {
+		inval_Arr[6] = true;
+	}
+
+	// 전체 유효성 검사
+	var validAll = true;
+	for(var i = 0; i <inval_Arr.length; i++){
+		if(inval_Arr[i] == false){
+			validAll = false;
+		}
+	}
+
+	if(validAll) { // 유효성 모두 통과
+		alert("회원가입 되었습니다.");
+	} else {
+		alert("입력한 정보들을 다시 확인해주세요.");
+	}
+});
 
 	
 // 카카오 주소 API
