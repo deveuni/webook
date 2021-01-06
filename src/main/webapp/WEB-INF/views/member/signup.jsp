@@ -57,7 +57,7 @@
        
        <label>이메일</label>
        <div class="form-group">
-         <input type="email" class="form-control" name="userEmail" id="userEmail">
+         <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="ex) abc@webook.com">
          <div class="check_font" id="userEmailCheck"></div>
        </div>
        
@@ -119,7 +119,7 @@ $("#userId").blur(function(){
 
 				} else {
 
-					$("#userIdCheck").text("4~12자 영소문자와 숫자를 사용하세요.").css("color", "red");
+					$("#userIdCheck").text("4~12자 영소문자와 숫자를 사용하세요.(특수문자불가)").css("color", "red");
 					$("#signUp").attr("disabled", true);
 				}
 			}
@@ -220,28 +220,36 @@ function userPassReVal(){
 			// 연도가 1900보다 작거나 올해연도보다 크다면 false를 반환한다.
 			if(1900 > year || year > yearNow){
 				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.").css('color','red');
+				$("#signUp").attr("disabled", true);
 			} else if(month < 1 || month > 12) {
 				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.").css('color','red');
+				$("#signUp").attr("disabled", true);
 			} else if(day < 1 || day > 31) {
 				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.").css('color','red');
+				$("#signUp").attr("disabled", true);
 			} else if((month == 4 || month == 6 || month == 9 || month == 11) && day == 31) {
 				$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.").css('color','red');
+				$("#signUp").attr("disabled", true);
 			} else if(month == 2) {
 				var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 
 				if(day > 29 || (day == 29 && !isleap)) {
 					$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.").css('color','red');
+					$("#signUp").attr("disabled", true);
 				} else {
 					$("#userBirthCheck").text('');
 					birthJ = true;
+					$("#signUp").attr("disabled", false);
 				} //end of if (day>29 || (day==29 && !isleap))
 			} else {
 				$("#userBirthCheck").text('');
 				birthJ = true;
+				$("#signUp").attr("disabled", false);
 			} //end of if
 		} else {
 			// 입력된 값이 8자를 초과할 때
 			$("#userBirthCheck").text("생년월일을 정확하게 입력하세요.").css('color','red');
+			$("#signUp").attr("disabled", true);
 		}
 	});
 
@@ -257,68 +265,65 @@ function userPassReVal(){
 		}
 	});
 
+	// 주소 정규식
+	$("#postcode").focus(function(){  
+		if(!empJ.test($(this).val())) {
+			$("#userAddrCheck").text("");
+			$("#signUp").attr("disabled", false);
+		}
+	}); 
+	
 	
 // 공백 유효성 체크
 function checks(){
 	
-if($("#userId").val() == ""){ 
-	$("#userIdCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userId").focus(); 
-	return false; 
-}
+	if($("#userId").val() == ""){ 
+		$("#userIdCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userId").focus(); 
+		return false; 
+	}
 
-if($("#userPass").val() == ""){ 
-	$("#userPassCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userPass").focus(); 
-	return false; 
-}
+	if($("#userPass").val() == ""){ 
+		$("#userPassCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userPass").focus(); 
+		return false; 
+	}
 
-if($("#userPassRe").val() == ""){ 
-	$("#userPassReCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userPassRe").focus(); 
-	return false; 
-}
+	if($("#userPassRe").val() == ""){ 
+		$("#userPassReCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userPassRe").focus(); 
+		return false; 
+	}
 
+	if($("#userName").val() == ""){ 
+		$("#userNameCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userName").focus(); 
+		return false; 
+	}
 
-if($("#userName").val() == ""){ 
-	$("#userNameCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userName").focus(); 
-	return false; 
-}
+	if($("#userBirth").val() == ""){ 
+		$("#userBirthCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userBirth").focus(); 
+		return false; 
+	}
 
-if($("#userBirth").val() == ""){ 
-	$("#userBirthCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userBirth").focus(); 
-	return false; 
-}
+	if($("#userEmail").val() == ""){ 
+		$("#userEmailCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userEmail").focus(); 
+		return false; 
+	}
 
-if($("#userEmail").val() == ""){ 
-	$("#userEmailCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userEmail").focus(); 
-	return false; 
-}
+	if($("#userPhon").val() == ""){ 
+		$("#userPhonCheck").text("필수 정보입니다.").css("color", "red");
+		$("#userPhon").focus(); 
+		return false; 
+	}
 
-if($("#userPhon").val() == ""){ 
-	$("#userPhonCheck").text("필수 정보입니다.").css("color", "red");
-	$("#userPhon").focus(); 
-	return false; 
-}
-
-/* if($("#sample4_postcode").val() == ""){ 
-	$("#userAddrCheck").text("필수 정보입니다.").css("color", "red");
-	$("#sample4_postcode").focus(); 
-	return false; 
-}else {
-	$("#userAddrCheck").text("");
-}  */ 
-
-var isPostCodeBtn = false;
-if(isPostCodeBtn == false){
-	$("#userAddrCheck").text("필수 정보입니다.").css("color", "red");
-	//$("#sample4_postcode").focus(); 
-	return false; 
-}
-
+	if($("#sample4_postcode").val() == ""){ 
+		$("#userAddrCheck").text("필수 정보입니다.").css("color", "red");
+		$("#postcode").focus(); 
+		return false; 
+	} 
 }
 	
 // 카카오 주소 API
