@@ -22,12 +22,10 @@ public class MemberController {
 	@Inject
 	private MemberService service;
 	
-	
-	
 	private static final Logger log =
 			LoggerFactory.getLogger(MemberController.class);
 	
-	
+	// http://localhost:8080/member/signup
 	// 회원가입 get
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String getSignup() throws Exception{
