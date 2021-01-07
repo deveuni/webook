@@ -22,22 +22,22 @@
    <h1><a href="/webook" class="webook-main">webook</a></h1>
    </div>
    <br>
-    <form id="Login">
+    <form action = "" method="post" id="Login" >
 
         <div class="form-group">
-           <input type="text" class="form-control" name="userid" placeholder="아이디">
+           <input type="text" class="form-control" name="userId" placeholder="아이디">
         </div>
 
         <div class="form-group">
-           <input type="password" class="form-control" name="userpass" placeholder="비밀번호">
+           <input type="password" class="form-control" name="userPass" placeholder="비밀번호">
         </div>
         
         <div class="forgot">
-        	<a href="reset.html">Forgot password?</a>
+        	<a href="reset.html">아이디/비밀번호 찾기</a>
 		</div>
 		
-        <button type="submit" class="btn btn-primary">로그인</button>
-
+        <input type="submit" class="btn btn-primary" value="로그인">
+        
     </form>
     </div>
 	</div>

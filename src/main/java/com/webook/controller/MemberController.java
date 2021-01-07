@@ -1,6 +1,7 @@
 package com.webook.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webook.domain.MemberVO;
 import com.webook.service.MemberService;
@@ -74,6 +76,35 @@ public class MemberController {
 		
 		log.info("C : 로그인 get");
 	}
+	
+	// 로그인 post
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
+	public String postSignin(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
+		
+		log.info("C : 로그인 post");
+		
+		// 뷰페이지에서 전달받은 id, pass 값을 저장 
+		log.info("C : id,pass => " + vo);
+		
+		// 서비스 로그인 동작 호출
+		MemberVO login = service.signin(vo);
+		log.info("C : 로그인 결과 => " + login);
+		
+		// 로그인에 대한 정보가 없을 경우 signin 페이지로 이동
+		if(login == null) {
+			return "redirect:/member/signin";
+		}
+		
+		// 아이디 세션값 생성
+		session.setAttribute("userId", login.getUserId());
+		
+		// 정보를 저장해서 메인 페이지로 전달 
+		// jsp 페이지로 이동할 때는 model객체로 저장, redirect로 이동시 RedirectAttributes객체를 사용한다.
+		rttr.addFlashAttribute("member", login);
+		
+		return "redirect:/webook";
+	}
+	
 	
 	
 	

@@ -28,9 +28,7 @@ public class MemberServiceImpl implements MemberService {
 		if(vo == null) {
 			return;
 		}
-		
 		mdao.signup(vo);
-		
 	}
 	
 	// 아이디 중복 확인
@@ -38,7 +36,13 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO userIdCheck(String userId) throws Exception {
 
 		return mdao.userIdCheck(userId); 
+	}
+	
+	// 로그인
+	@Override
+	public MemberVO signin(MemberVO vo) throws Exception {
 		
+		return mdao.signin(vo);
 	}
 	
 	

@@ -324,6 +324,8 @@ function checks(){
 		$("#postcode").focus(); 
 		return false; 
 	} 
+
+	
 }
 	
 // 카카오 주소 API
