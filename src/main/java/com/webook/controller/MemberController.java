@@ -90,8 +90,14 @@ public class MemberController {
 	
 	// 로그인 get
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
-	public void getSignin() throws Exception{
+	public void getSignin(HttpSession session, Model model) throws Exception{
 		
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		 
+		log.info("C : 네이버로그인 => " + naverAuthUrl);
+		 
+		// 네이버 로그인 
+		model.addAttribute("url", naverAuthUrl);
 		
 		log.info("C : 로그인 get");
 	}
@@ -123,12 +129,12 @@ public class MemberController {
 		
 		
 		// 네이버 아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		//String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		 
-		log.info("C : 네이버로그인 => " + naverAuthUrl);
+		//log.info("C : 네이버로그인 => " + naverAuthUrl);
 		 
 		// 네이버 로그인 
-		model.addAttribute("url", naverAuthUrl);
+		//model.addAttribute("url", naverAuthUrl);
 		 
 		
 		return "redirect:/webook";
