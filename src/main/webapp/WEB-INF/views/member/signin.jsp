@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html>
@@ -32,12 +33,15 @@
            <input type="password" class="form-control" name="userPass" placeholder="비밀번호">
         </div>
         
-        <div class="forgot">
-        	<a href="reset.html">아이디/비밀번호 찾기</a>
-		</div>
+        <c:if test="${msg == false}">
+        	<p style="color:#f00;" class="check_font">가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.</p>
+        </c:if>
 		
         <input type="submit" class="btn btn-primary" value="로그인">
-        
+        <div class="forgot">
+        	<a href="reset.html">아이디/비밀번호 찾기</a>
+        	<a href="/member/signup" style="margin-left: 160px;">회원가입</a>
+		</div>
     </form>
     </div>
 	</div>

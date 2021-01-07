@@ -91,21 +91,30 @@ public class MemberController {
 		log.info("C : 로그인 결과 => " + login);
 		
 		// 로그인에 대한 정보가 없을 경우 signin 페이지로 이동
-		if(login == null) {
+		if(login != null) {
+			session.setAttribute("member", login);
+		} else {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
 			return "redirect:/member/signin";
 		}
 		
 		// 아이디 세션값 생성
 		session.setAttribute("userId", login.getUserId());
 		
-		// 정보를 저장해서 메인 페이지로 전달 
-		// jsp 페이지로 이동할 때는 model객체로 저장, redirect로 이동시 RedirectAttributes객체를 사용한다.
-		rttr.addFlashAttribute("member", login);
 		
 		return "redirect:/webook";
 	}
 	
-	
+	// 로그아웃
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public String signout(HttpSession session) throws Exception {
+		log.info("get logout");
+		
+		service.signout(session);
+		
+		return "redirect:/webook";
+	}
 	
 	
 	

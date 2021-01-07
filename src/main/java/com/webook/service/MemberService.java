@@ -1,5 +1,7 @@
 package com.webook.service;
 
+import javax.servlet.http.HttpSession;
+
 import com.webook.domain.MemberVO;
 
 public interface MemberService {
@@ -13,6 +15,7 @@ public interface MemberService {
 	// 로그인
 	public MemberVO signin(MemberVO vo) throws Exception;
 	
-	
+	// 로그아웃
+	public void signout(HttpSession session) throws Exception;
 	
 }

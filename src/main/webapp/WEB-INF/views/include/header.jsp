@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>webook 온라인서점</title>
 
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,13 +29,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        
+        <c:if test="${member == null}">
           <li class="nav-item">
             <a class="nav-link" href="./member/signin">로그인</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./member/signup">회원가입</a>
           </li>
+         </c:if>
+         <c:if test="${member != null}">
+          <li class="nav-item">
+			<p class="nav-link">${member.userName}님 환영합니다.</p>
+          </li>
+          <li class="nav-item">
+			<a class="nav-link" href="./member/signout">로그아웃</a>
+          </li>
+         </c:if>  
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>

@@ -1,6 +1,7 @@
 package com.webook.service;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,12 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO signin(MemberVO vo) throws Exception {
 		
 		return mdao.signin(vo);
+	}
+	
+	// 로그아웃
+	@Override
+	public void signout(HttpSession session) throws Exception {
+		session.invalidate();
 	}
 	
 	
