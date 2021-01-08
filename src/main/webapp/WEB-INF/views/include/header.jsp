@@ -29,7 +29,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <c:if test="${member == null}">
+        <c:if test="${member == null && naverId == null}">
           <li class="nav-item">
             <a class="nav-link" href="./member/signin">로그인</a>
           </li>
@@ -45,6 +45,15 @@
 			<a class="nav-link" href="./member/signout">로그아웃</a>
           </li>
          </c:if>  
+         <c:if test="${naverId != null}">
+          <li class="nav-item">
+			<p class="nav-link">${naverId}님 환영합니다.</p>
+          </li>
+          <li class="nav-item">
+			<a class="nav-link" href="./member/signout">로그아웃</a>
+          </li>
+         </c:if>  
+         
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>

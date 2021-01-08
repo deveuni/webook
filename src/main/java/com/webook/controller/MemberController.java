@@ -27,7 +27,7 @@ import com.webook.service.MemberService;
 @RequestMapping(value = "/member/*")
 public class MemberController {
 
-	// 서비스 처리 객체 주입
+	/* 서비스 처리 객체 주입 */
 	@Inject
 	private MemberService service;
 	
@@ -46,7 +46,7 @@ public class MemberController {
 	
 	
 	// http://localhost:8080/member/signup
-	// 회원가입 get
+	/* 회원가입 get */
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String getSignup() throws Exception{
 		
@@ -55,7 +55,7 @@ public class MemberController {
 		return "/member/signup";
 	}
 	
-	// 회원가입 post
+	/* 회원가입 post */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String postSignup(MemberVO vo) throws Exception{
 		
@@ -76,7 +76,7 @@ public class MemberController {
 		
 	}
 	
-	// 아이디 중복 체크
+	/* 아이디 중복 체크 */
 	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("userId") String userId) throws Exception {
@@ -88,7 +88,7 @@ public class MemberController {
 	}
 	
 	
-	// 로그인 get
+	/* 로그인 get */
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public void getSignin(HttpSession session, Model model) throws Exception{
 		
@@ -102,7 +102,7 @@ public class MemberController {
 		log.info("C : 로그인 get");
 	}
 	
-	// 로그인 post
+	/* 로그인 post */
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String postSignin(MemberVO vo, HttpSession session, RedirectAttributes rttr, Model model ) throws Exception{
 		
@@ -127,22 +127,12 @@ public class MemberController {
 		// 아이디 세션값 생성
 		session.setAttribute("userId", login.getUserId());
 		
-		
-		// 네이버 아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출
-		//String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		 
-		//log.info("C : 네이버로그인 => " + naverAuthUrl);
-		 
-		// 네이버 로그인 
-		//model.addAttribute("url", naverAuthUrl);
-		 
-		
 		return "redirect:/webook";
 	}
 	
-	// 네이버 로그인 성공시 callback 호출 메소드
+	/* 네이버 로그인 성공시 callback 호출 메소드 */
 	@RequestMapping(value = "/callback", method = {RequestMethod.GET, RequestMethod.POST})
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException, ParseException  {
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, MemberVO vo) throws Exception  {
 		
 		log.info("C : callback() 호출");
 		
@@ -152,36 +142,76 @@ public class MemberController {
 		//1. 로그인 사용자 정보를 읽어온다.
 		apiResult = naverLoginBO.getUserProfile(oauthToken); //String형식의 json데이터
 		
-		/** apiResult json 구조
-		{"resultcode":"00",
-		"message":"success",
-		"response":{"id":"33666449","nickname":"shinn****","age":"20-29","gender":"M","email":"sh@naver.com","name":"\uc2e0\ubc94\ud638"}}
-		**/
 		
 		//2. String형식인 apiResult를 json형태로 바꿈
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(apiResult);
-		JSONObject jsonObj = (JSONObject) obj;
+		JSONObject jsonObj = (JSONObject)obj;
 		
 		//3. 데이터 파싱
 		//Top레벨 단계 _response 파싱
 		JSONObject response_obj = (JSONObject)jsonObj.get("response");
 		//response의 nickname값 파싱
 		String nickname = (String)response_obj.get("nickname");
+		String userId = (String)response_obj.get("id");
+		String userEmail = (String)response_obj.get("email");
+		String userName = (String)response_obj.get("name");
+		String birthyear = (String)response_obj.get("birthyear");
+		String birthday = (String)response_obj.get("birthday");
+		String mobile = (String)response_obj.get("mobile");
 		
 		log.info("C : 네이버 로그인 nickname = > " + nickname);
 		
 		//4.파싱 닉네임 세션으로 저장
-		session.setAttribute("sessionId",nickname); //세션 생성
+		session.setAttribute("naverId",nickname); //세션 생성
 		
 		model.addAttribute("result", apiResult);
 		
+		// 네이버 로그인 DB연동
+		//MemberVO mvo = service.signinByNaver(vo);
+		
 		return "redirect:/webook";
-
 		
 	}
 	
-	// 로그아웃
+	/* 구글 로그인 */
+	@ResponseBody
+	@RequestMapping(value = "/signinGoogle", method = RequestMethod.POST)
+	public String postSigninGoogle(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+		MemberVO returnVO = service.signinGoogle(vo);
+		String mvo_ajaxid = vo.getUserId();
+		System.out.println("C: 구글아이디 포스트 db에서 가져온 vo "+ vo);
+		System.out.println("C: 구글아이디 포스트 ajax에서 가져온 id "+ mvo_ajaxid);
+		
+		if(returnVO == null) { //아이디가 DB에 존재하지 않는 경우
+			// 구글 회원가입
+			service.signupGoogle(vo);
+			
+			// 구글 로그인
+			returnVO = service.signinGoogle(vo);
+			session.setAttribute("googleId", returnVO.getUserId());
+			rttr.addFlashAttribute("mvo", returnVO);
+		} 
+		
+		if(mvo_ajaxid.equals(returnVO.getUserId())) { //아이디가 DB에 존재하는 경우
+			// 구글 로그인
+			service.signinGoogle(vo);
+			session.setAttribute("googleId", returnVO.getUserId());
+			rttr.addFlashAttribute("mvo", returnVO);
+		} else { //아이디가 DB에 존재하지 않는 경우
+			// 구글 회원가입
+			service.signupGoogle(vo);
+			
+			// 구글 로그인
+			returnVO = service.signinGoogle(vo);
+			session.setAttribute("googleId", returnVO.getUserId());
+			rttr.addFlashAttribute("mvo", returnVO);
+		}
+		
+		return "redirect:/webook";
+	}
+	
+	/* 로그아웃 */
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signout(HttpSession session) throws Exception {
 		log.info("get logout");

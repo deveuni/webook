@@ -44,12 +44,70 @@
 		</div>
     </form>
     
-    <!-- 네이버 로그인 창으로 이동 -->
-		<div id="naver_id_login" style="text-align:center"><a href="${url}">
-		<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+    
+	<div id="sns_login">
+	<!-- 네이버 로그인 -->
+	 <a href="${url}">
+		<img width="175px"  src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+	 </a>
+	<!-- 구글 로그인 -->
+	 <a onclick="init();" id="google_login">
+	 	<img width="175px" id="googleLoginImg" src="${pageContext.request.contextPath}/resources/images/btn_google_signin_light_focus_web.png">
+	 </a>	
+	</div>
+		
     </div>
 	</div>
 	</div>
+	
+<!-- google signin api -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+<script type="text/javascript">
+
+// 구글 로그인 API
+var googleUser = {};
+function init() {
+	gapi.load('auth2', function(){
+	  console.log("init()시작");
+	  auth2 = gapi.auth2.init({
+			client_id: '256250496782-21qhnh35qfoiv2ivbn9a4co3po0u20kq.apps.googleusercontent.com',
+			cookiepolicy: 'single_host_origin',
+		  });
+	  	  attachSignin(document.getElementById('google_login'));
+	});
+}
+
+// 구글 로그인 API2
+function attachSignin(element) {
+	auth2.attachClickHandler(element, {}, 
+		function(googleUser) {
+		var profile = googleUser.getBasicProfile();
+		var id_token = googleUser.getAuthResponse().id_token;
+		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  	  console.log('ID토큰: ' + id_token);
+	  	  console.log('Name: ' + profile.getName());
+	  	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			$(function() {
+				$.ajax({
+					url: '${pageContext.request.contextPath}/member/signinGoogle',
+					type: 'post',
+					data: {"userId": profile.getEmail(),
+						   "userPass": profile.getId(),
+						   "userName": profile.getName(),
+						   "userEmail": profile.getEmail()
+						 },
+					success: function (data) {
+						location.href="/webook";
+					}
+				});
+			})
+		}, function(error) {
+			alert("구글아이디 로그인이 실패했습니다.");
+		});
+}
+</script>
+	
 
 </body>
 </html>
