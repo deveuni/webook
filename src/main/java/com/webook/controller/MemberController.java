@@ -132,9 +132,10 @@ public class MemberController {
 	
 	/* 네이버 로그인 성공시 callback 호출 메소드 */
 	@RequestMapping(value = "/callback", method = {RequestMethod.GET, RequestMethod.POST})
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, MemberVO vo) throws Exception  {
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session, MemberVO vo, RedirectAttributes rttr) throws Exception  {
 		
 		log.info("C : callback() 호출");
+		log.info("C 네이버 vo => " + vo);
 		
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
@@ -156,19 +157,37 @@ public class MemberController {
 		String userId = (String)response_obj.get("id");
 		String userEmail = (String)response_obj.get("email");
 		String userName = (String)response_obj.get("name");
-		String birthyear = (String)response_obj.get("birthyear");
-		String birthday = (String)response_obj.get("birthday");
-		String mobile = (String)response_obj.get("mobile");
+		String userBirth = (String)response_obj.get("birthyear") + (String)response_obj.get("birthday");
+		String userPhon = (String)response_obj.get("mobile");
 		
 		log.info("C : 네이버 로그인 nickname = > " + nickname);
 		
 		//4.파싱 닉네임 세션으로 저장
 		session.setAttribute("naverId",nickname); //세션 생성
-		
 		model.addAttribute("result", apiResult);
 		
+		// 네이버 정보를 vo에 저장
+		vo.setUserId(userEmail);
+		vo.setUserPass(userId);
+		vo.setUserEmail(userEmail);
+		vo.setUserName(userName);
+		vo.setUserBirth(userBirth);
+		vo.setUserPhon(userPhon);
+		
 		// 네이버 로그인 DB연동
-		//MemberVO mvo = service.signinByNaver(vo);
+		MemberVO returnVO = service.signinNaver(vo);
+		log.info("naver로그인 정보 => " + vo);
+		
+		if(returnVO == null) { //아이디가 DB에 존재하지 않는 경우
+			// 네이버 회원가입
+			service.signupNaver(vo);
+			
+			// 네이버 로그인
+			returnVO = service.signinNaver(vo);
+			session.setAttribute("naverId", returnVO.getUserId());
+			session.setAttribute("naverName", returnVO.getUserName());
+			rttr.addFlashAttribute("mvo", returnVO);
+		} 
 		
 		return "redirect:/webook";
 		

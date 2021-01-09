@@ -47,7 +47,7 @@
     
 	<div id="sns_login">
 	<!-- 네이버 로그인 -->
-	 <a href="${url}">
+	 <a href="${url}" id="naver_login">
 		<img width="175px"  src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
 	 </a>
 	<!-- 구글 로그인 -->
@@ -64,7 +64,6 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <script type="text/javascript">
-
 // 구글 로그인 API
 var googleUser = {};
 function init() {

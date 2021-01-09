@@ -46,7 +46,27 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.signin(vo);
 	}
 	
+	/* 네이버 회원가입 */
+	@Override
+	public void signupNaver(MemberVO vo) throws Exception {
+		mdao.signup(vo);
+		
+	}
+	
 	/* 네이버 로그인 */
+	@Override
+	public MemberVO signinNaver(MemberVO vo) throws Exception {
+		MemberVO returnVO = null;
+		
+		try {
+			returnVO = mdao.signin(vo);
+			log.info("S : 네이버 아이디 로그인 정보 => " + vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			returnVO = null;
+		}
+		return returnVO;
+	}
 	
 	/* 구글 회원가입 */
 	@Override

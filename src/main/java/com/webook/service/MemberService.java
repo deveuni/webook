@@ -15,8 +15,11 @@ public interface MemberService {
 	/* 로그인 */
 	public MemberVO signin(MemberVO vo) throws Exception;
 	
+	/* 네이버 회원가입 */
+	public void signupNaver(MemberVO vo) throws Exception;
+	
 	/* 네이버 로그인 */
-	//public MemberVO signinByNaver(MemberVO vo) throws Exception;
+	public MemberVO signinNaver(MemberVO vo) throws Exception;
 	
 	/* 구글 회원가입 */
 	public void signupGoogle(MemberVO vo) throws Exception;

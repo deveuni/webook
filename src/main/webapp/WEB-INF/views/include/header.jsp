@@ -50,7 +50,7 @@
          <!-- 네이버 아이디 로그인 상태 --> 
          <c:if test="${naverId != null}">
           <li class="nav-item">
-			<p class="nav-link">${naverId}님 환영합니다.</p>
+			<p class="nav-link">${naverName}님 환영합니다.</p>
           </li>
           <li class="nav-item">
 			<a class="nav-link" href="./member/signout">로그아웃</a>
