@@ -190,6 +190,7 @@ public class MemberController {
 			// 구글 로그인
 			returnVO = service.signinGoogle(vo);
 			session.setAttribute("googleId", returnVO.getUserId());
+			session.setAttribute("googleName", returnVO.getUserName());
 			rttr.addFlashAttribute("mvo", returnVO);
 		} 
 		
@@ -197,6 +198,7 @@ public class MemberController {
 			// 구글 로그인
 			service.signinGoogle(vo);
 			session.setAttribute("googleId", returnVO.getUserId());
+			session.setAttribute("googleName", returnVO.getUserName());
 			rttr.addFlashAttribute("mvo", returnVO);
 		} else { //아이디가 DB에 존재하지 않는 경우
 			// 구글 회원가입
@@ -205,6 +207,7 @@ public class MemberController {
 			// 구글 로그인
 			returnVO = service.signinGoogle(vo);
 			session.setAttribute("googleId", returnVO.getUserId());
+			session.setAttribute("googleName", returnVO.getUserName());
 			rttr.addFlashAttribute("mvo", returnVO);
 		}
 		

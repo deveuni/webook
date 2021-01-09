@@ -60,7 +60,7 @@
 	</div>
 	</div>
 	
-<!-- google signin api -->
+<!-- 구글 로그인 api -->
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <script type="text/javascript">
