@@ -184,10 +184,16 @@ public class MemberController {
 			
 			// 네이버 로그인
 			returnVO = service.signinNaver(vo);
-			session.setAttribute("naverId", returnVO.getUserId());
+			session.setAttribute("naverUserId", returnVO.getUserId());
 			session.setAttribute("naverName", returnVO.getUserName());
 			rttr.addFlashAttribute("mvo", returnVO);
-		} 
+		} else {
+			// 네이버 로그인
+			returnVO = service.signinNaver(vo);
+			session.setAttribute("naverUserId", returnVO.getUserId());
+			session.setAttribute("naverName", returnVO.getUserName());
+			rttr.addFlashAttribute("mvo", returnVO);
+		}
 		
 		return "redirect:/webook";
 		
