@@ -3,6 +3,7 @@ package com.webook.controller;
 import java.io.IOException;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -22,17 +23,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.webook.domain.MemberVO;
 import com.webook.service.MemberService;
+import com.webook.service.UserMailSendService;
 
 @Controller
 @RequestMapping(value = "/member/*")
 public class MemberController {
+	
+	private static final Logger log =
+			LoggerFactory.getLogger(MemberController.class);
+	
 
 	/* 서비스 처리 객체 주입 */
 	@Inject
 	private MemberService service;
 	
-	private static final Logger log =
-			LoggerFactory.getLogger(MemberController.class);
+	// 이메일 인증 서비스
+	@Autowired
+	private UserMailSendService mailsender;
 	
 	// NaverLoginBO
 	private NaverLoginBO naverLoginBO;
@@ -57,7 +64,7 @@ public class MemberController {
 	
 	/* 회원가입 post */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String postSignup(MemberVO vo) throws Exception{
+	public String postSignup(MemberVO vo, HttpServletRequest request) throws Exception{
 		
 		log.info("C : 회원가입 post");
 		
@@ -70,6 +77,9 @@ public class MemberController {
 		service.signup(vo);
 		
 		log.info("C : 회원가입 post동작 완료");
+		
+		// 인증 메일 보내기
+		mailsender.mailSendWithUserKey(vo.getUserEmail(),vo.getUserId(), request);
 		
 		// 로그인 페이지로 이동
 		return "redirect:/member/signin";
