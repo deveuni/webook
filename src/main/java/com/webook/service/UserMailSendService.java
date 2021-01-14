@@ -55,7 +55,7 @@ public class UserMailSendService {
 		
 		String key = getKey(false, 20);
 		userDao = sqlSession.getMapper(MemberDAO.class);
-		userDao.getClass()
+		userDao.getClass();;;;;;;;;;;
 	}
 
 }
