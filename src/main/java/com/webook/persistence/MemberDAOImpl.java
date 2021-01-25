@@ -1,5 +1,7 @@
 package com.webook.persistence;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -39,5 +41,26 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne(namespace+".signin", vo);
 	}
 	
+	/* 유저 인증키 생성 메소드*/
+	@Override
+	public int GetKey(String userId, String userKey) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("userKey", userKey);
+		
+		return sql.update(namespace+".GetKey", map);
+	}
+	
+	/* 회원 인증키 Y로 바꿔주는 메소드 */
+	@Override
+	public int alter_userKey(String userId, String key) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", userId);
+		map.put("userKey", key);
+		
+		return sql.update(namespace+".alter_userKey", map);
+	}
 	
 }

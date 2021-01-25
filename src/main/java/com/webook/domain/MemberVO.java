@@ -14,11 +14,12 @@ public class MemberVO {
 	private String userAddr2;
 	private String postcode;
 	private Timestamp reg_date;
+	private String userKey;
 	
 	// 생성자
 	public MemberVO() {}
 	public MemberVO(String userId, String userPass, String userName, String userBirth, String userPhon,
-			String userEmail, String userAddr1, String userAddr2, String postcode, Timestamp reg_date) {
+			String userEmail, String userAddr1, String userAddr2, String postcode, Timestamp reg_date, String userKey) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
@@ -30,8 +31,10 @@ public class MemberVO {
 		this.userAddr2 = userAddr2;
 		this.postcode = postcode;
 		this.reg_date = reg_date;
+		this.userKey = userKey;
 	}
-	
+
+
 	// set(), get() 메소드
 	public String getUserId() {
 		return userId;
@@ -93,14 +96,24 @@ public class MemberVO {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
+	public String getUserKey() {
+		return userKey;
+	}
+	public void setUserKey(String userKey) {
+		this.userKey = userKey;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", userBirth="
 				+ userBirth + ", userPhon=" + userPhon + ", userEmail=" + userEmail + ", userAddr1=" + userAddr1
-				+ ", userAddr2=" + userAddr2 + ", postcode=" + postcode + ", reg_date=" + reg_date + "]";
+				+ ", userAddr2=" + userAddr2 + ", postcode=" + postcode + ", reg_date=" + reg_date + ", userKey="
+				+ userKey + "]";
 	}
+	
+	
+	
 
 	
 	
