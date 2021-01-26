@@ -17,6 +17,6 @@ public interface MemberDAO {
 	public int GetKey(String userId, String userKey);
 	
 	/* 회원 인증키 Y로 바꿔주는 메소드 */
-	public int alter_userKey(String userId, String key);
+	public int alter_userKey(String userId, String userKey);
 
 }

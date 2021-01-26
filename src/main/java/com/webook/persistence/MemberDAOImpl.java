@@ -54,11 +54,11 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	/* 회원 인증키 Y로 바꿔주는 메소드 */
 	@Override
-	public int alter_userKey(String userId, String key) {
+	public int alter_userKey(String userId, String userKey) {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("userId", userId);
-		map.put("userKey", key);
+		map.put("userKey", userKey);
 		
 		return sql.update(namespace+".alter_userKey", map);
 	}

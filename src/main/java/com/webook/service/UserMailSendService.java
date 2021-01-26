@@ -74,5 +74,16 @@ public class UserMailSendService {
 			e.printStackTrace();
 		}
 	}
+	
+	// 회원가입 인증 확인 (Y값으로 바꿔주는 메소드)
+	public int alter_userkey_service(String userId, String userKey) throws Exception {
+		
+		int resultCnt = 0;
+		
+		userDao = sqlSession.getMapper(MemberDAO.class);
+		resultCnt = userDao.alter_userKey(userId, userKey);
+		
+		return resultCnt;
+	}
 
 }

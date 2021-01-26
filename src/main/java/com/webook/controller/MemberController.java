@@ -97,6 +97,14 @@ public class MemberController {
 		else return 0;
 	}
 	
+	/* 회원가입 이메일 인증 */
+	@RequestMapping(value = "/key_alter", method = RequestMethod.GET)
+	public String key_alterConfirm(@RequestParam("userId") String userId, @RequestParam("userKey") String userKey) throws Exception{
+		
+		mailsender.alter_userkey_service(userId, userKey);
+		
+		return "/member/userRegSuccess";
+	}
 	
 	/* 로그인 get */
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
