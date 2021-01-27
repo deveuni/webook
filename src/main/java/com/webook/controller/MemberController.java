@@ -39,7 +39,7 @@ public class MemberController {
 	
 	// 이메일 인증 서비스
 	@Autowired
-	private UserMailSendService mailsender;
+	private UserMailSendService mailSender;
 	
 	// NaverLoginBO
 	private NaverLoginBO naverLoginBO;
@@ -79,7 +79,7 @@ public class MemberController {
 		log.info("C : 회원가입 post동작 완료");
 		
 		// 인증 메일 보내기
-		mailsender.mailSendWithUserKey(vo.getUserEmail(),vo.getUserId(), request);
+		mailSender.mailSendWithUserKey(vo.getUserEmail(),vo.getUserId(), request);
 		
 		// 로그인 페이지로 이동
 		return "redirect:/member/signin";
@@ -101,7 +101,7 @@ public class MemberController {
 	@RequestMapping(value = "/key_alter", method = RequestMethod.GET)
 	public String key_alterConfirm(@RequestParam("userId") String userId, @RequestParam("userKey") String userKey) throws Exception{
 		
-		mailsender.alter_userkey_service(userId, userKey);
+		mailSender.alter_userkey_service(userId, userKey);
 		
 		return "/member/userRegSuccess";
 	}
