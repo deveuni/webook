@@ -29,15 +29,7 @@
 	 userId = #{userId} and userPass = #{userPass}
 </select>
 
-<!-- 회원 인증키 생성 -->
-<update id="Getkey" parameterType="Map">
-	update tbl_member set userKey = #{userKey} where userId = #{userId}
-</update>
 
-<!-- 회원 인증키(난수) Y로 변경 -->
-<update id="alter_userKey" parameterType="Map">
-	update tbl_member set userKey = "Y" where userId = #{userId} and userKey = #{userKey}
-</update>
 
 
 </mapper>  

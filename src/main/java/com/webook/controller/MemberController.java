@@ -2,6 +2,7 @@ package com.webook.controller;
 
 import java.io.IOException;
 
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.webook.domain.MemberVO;
 import com.webook.service.MemberService;
-import com.webook.service.UserMailSendService;
 
 @Controller
 @RequestMapping(value = "/member/*")
@@ -36,10 +36,6 @@ public class MemberController {
 	/* 서비스 처리 객체 주입 */
 	@Inject
 	private MemberService service;
-	
-	// 이메일 인증 서비스
-	@Autowired
-	private UserMailSendService mailSender;
 	
 	// NaverLoginBO
 	private NaverLoginBO naverLoginBO;
@@ -71,15 +67,10 @@ public class MemberController {
 		// 뷰페이지에서 전달되는 정보 vo
 		log.info("C : 뷰페이지에서 전달되는 정보 vo => " + vo);
 		
-		// 비밀번호 암호화 - 할까? 찾아보고 정하기
-		
 		// 서비스에서 회원가입 동작 호출
 		service.signup(vo);
 		
 		log.info("C : 회원가입 post동작 완료");
-		
-		// 인증 메일 보내기
-		mailSender.mailSendWithUserKey(vo.getUserEmail(),vo.getUserId(), request);
 		
 		// 로그인 페이지로 이동
 		return "redirect:/member/signin";
@@ -97,14 +88,6 @@ public class MemberController {
 		else return 0;
 	}
 	
-	/* 회원가입 이메일 인증 */
-	@RequestMapping(value = "/key_alter", method = RequestMethod.GET)
-	public String key_alterConfirm(@RequestParam("userId") String userId, @RequestParam("userKey") String userKey) throws Exception{
-		
-		mailSender.alter_userkey_service(userId, userKey);
-		
-		return "/member/userRegSuccess";
-	}
 	
 	/* 로그인 get */
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
