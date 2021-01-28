@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -248,6 +249,20 @@ public class MemberController {
 		service.signout(session);
 		
 		return "redirect:/webook";
+	}
+	
+	/* 아이디 찾기 폼 */
+	@RequestMapping(value = "/find_id_form", method = RequestMethod.GET)
+	public String find_id_form() throws Exception {
+		
+		return "/member/find_id_form";
+	}
+	
+	/* 아이디 찾기 */
+	@RequestMapping(value = "/find_id", method = RequestMethod.POST)
+	public String find_id(HttpServletResponse response, @RequestParam("userEmail") String userEmail, Model model) throws Exception {
+		model.addAttribute("userId", service.find_id(response, userEmail));
+		return "/member/find_id";
 	}
 	
 	

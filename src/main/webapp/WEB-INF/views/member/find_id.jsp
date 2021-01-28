@@ -13,22 +13,34 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<script>
+	$(function(){
+		$("#loginBtn").click(function(){
+			location.href='/member/signin';
+		})
+	})
+</script>
 </head>
 <body id="LoginForm">
+
 <div class="container">
 <div class="login-form">
 <div class="main-div">
-   <div class="panel">
-   	<h1><a href="/webook" class="webook-main">webook</a></h1>
-   </div>
-   <br>
-   <form action = "/member/find_id" method="post" id="Login" >
-       <div class="form-group">
-          <input type="text" class="form-control" name="userEmail" id="userEmail" placeholder="이메일">
-       </div>
-       <br>
-       <input type="submit" class="btn btn-primary" value="아아디찾기">
-   </form>
+    <div class="panel">
+   	  <h1><a href="/webook" class="webook-main">webook</a></h1>
+    </div>
+   	<br>
+    <div class="form-group">
+      <div>
+		<h6>
+		   회원가입시 사용한 아이디는 <b>${ userId }</b>입니다.
+		</h6>
+		<br>
+	    <p class="w3-center">
+		   <button type="button" id=loginBtn class="btn btn-primary">로그인</button>
+		</p>	
+	  </div>		
+    </div>
 </div>
 </div>
 </div>
