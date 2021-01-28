@@ -13,6 +13,7 @@ public interface MemberDAO {
 	/* 로그인 */ 
 	public MemberVO signin(MemberVO vo) throws Exception; 
 	
-	
+	/* 아이디 찾기 */
+	public String find_id(String userEmail) throws Exception;
 
 }

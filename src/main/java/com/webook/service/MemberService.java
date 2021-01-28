@@ -1,5 +1,6 @@
 package com.webook.service;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.webook.domain.MemberVO;
@@ -29,5 +30,10 @@ public interface MemberService {
 	
 	/* 로그아웃 */
 	public void signout(HttpSession session) throws Exception;
+	
+	/* 아이디 찾기 */
+	public String find_id(HttpServletResponse response, String userEmail) throws Exception;
+	
+	
 	
 }

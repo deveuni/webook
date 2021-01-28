@@ -41,6 +41,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne(namespace+".signin", vo);
 	}
 	
-	
+	/* 아이디 찾기 */
+	@Override
+	public String find_id(String userEmail) throws Exception {
+		
+		return sql.selectOne(namespace+".find_id", userEmail);
+	}
 	
 }

@@ -1,7 +1,9 @@
 package com.webook.service;
 
-import javax.inject.Inject;
+import java.io.PrintWriter;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -91,13 +93,31 @@ public class MemberServiceImpl implements MemberService {
 		return returnVO;
 	}
 	
-	
 	/* 로그아웃 */
 	@Override
 	public void signout(HttpSession session) throws Exception {
 		session.invalidate();
 	}
 	
+	/* 아이디 찾기 */
+	@Override
+	public String find_id(HttpServletResponse response, String userEmail) throws Exception {
+
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String userId = mdao.find_id(userEmail);
+		
+		if(userId == null) {
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return userId;
+		}
+	}
 	
 	
 	

@@ -29,6 +29,10 @@
 	 userId = #{userId} and userPass = #{userPass}
 </select>
 
+<!-- 아이디 찾기 -->
+<select id="find_id" parameterType="String" resultType="String">
+	select userId from tbl_member where userEmail = #{userEmail}
+</select>
 
 
 
