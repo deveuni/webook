@@ -39,8 +39,9 @@
 		
         <input type="submit" class="btn btn-primary" value="로그인">
         <div class="forgot">
-        	<a href="reset.html">아이디/비밀번호 찾기</a>
-        	<a href="/member/signup" style="margin-left: 160px;">회원가입</a>
+        	<a href="/member/find_id_form">아이디</a>
+        	<a href="reset.html"> / 비밀번호찾기</a>
+        	<a href="/member/signup" style="margin-left: 155px;">회원가입</a>
 		</div>
     </form>
     
