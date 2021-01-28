@@ -32,8 +32,12 @@ public interface MemberService {
 	public void signout(HttpSession session) throws Exception;
 	
 	/* 아이디 찾기 */
-	public String find_id(HttpServletResponse response, String userEmail) throws Exception;
+	public String findId(HttpServletResponse response, String userEmail) throws Exception;
 	
+	/* 비밀번호 찾기 이메일 발송 */
+	public void sendEmail(MemberVO vo, String div) throws Exception;
 	
+	/* 비밀번호 변경 */
+	public void findPw(HttpServletResponse response, MemberVO vo) throws Exception;
 	
 }

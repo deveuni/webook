@@ -14,6 +14,9 @@ public interface MemberDAO {
 	public MemberVO signin(MemberVO vo) throws Exception; 
 	
 	/* 아이디 찾기 */
-	public String find_id(String userEmail) throws Exception;
+	public String findId(String userEmail) throws Exception;
 
+	/* 비밀번호 찾기(변경) */
+	public int updatePw(MemberVO vo) throws Exception;
+	
 }

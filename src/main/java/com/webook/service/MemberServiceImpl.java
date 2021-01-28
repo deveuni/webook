@@ -101,11 +101,11 @@ public class MemberServiceImpl implements MemberService {
 	
 	/* 아이디 찾기 */
 	@Override
-	public String find_id(HttpServletResponse response, String userEmail) throws Exception {
+	public String findId(HttpServletResponse response, String userEmail) throws Exception {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String userId = mdao.find_id(userEmail);
+		String userId = mdao.findId(userEmail);
 		
 		if(userId == null) {
 			out.println("<script>");
@@ -119,6 +119,59 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+	/* 비밀번호 찾기 이메일 발송 */
+	@Override
+	public void sendEmail(MemberVO vo, String div) throws Exception {
+		
+		// Mail Server 설정
+				String charSet = "utf-8";
+				String hostSMTP = "smtp.gmail.com";
+				String hostSMTPid = "blacksugar0829@gmail.com";
+				String hostSMTPpwd = "dmsdl@0615";
+
+				// 보내는 사람 EMail, 제목, 내용
+				String fromEmail = "blacksugar0829@gmail.com";
+				String fromName = "webook";
+				String subject = "";
+				String msg = "";
+				
+			   if(div.equals("findpw")) {
+					subject = "webook 임시 비밀번호 입니다.";
+					msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+					msg += "<h3 style='color: blue;'>";
+					msg += vo.getUserId() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+					msg += "<p>임시 비밀번호 : ";
+					msg += vo.getUserPass() + "</p></div>";
+				}
+				// 받는 사람 E-Mail 주소
+				String mail = vo.getUserEmail();
+				try {
+					HtmlEmail email = new HtmlEmail();
+					email.setDebug(true);
+					email.setCharset(charSet);
+					email.setSSL(true);
+					email.setHostName(hostSMTP);
+					email.setSmtpPort(587);
+
+					email.setAuthentication(hostSMTPid, hostSMTPpwd);
+					email.setTLS(true);
+					email.addTo(mail, charSet);
+					email.setFrom(fromEmail, fromName, charSet);
+					email.setSubject(subject);
+					email.setHtmlMsg(msg);
+					email.send();
+				} catch (Exception e) {
+					System.out.println("메일발송 실패 : " + e);
+				}
+		
+	}
+	
+	/* 비밀번호 변경 */
+	@Override
+	public void findPw(HttpServletResponse response, MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

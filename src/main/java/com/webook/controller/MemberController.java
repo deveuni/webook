@@ -252,20 +252,24 @@ public class MemberController {
 	}
 	
 	/* 아이디 찾기 폼 */
-	@RequestMapping(value = "/find_id_form", method = RequestMethod.GET)
+	@RequestMapping(value = "/findIdForm", method = RequestMethod.GET)
 	public String find_id_form() throws Exception {
 		
-		return "/member/find_id_form";
+		return "/member/findIdForm";
 	}
 	
 	/* 아이디 찾기 */
-	@RequestMapping(value = "/find_id", method = RequestMethod.POST)
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
 	public String find_id(HttpServletResponse response, @RequestParam("userEmail") String userEmail, Model model) throws Exception {
-		model.addAttribute("userId", service.find_id(response, userEmail));
-		return "/member/find_id";
+		model.addAttribute("userId", service.findId(response, userEmail));
+		return "/member/findId";
 	}
 	
-	
+	/* 비밀번호 찾기 폼 */
+	@RequestMapping(value = "/findPwForm")
+	public String find_pw_form() throws Exception {
+		return "/member/findPwForm";
+	}
 	
 	
 }

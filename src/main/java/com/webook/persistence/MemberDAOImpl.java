@@ -43,9 +43,15 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	/* 아이디 찾기 */
 	@Override
-	public String find_id(String userEmail) throws Exception {
+	public String findId(String userEmail) throws Exception {
 		
-		return sql.selectOne(namespace+".find_id", userEmail);
+		return sql.selectOne(namespace+".findId", userEmail);
+	}
+	
+	/* 비밀번호 찾기(변경) */
+	@Override
+	public int updatePw(MemberVO vo) throws Exception {
+		return sql.update(namespace+".updatePw", vo);
 	}
 	
 }
