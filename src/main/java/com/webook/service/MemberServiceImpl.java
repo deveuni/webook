@@ -152,7 +152,7 @@ public class MemberServiceImpl implements MemberService {
 					email.setCharset(charSet);
 					email.setSSL(true);
 					email.setHostName(hostSMTP);
-					email.setSmtpPort(587);
+					email.setSmtpPort(465);
 
 					email.setAuthentication(hostSMTPid, hostSMTPpwd);
 					email.setTLS(true);

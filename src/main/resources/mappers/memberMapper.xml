@@ -35,7 +35,7 @@
 </select>
 
 <!-- 비밀번호 찾기(변경) -->
-<update id="updatePw" parameterType="vo">
+<update id="updatePw">
 	update tbl_member set userPass = #{userPass} where userId = #{userId}
 </update>
 

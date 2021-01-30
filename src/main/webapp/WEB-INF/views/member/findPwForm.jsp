@@ -22,15 +22,38 @@
    	<h1><a href="/webook" class="webook-main">webook</a></h1>
    </div>
    <br>
-   <form action = "/member/findId" method="post" id="Login" >
+   <!-- <form action = "/member/find_id" method="post" id="Login" > -->
+       <div class="form-group">
+          <input type="text" class="form-control" name="userId" id="userId" placeholder="아이디"> 
+       </div>
        <div class="form-group">
           <input type="text" class="form-control" name="userEmail" id="userEmail" placeholder="이메일">
        </div>
        <br>
-       <input type="submit" class="btn btn-primary" value="아아디찾기">
-   </form>
+       <input type="submit" class="btn btn-primary" id="findBtn" value="비밀번호 찾기">
+   <!-- </form> -->
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+// 비밀번호 찾기
+	$(function(){
+		$("#findBtn").click(function(){
+			$.ajax({
+				url : "/member/findPw",
+				type : "POST",
+				data : {
+					userId : $("#userId").val(),
+					userEmail : $("#userEmail").val()
+				},
+				success : function(result) {
+					alert(result);
+				},
+			})
+		});
+	});
+</script>
 </body>
 </html>
