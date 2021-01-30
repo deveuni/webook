@@ -54,4 +54,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.update(namespace+".updatePw", vo);
 	}
 	
+	/* 회원정보 읽기 */
+	@Override
+	public MemberVO readMember(String userId) throws Exception {
+		return sql.selectOne(namespace+".readMember", userId);
+	}
+	
+	
+	
+	
 }

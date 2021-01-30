@@ -167,10 +167,40 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	
-	/* 비밀번호 변경 */
+	/* 비밀번호 찾기 */
 	@Override
 	public void findPw(HttpServletResponse response, MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
+		
+		response.setContentType("text/html;charset=utf-8");
+		MemberVO ck = mdao.readMember(vo.getUserId());
+		PrintWriter out = response.getWriter();
+		
+		// 아이디가 없으면
+		if(mdao.userIdCheck(vo.getUserId()) == null) {
+			out.print("아이디가 없습니다.");
+			out.close();
+		}
+		
+		// 가입에 사용한 이메일이 아니면 
+		else if(!vo.getUserEmail().equals(ck.getUserEmail())) {
+			out.print("등록되지 않은 이메일입니다.");
+			out.close();
+		} else {
+			// 임시 비밀번호 생성
+			String pw = "";
+			for (int i=0; i<12; i++) {
+				pw += (char) ((Math.random() * 26) + 97);
+			}
+			vo.setUserPass(pw);
+			
+			// 비밀번호 변경
+			mdao.updatePw(vo);
+			// 비밀번호 변경 메일 발송
+			sendEmail(vo, "findPw");
+			
+			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
+			out.close();
+		}
 		
 	}
 	

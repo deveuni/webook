@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -269,6 +270,12 @@ public class MemberController {
 	@RequestMapping(value = "/findPwForm")
 	public String find_pw_form() throws Exception {
 		return "/member/findPwForm";
+	}
+	
+	/* 비밀번호 찾기 */
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	public void findPw(@ModelAttribute MemberVO vo, HttpServletResponse response) throws Exception {
+		service.findPw(response, vo);
 	}
 	
 	

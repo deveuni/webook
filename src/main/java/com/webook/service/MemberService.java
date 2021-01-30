@@ -37,7 +37,7 @@ public interface MemberService {
 	/* 비밀번호 찾기 이메일 발송 */
 	public void sendEmail(MemberVO vo, String div) throws Exception;
 	
-	/* 비밀번호 변경 */
+	/* 비밀번호 찾기 */
 	public void findPw(HttpServletResponse response, MemberVO vo) throws Exception;
 	
 }
