@@ -126,17 +126,17 @@ public class MemberServiceImpl implements MemberService {
 		
 		// Mail Server 설정
 				String charSet = "utf-8";
-				String hostSMTP = "smtp.gmail.com";
-				String hostSMTPid = "blacksugar0829@gmail.com";
+				String hostSMTP = "smtp.naver.com";
+				String hostSMTPid = "vividdream0215@naver.com";
 				String hostSMTPpwd = "dmsdl@0615";
 
 				// 보내는 사람 EMail, 제목, 내용
-				String fromEmail = "blacksugar0829@gmail.com";
+				String fromEmail = "vividdream0215@naver.com";
 				String fromName = "webook";
 				String subject = "";
 				String msg = "";
 				
-			   if(div.equals("findpw")) {
+			   if(div.equals("findPw")) {
 					subject = "webook 임시 비밀번호 입니다.";
 					msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
 					msg += "<h3 style='color: blue;'>";
@@ -152,7 +152,7 @@ public class MemberServiceImpl implements MemberService {
 					email.setCharset(charSet);
 					email.setSSL(true);
 					email.setHostName(hostSMTP);
-					email.setSmtpPort(465);
+					email.setSmtpPort(587);
 
 					email.setAuthentication(hostSMTPid, hostSMTPpwd);
 					email.setTLS(true);
