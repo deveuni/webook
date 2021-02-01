@@ -285,6 +285,9 @@ public class MemberController {
 		// 서비스 - 회원정보 가져오는 동작 
 		MemberVO vo = service.readMember(userId);
 		
+		// 정보 저장 후 페이지 이동 
+		model.addAttribute("memVO", vo);
+		
 	}
 	
 	/* 회원정보 수정 */
