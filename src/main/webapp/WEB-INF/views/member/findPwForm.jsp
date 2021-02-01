@@ -30,7 +30,8 @@
           <input type="text" class="form-control" name="userEmail" id="userEmail" placeholder="이메일">
        </div>
        <br>
-       <input type="submit" class="btn btn-primary" id="findBtn" value="비밀번호 찾기">
+       <input type="submit" class="btn btn-primary" id="findBtn" value="비밀번호 찾기" style="margin-bottom: 10px;"><br>
+       <button type="button" onclick="history.go(-1);" class="btn btn-primary">로그인</button>
    <!-- </form> -->
 </div>
 </div>
