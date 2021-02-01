@@ -204,5 +204,16 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 	
+	/* 회원정보 조회 */
+	@Override
+	public MemberVO readMember(String userId) throws Exception {
+		
+		MemberVO vo = null;
+		
+		vo = mdao.readMember(userId);
+		
+		return vo;
+	}
+	
 	
 }

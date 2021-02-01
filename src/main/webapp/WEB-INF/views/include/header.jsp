@@ -46,6 +46,15 @@
           <li class="nav-item">
 			<a class="nav-link" href="./member/signout">로그아웃</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              마이페이지
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-1-col.html">회원정보수정</a>
+              <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
+            </div>
+          </li>
          </c:if> 
          <!-- 네이버 아이디 로그인 상태 --> 
          <c:if test="${naverUserId != null}">
@@ -55,6 +64,15 @@
           <li class="nav-item">
 			<a class="nav-link" href="./member/signout">로그아웃</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              마이페이지
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-1-col.html">회원정보수정</a>
+              <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
+            </div>
+          </li>
          </c:if>
          <!-- 구글 아이디 로그인 상태 -->
          <c:if test="${googleId != null}">
@@ -63,6 +81,15 @@
           </li>
           <li class="nav-item">
 			<a class="nav-link" href="./member/signout">로그아웃</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              마이페이지
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-1-col.html">회원정보수정</a>
+              <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
+            </div>
           </li>
          </c:if>    
          

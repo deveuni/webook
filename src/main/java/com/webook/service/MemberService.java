@@ -40,4 +40,6 @@ public interface MemberService {
 	/* 비밀번호 찾기 */
 	public void findPw(HttpServletResponse response, MemberVO vo) throws Exception;
 	
+	/* 회원정보 조회 */
+	public MemberVO readMember(String userId) throws Exception;
 }

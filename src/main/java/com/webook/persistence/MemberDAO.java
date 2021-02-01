@@ -19,6 +19,15 @@ public interface MemberDAO {
 	/* 비밀번호 찾기(변경) */
 	public int updatePw(MemberVO vo) throws Exception;
 	
-	/* 회원정보 읽기 */
+	/* 회원정보 조회 */
 	public MemberVO readMember(String userId) throws Exception;
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

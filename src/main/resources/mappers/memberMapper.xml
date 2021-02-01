@@ -39,7 +39,7 @@
 	update tbl_member set userPass = #{userPass} where userId = #{userId}
 </update>
 
-<!-- 회원정보 읽기 -->
+<!-- 회원정보 조회 -->
 <select id="readMember" resultType="com.webook.domain.MemberVO">
 	select *
 	from tbl_member
