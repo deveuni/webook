@@ -51,7 +51,7 @@
               마이페이지
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/member/info">회원정보</a>
+              <a class="dropdown-item" href="/member/infoUpdate">회원정보</a>
               <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
             </div>
           </li>
@@ -69,7 +69,7 @@
               마이페이지
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/member/info">회원정보</a>
+              <a class="dropdown-item" href="/member/infoUpdate">회원정보</a>
               <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
             </div>
           </li>
@@ -87,7 +87,7 @@
               마이페이지
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/member/info">회원정보</a>
+              <a class="dropdown-item" href="/member/infoUpdate">회원정보</a>
               <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
             </div>
           </li>

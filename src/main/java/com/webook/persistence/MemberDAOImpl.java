@@ -60,6 +60,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.selectOne(namespace+".readMember", userId);
 	}
 	
+	/* 회원정보 수정 */
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		sql.update(namespace+".updateMember", vo);
+	}
 	
 	
 	

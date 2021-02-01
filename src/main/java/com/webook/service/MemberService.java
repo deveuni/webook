@@ -42,4 +42,12 @@ public interface MemberService {
 	
 	/* 회원정보 조회 */
 	public MemberVO readMember(String userId) throws Exception;
+	
+	/* 회원정보 수정 */
+	public void updateMember(MemberVO vo) throws Exception;
+	
+	
+	
+	
+	
 }

@@ -46,6 +46,13 @@
 	where userId = #{userId}
 </select>
 
+<!-- 회원정보 수정 -->
+<update id="updateMember">
+	update tbl_member
+	set userName = #{userName}, userEmail = #{userEmail}, userPhon = #{userPhon}, userBirth = #{userBirth}, userAddr1 = #{userAddr1}, userAddr2 = #{userAddr2}, postcode = #{postcode}, reg_date=now()
+	where userId = #{userId} and userPass = #{userPass}
+</update>
+
 
 </mapper>  
   

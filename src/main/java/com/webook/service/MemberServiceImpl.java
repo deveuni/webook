@@ -215,5 +215,10 @@ public class MemberServiceImpl implements MemberService {
 		return vo;
 	}
 	
+	/* 회원정보 수정 */
+	@Override
+	public void updateMember(MemberVO vo) throws Exception {
+		mdao.updateMember(vo);
+	}
 	
 }

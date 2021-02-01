@@ -274,9 +274,9 @@ public class MemberController {
 		service.findPw(response, vo);
 	}
 	
-	/* 회원정보 조회 */
-	@RequestMapping(value = "/info", method = RequestMethod.GET)
-	public void getInfo(HttpSession session, Model model) throws Exception {
+	/* 회원정보 조회(수정 get) */
+	@RequestMapping(value = "/infoUpdate", method = RequestMethod.GET)
+	public void getInfoUpdate(HttpSession session, Model model) throws Exception {
 		
 		// 세션 객체 안에 있는 ID 정보 저장
 		String userId = (String) session.getAttribute("userId");
@@ -290,12 +290,15 @@ public class MemberController {
 		
 	}
 	
-	/* 회원정보 수정 */
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String mypage() throws Exception {
+	/* 회원정보 수정 post */
+	@RequestMapping(value = "/infoUpdate", method = RequestMethod.POST)
+	public String postInfoUpdate(MemberVO vo) throws Exception {
 		
+		log.info("C : 수정할 회원정보 -> " + vo);
 		
-		return "/member/update";
+		service.updateMember(vo);
+		
+		return "redirect:/webook";
 	}
 	
 }

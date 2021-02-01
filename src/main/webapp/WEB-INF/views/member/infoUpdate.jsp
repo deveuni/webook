@@ -24,7 +24,7 @@
    	<h5>회원정보수정</h5>
    </div>
    <br>
-    <form action="/member/signup" method="post" id="signForm" role="form" onsubmit="return checks()">
+    <form action="/member/infoUpdate" method="post" id="signForm" role="form" onsubmit="return checks()">
     
        <label>아이디</label>
        <div class="form-group">
