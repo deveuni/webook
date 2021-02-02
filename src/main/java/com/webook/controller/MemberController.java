@@ -1,5 +1,7 @@
 package com.webook.controller;
 
+import java.io.PrintWriter;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -301,12 +303,64 @@ public class MemberController {
 		return "redirect:/webook";
 	}
 	
-	/* 비밀번호 변경 */
+	/* 비밀번호 변경 get */
+	@RequestMapping(value = "/updatePw", method = RequestMethod.GET)
+	public void updatePw(HttpSession session, Model model) throws Exception {
+		// 세션 객체 안에 있는 ID 정보 저장
+		String userId = (String) session.getAttribute("userId");
+		log.info("C : ID 저장 완료 -> " + userId);
+				
+		// 서비스 - 회원정보 가져오는 동작 
+		MemberVO vo = service.readMember(userId);
+				
+		// 정보 저장 후 페이지 이동 
+		model.addAttribute("memVO", vo);
+	}
+	
+	/* 비밀번호 변경 post */
 	@RequestMapping(value = "/updatePw", method = RequestMethod.POST)
 	public String updatePw(@ModelAttribute MemberVO vo, @RequestParam("oldPw") String oldPw, HttpSession session, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		session.setAttribute("updatePw", service.updatePw(vo, oldPw, response));
 		rttr.addFlashAttribute("msg", "비밀번호 수정 완료");
 		return "redirect:/webook";
+	}
+	
+	/* 회원탈퇴 get */
+	@RequestMapping(value = "/infoDelete", method = RequestMethod.GET)
+	public String getInfoDelete(HttpSession session, Model model) throws Exception {
+		
+		// 세션 객체 안에 있는 ID 정보 저장
+		String userId = (String) session.getAttribute("userId");
+		log.info("C : ID 저장 완료 -> " + userId);
+						
+		// 서비스 - 회원정보 가져오는 동작 
+		MemberVO vo = service.readMember(userId);
+						
+		// 정보 저장 후 페이지 이동 
+		model.addAttribute("memVO", vo);
+		
+		return "/member/infoDelete";
+	}
+	
+	/* 회원탈퇴 post */
+	@RequestMapping(value = "/infoDelete", method = RequestMethod.POST)
+	public String postInfoDelete(MemberVO vo, HttpSession session, HttpServletResponse response) throws Exception {
+		
+		MemberVO mvo = service.signin(vo);
+		if(mvo != null) {
+			service.deleteMember(vo);
+			session.invalidate();
+			return "redirect:/webook";
+		}
+		
+		response.setContentType("text/html; charset=UTF-8");
+ 	    
+ 	    PrintWriter out = response.getWriter();
+ 	     
+ 	    out.println("<script>alert('비밀번호가 옳바르지않습니다'); </script>");
+ 	    out.flush();
+		
+		return "/member/infoDelete";
 	}
 	
 }

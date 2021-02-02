@@ -66,6 +66,12 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.update(namespace+".updateMember", vo);
 	}
 	
+	/* 회원탈퇴 */
+	@Override
+	public void deleteMember(MemberVO vo) throws Exception {
+		sql.delete(namespace+".deleteMember",vo);
+	}
+	
 	
 	
 }

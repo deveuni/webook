@@ -49,6 +49,7 @@ public interface MemberService {
 	/* 비밀번호 변경 */
 	public MemberVO updatePw(MemberVO vo, String oldPw, HttpServletResponse response) throws Exception;
 	
-	
+	/* 회원탈퇴 */
+	public void deleteMember(MemberVO vo) throws Exception;
 	
 }

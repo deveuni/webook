@@ -51,8 +51,9 @@
               마이페이지
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/member/infoUpdate">회원정보</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
+              <a class="dropdown-item" href="/member/infoUpdate">회원정보수정</a>
+              <a class="dropdown-item" href="/member/updatePw">비밀번호수정</a>
+              <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>
             </div>
           </li>
          </c:if> 
@@ -69,9 +70,9 @@
               마이페이지
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/member/infoUpdate">회원정보</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
-            </div>
+              <a class="dropdown-item" href="/member/infoUpdate">회원정보수정</a>
+              <a class="dropdown-item" href="/member/updatePw">비밀번호수정</a>
+			  <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>            </div>
           </li>
          </c:if>
          <!-- 구글 아이디 로그인 상태 -->
@@ -87,8 +88,9 @@
               마이페이지
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="/member/infoUpdate">회원정보</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">회원탈퇴</a>
+              <a class="dropdown-item" href="/member/infoUpdate">회원정보수정</a>
+              <a class="dropdown-item" href="/member/updatePw">비밀번호수정</a>
+              <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>
             </div>
           </li>
          </c:if>    

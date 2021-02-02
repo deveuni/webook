@@ -240,4 +240,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
+	/* 회원탈퇴 */
+	@Override
+	public void deleteMember(MemberVO vo) throws Exception {
+
+		mdao.deleteMember(vo);
+	}
 }

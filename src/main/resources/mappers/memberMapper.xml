@@ -53,6 +53,12 @@
 	where userId = #{userId} and userPass = #{userPass}
 </update>
 
+<!-- 회원정보 탈퇴 -->
+<select id="deleteMember" resultType="String">
+	delete from tbl_member
+	where userId = #{userId} and userPass = #{userPass}
+</select>
+
 
 </mapper>  
   
