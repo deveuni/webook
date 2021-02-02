@@ -301,4 +301,12 @@ public class MemberController {
 		return "redirect:/webook";
 	}
 	
+	/* 비밀번호 변경 */
+	@RequestMapping(value = "/updatePW", method = RequestMethod.POST)
+	public String updatePw(@ModelAttribute MemberVO vo, @RequestParam("oldPw") String oldPw, HttpSession session, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
+		session.setAttribute("updatePw", service.updatePw(vo, oldPw, response));
+		rttr.addFlashAttribute("msg", "비밀번호 수정 완료");
+		return "redirect:/member/infoUpdate";
+	}
+	
 }

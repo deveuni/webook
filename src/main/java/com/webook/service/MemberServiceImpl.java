@@ -223,11 +223,22 @@ public class MemberServiceImpl implements MemberService {
 	
 	/* 비밀번호 변경 */
 	@Override
-	public MemberVO updatePw(MemberVO vo, String userPass, HttpServletResponse response) throws Exception {
+	public MemberVO updatePw(MemberVO vo, String oldPw, HttpServletResponse response) throws Exception {
 
 		response.setContentType("text/html;charset=utf-8");
+		MemberVO ck = mdao.readMember(vo.getUserId());
 		PrintWriter out = response.getWriter();
-		return null;
+		if(!oldPw.equals(ck.getUserPass())) {
+			out.println("<script>");
+			out.println("alert('기존 비밀번호가 다릅니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			mdao.updatePw(vo);
+			return ck;
+		}
 	}
 	
 }
