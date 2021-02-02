@@ -221,4 +221,13 @@ public class MemberServiceImpl implements MemberService {
 		mdao.updateMember(vo);
 	}
 	
+	/* 비밀번호 변경 */
+	@Override
+	public MemberVO updatePw(MemberVO vo, String userPass, HttpServletResponse response) throws Exception {
+
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		return null;
+	}
+	
 }
