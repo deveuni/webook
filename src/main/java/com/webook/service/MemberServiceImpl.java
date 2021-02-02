@@ -230,8 +230,7 @@ public class MemberServiceImpl implements MemberService {
 		PrintWriter out = response.getWriter();
 		if(!oldPw.equals(ck.getUserPass())) {
 			out.println("<script>");
-			out.println("alert('기존 비밀번호가 다릅니다.');");
-			out.println("history.go(-1);");
+			out.println("$(\"#oldPw\").text(\"기존비밀번호가 일치하지 않습니다.\").css(\"color\", \"red\");");
 			out.println("</script>");
 			out.close();
 			return null;

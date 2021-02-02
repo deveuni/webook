@@ -30,18 +30,6 @@
        <div class="form-group">
          <input type="text" class="form-control" name="userId" id="userId" value="${memVO.userId}" readonly>
        </div>
-
-	   <label>비밀번호</label>
-       <div class="form-group">
-         <input type="password" class="form-control" name="userPass" id="userPass" onkeyup="userPassVal()">
-         <div class="check_font" id="userPassCheck"></div>
-       </div>
-       
-       <label>비밀번호 재확인</label>
-       <div class="form-group">
-         <input type="password" class="form-control" name="userPassRe" id="userPassRe" onkeyup="userPassReVal()">
-         <div class="check_font" id="userPassReCheck"></div>
-       </div>
        
        <label>이름</label>
        <div class="form-group">
@@ -81,6 +69,34 @@
        <br>
        <input type="submit" value="회원정보수정" id="signUp" class="btn btn-primary">
     </form>
+    
+    <br>
+    <h5>비밀번호수정</h5>
+    
+    <form action="/member/updatePw" method="post" id="pwForm" role="form">
+   	  <input type="hidden" name="userId" value="${memVO.userId}">
+   	 
+   	  <label>기존 비밀번호</label>
+       <div class="form-group">
+         <input type="password" class="form-control" name="oldPw" id="oldPw" onkeyup="oldPw()">
+         <div class="check_font" id="userPassCheck"></div>
+       </div>
+   	 
+   	  <label>새로운 비밀번호</label>
+       <div class="form-group">
+         <input type="password" class="form-control" name="userPass" id="userPass" onkeyup="userPassVal()">
+         <div class="check_font" id="userPassCheck"></div>
+       </div>
+       
+       <label>새로운 비밀번호 재확인</label>
+       <div class="form-group">
+         <input type="password" class="form-control" name="userPassRe" id="userPassRe" onkeyup="userPassReVal()">
+         <div class="check_font" id="userPassReCheck"></div>
+       </div>
+       
+       <input type="submit" value="비밀번호수정" id="signUp" class="btn btn-primary">
+       
+    </form>
     </div>
 	</div>
 	</div>
@@ -89,6 +105,13 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
+
+// 기존 비밀번호 일치 체크
+/* function oldPw(){
+	var oldPw = $('#oldPw').val();
+
+	
+} */
 
 
 
