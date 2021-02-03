@@ -342,6 +342,8 @@ public class MemberController {
 		return "/member/infoDelete";
 	}
 	
+	// ????????????
+	
 	/* 회원탈퇴 post */
 	@RequestMapping(value = "/infoDelete", method = RequestMethod.POST)
 	public String postInfoDelete(MemberVO vo, HttpSession session, HttpServletResponse response) throws Exception {
