@@ -332,10 +332,10 @@ public class MemberController {
 		// 세션 객체 안에 있는 ID 정보 저장
 		String userId = (String) session.getAttribute("userId");
 		log.info("C : ID 저장 완료 -> " + userId);
-						
+				
 		// 서비스 - 회원정보 가져오는 동작 
 		MemberVO vo = service.readMember(userId);
-						
+				
 		// 정보 저장 후 페이지 이동 
 		model.addAttribute("memVO", vo);
 		
@@ -344,23 +344,31 @@ public class MemberController {
 	
 	/* 회원탈퇴 post */
 	@RequestMapping(value = "/infoDelete", method = RequestMethod.POST)
-	public String postInfoDelete(MemberVO vo, HttpSession session, HttpServletResponse response) throws Exception {
+	public String postInfoDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 		
-		MemberVO mvo = service.signin(vo);
-		if(mvo != null) {
-			service.deleteMember(vo);
-			session.invalidate();
-			return "redirect:/webook";
+		// 세션에 있는 member를 가져와 member변수에 넣는다.
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		
+		// 세선에 있는 비밀번호
+		String sessionPass = member.getUserPass();
+		// vo로 들어오는 비밀번호 
+		String voPass = vo.getUserPass();
+		
+		if(!(sessionPass.equals(voPass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/member/infoDelete";
 		}
-		
-		response.setContentType("text/html; charset=UTF-8");
- 	    
- 	    PrintWriter out = response.getWriter();
- 	     
- 	    out.println("<script>alert('비밀번호가 옳바르지않습니다'); </script>");
- 	    out.flush();
-		
-		return "/member/infoDelete";
+		service.deleteMember(vo);
+		session.invalidate();
+		return "redirect:/webook";
 	}
+	
+	/* 비밀번호 체크 */
+	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
+	public int passChk(MemberVO vo) throws Exception {
+		int result = service.passChk(vo);
+		return result;
+	}
+	
 	
 }

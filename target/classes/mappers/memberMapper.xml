@@ -59,6 +59,11 @@
 	where userId = #{userId} and userPass = #{userPass}
 </select>
 
+<!-- 비밀번호 체크 -->
+<select id="passChk" resultType="int">
+	select count(*) from tbl_member
+	where userId = #{userId} and userPass = #{userPass}
+</select>
 
 </mapper>  
   

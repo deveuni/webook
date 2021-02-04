@@ -28,7 +28,8 @@ public interface MemberDAO {
 	/* 회원탈퇴 */
 	public void deleteMember(MemberVO vo) throws Exception;
 	
-	
+	/* 비밀번호 체크 */
+	public int passChk(MemberVO vo) throws Exception;
 	
 	
 	

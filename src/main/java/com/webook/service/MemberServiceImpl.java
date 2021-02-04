@@ -247,4 +247,11 @@ public class MemberServiceImpl implements MemberService {
 
 		mdao.deleteMember(vo);
 	}
+	
+	/* 비밀번호 체크 */
+	@Override
+	public int passChk(MemberVO vo) throws Exception {
+		int result = mdao.passChk(vo);
+		return result;
+	}
 }

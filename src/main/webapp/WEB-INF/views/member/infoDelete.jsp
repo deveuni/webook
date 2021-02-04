@@ -24,7 +24,7 @@
     <h5>회원탈퇴</h5>
     </div>
     
-    <form action="/member/infoDelete" method="post" id="pwForm" role="form">
+    <form action="/member/infoDelete" method="post" id="delForm" role="form">
    	  <input type="hidden" name="userId" value="${memVO.userId}">
    	 
    	  <label>아이디</label>
@@ -37,7 +37,7 @@
          <input type="password" class="form-control" name="userPass" id="userPass">
          <div class="check_font" id="userPassCheck"></div>
        </div>
-       <input type="submit" value="회원탈퇴" id="signUp" class="btn btn-primary">
+       <input type="submit"  id="submit" value="회원탈퇴" id="signUp" class="btn btn-primary">
     </form>
     </div>
 	</div>
@@ -46,83 +46,34 @@
 
 <script type="text/javascript">
 
-
-// 기존 비밀번호 일치 체크
-/* function oldPw(){
-	var oldPw = $('#oldPw').val();
-
-	
-} */
-
-
-
-// 비밀번호 체크
-function userPassVal(){
-	var pass1 = $('#userPass').val();
-	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-
-	// 비밀번호 유효성 체크
-	if(pass1.length < 8 || pass1.length > 16 ){
-		$("#userPassCheck").text("8~16자 영문, 숫자, 특수문자를 사용하세요.").css("color", "red");
-		$("#signUp").attr("disabled", true);
-	} else if(pwJ.test(pass1) == false){
-		$("#userPassCheck").text("8~16자 영문, 숫자, 특수문자를 사용하세요.").css("color", "red");
-		$("#signUp").attr("disabled", true);
-	} else if(pass1.length == 0) {
-		$("#userPassCheck").text("필수 정보입니다.").css("color", "red");
-		$("#signUp").attr("disabled", true);
-	} else {
-		$("#userPassCheck").text("");
-		$("#signUp").attr("disabled", false);
+$(document).ready(function(){
+	$("#submit").on("click", function(){
+		if($("#userPass").val()==""){
+			alert("비밀번호를 입력해주세요.");
+			$("#userPass").focus();
+			return false;
 	}
-}
+		
+		$.ajax({
+			url : "/member/passChk",
+			type : "POST",
+			dataType : "json",
+			data : $("#delForm").serializeArray(),
+			success : function(data){
+				if(data == 0){
+					alert("비밀번호가 일치하지 않습니다.");
+					return;
+				} else {
+					if(confirm("회원탈퇴 하시겠습니까?")){
+						$("#delForm").submit();
+					}
+				}
+			}
+		})
+	})
+});
 
-// 비밀번호 재확인 체크
-function userPassReVal(){
-	var pass1 = $('#userPass').val();
-	var pass2 = $('#userPassRe').val();
-	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
-	// 비밀번호 재확인 일치 체크
-	if(pass1 == pass2){
-		$("#userPassReCheck").text("비밀번호가 일치합니다.").css("color", "blue");
-		$("#signUp").attr("disabled", false);
-	} else if(pass2.length == 0) {
-		$("#userPassReCheck").text("필수 정보입니다.").css("color", "red");
-		$("#signUp").attr("disabled", true);
-	} else {
-		$("#userPassReCheck").text("비밀번호가 일치하지 않습니다.").css("color", "red");
-		$("#signUp").attr("disabled", true);
-	}
-}
-
-// 나머지 회원가입 유효성 체크(정규식)
-	// 모든 공백 체크 정규식 
-	var empJ = /\s/g;
-	
-// 공백 유효성 체크
-function checks(){
-	
-	if($("#userId").val() == ""){ 
-		$("#userIdCheck").text("필수 정보입니다.").css("color", "red");
-		$("#userId").focus(); 
-		return false; 
-	}
-
-	if($("#userPass").val() == ""){ 
-		$("#userPassCheck").text("필수 정보입니다.").css("color", "red");
-		$("#userPass").focus(); 
-		return false; 
-	}
-
-	if($("#userPassRe").val() == ""){ 
-		$("#userPassReCheck").text("필수 정보입니다.").css("color", "red");
-		$("#userPassRe").focus(); 
-		return false; 
-	}
-	
-}
-	
 
 </script>
 	

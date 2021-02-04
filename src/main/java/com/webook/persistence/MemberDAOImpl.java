@@ -72,6 +72,12 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.delete(namespace+".deleteMember",vo);
 	}
 	
+	/* 비밀번호 체크 */
+	@Override
+	public int passChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne(namespace+".passChk", vo);
+		return result;
+	}
 	
 	
 }
