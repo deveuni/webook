@@ -30,7 +30,7 @@
    	  <label>기존 비밀번호</label>
        <div class="form-group">
          <input type="password" class="form-control" name="oldPw" id="oldPw" onkeyup="oldPw()">
-         <div class="check_font" id="userPassCheck"></div>
+         <div class="check_font" id="oldPw"></div>
        </div>
    	 
    	  <label>새로운 비밀번호</label>
@@ -54,16 +54,6 @@
 
 
 <script type="text/javascript">
-
-
-// 기존 비밀번호 일치 체크
-/* function oldPw(){
-	var oldPw = $('#oldPw').val();
-
-	
-} */
-
-
 
 // 비밀번호 체크
 function userPassVal(){
