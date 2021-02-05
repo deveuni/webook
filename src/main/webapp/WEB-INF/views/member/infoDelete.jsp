@@ -25,19 +25,22 @@
     </div>
     
     <form action="/member/infoDelete" method="post" id="delForm" role="form">
-   	  <input type="hidden" name="userId" value="${memVO.userId}">
    	 
    	  <label>아이디</label>
        <div class="form-group">
-         <input type="text" class="form-control" name="userId" id="userId" value="${memVO.userId}" readonly>
+         <input type="text" class="form-control" name="userId" id="userId" value="${member.userId}" readonly>
+       </div>
+       
+       <label>이름</label>
+       <div class="form-group">
+         <input type="text" class="form-control" name="userName" id="userName" value="${member.userName}" readonly>
        </div>
    	 
    	  <label>비밀번호</label>
        <div class="form-group">
          <input type="password" class="form-control" name="userPass" id="userPass">
-         <div class="check_font" id="userPassCheck"></div>
        </div>
-       <input type="submit"  id="submit" value="회원탈퇴" id="signUp" class="btn btn-primary">
+       <button class="btn btn-primary" type="submit" id="submit" >회원탈퇴</button>
     </form>
     </div>
 	</div>
@@ -52,7 +55,7 @@ $(document).ready(function(){
 			alert("비밀번호를 입력해주세요.");
 			$("#userPass").focus();
 			return false;
-	}
+		}
 		
 		$.ajax({
 			url : "/member/passChk",

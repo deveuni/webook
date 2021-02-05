@@ -329,16 +329,6 @@ public class MemberController {
 	@RequestMapping(value = "/infoDelete", method = RequestMethod.GET)
 	public String getInfoDelete(HttpSession session, Model model) throws Exception {
 		
-		// 세션 객체 안에 있는 ID 정보 저장
-		String userId = (String) session.getAttribute("userId");
-		log.info("C : ID 저장 완료 -> " + userId);
-				
-		// 서비스 - 회원정보 가져오는 동작 
-		MemberVO vo = service.readMember(userId);
-				
-		// 정보 저장 후 페이지 이동 
-		model.addAttribute("memVO", vo);
-		
 		return "/member/infoDelete";
 	}
 	
@@ -364,6 +354,7 @@ public class MemberController {
 	}
 	
 	/* 비밀번호 체크 */
+	@ResponseBody
 	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
 	public int passChk(MemberVO vo) throws Exception {
 		int result = service.passChk(vo);

@@ -54,7 +54,7 @@
 </update>
 
 <!-- 회원정보 탈퇴 -->
-<select id="deleteMember" resultType="String">
+<select id="deleteMember" >
 	delete from tbl_member
 	where userId = #{userId} and userPass = #{userPass}
 </select>

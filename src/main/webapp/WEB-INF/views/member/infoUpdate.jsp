@@ -84,15 +84,6 @@
 <script type="text/javascript">
 
 
-// 기존 비밀번호 일치 체크
-/* function oldPw(){
-	var oldPw = $('#oldPw').val();
-
-	
-} */
-
-
-
 // 비밀번호 체크
 function userPassVal(){
 	var pass1 = $('#userPass').val();
