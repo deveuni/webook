@@ -16,7 +16,11 @@
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
 
-
+  <!-- 상품 메뉴바 -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="${pageContext.request.contextPath}/resources/css/goodsbar.css" rel="stylesheet">
 </head>
 <body>
 
@@ -136,6 +140,36 @@
       </div>
     </div>
   </nav>
+  
+  <!-- 상품 메뉴바 -->
+        <nav class="navbar fixed-top navbar-expand-md navbar-new-bottom">
+            <div class="navbar-collapse collapse pt-2 pt-md-0" id="navbar2">
+
+                <ul class="navbar-nav w-100 justify-content-center px-3">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+  <!-- 상품 메뉴바 -->
+  
+  
   
   <!-- Bootstrap core JavaScript -->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
