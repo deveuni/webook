@@ -37,7 +37,12 @@ public class GoodsController {
 	}
 	
 	
-	/**/
+	/* 상품 상세페이지 */
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String goodsDetailGET() throws Exception {
+		
+		return "/goods/goodsDetail";
+	}
 	
 	/**/
 	

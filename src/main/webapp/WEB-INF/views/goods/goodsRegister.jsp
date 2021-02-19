@@ -30,8 +30,8 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Contact
-      <small>Subheading</small>
+    <h1 class="mt-4 mb-3">Webook
+      <small>도서 상품 등록</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -42,13 +42,13 @@
     </ol>
 
     <!-- Content Row -->
-    <div class="row">
-      <!-- Map Column -->
+    <!-- <div class="row">
+      Map Column
       <div class="col-lg-8 mb-4">
-        <!-- Embedded Google Map -->
+        Embedded Google Map
         <iframe style="width: 100%; height: 400px; border: 0;" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
       </div>
-      <!-- Contact Details Column -->
+      Contact Details Column
       <div class="col-lg-4 mb-4">
         <h3>Contact Details</h3>
         <p>
@@ -68,7 +68,7 @@
           <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
         </p>
       </div>
-    </div>
+    </div> -->
     <!-- /.row -->
 
     <!-- Contact Form -->
