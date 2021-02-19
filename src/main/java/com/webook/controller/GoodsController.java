@@ -21,6 +21,13 @@ public class GoodsController {
 	@Inject
 	private GoodsService service;
 	
+	/* 상품 등록 */
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String goodsRegisterGET() throws Exception {
+		
+		return "/goods/goodsRegister";
+	}
+	
 	/* 상품 목록 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String goodsListGET() throws Exception {
@@ -29,7 +36,6 @@ public class GoodsController {
 		
 	}
 	
-	/**/
 	
 	/**/
 	
