@@ -141,6 +141,7 @@
     </div>
   </nav>
   
+  
   <!-- 상품 메뉴바 -->
         <nav class="navbar fixed-top navbar-expand-md navbar-new-bottom">
             <div class="navbar-collapse collapse pt-2 pt-md-0" id="navbar2">
@@ -150,7 +151,7 @@
                         <a class="nav-link" href="/goods/list">Link</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Link</a>
+                        <a class="nav-link" href="/goods/list">Link</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Link</a>
@@ -166,7 +167,7 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav> 
   <!-- 상품 메뉴바 -->
   
   

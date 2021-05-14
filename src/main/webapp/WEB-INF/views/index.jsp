@@ -23,6 +23,8 @@
 
  
  <%@ include file="./include/header.jsp" %>
+ 
+ <br>
 
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -64,6 +66,8 @@
       </a>
     </div>
   </header>
+  
+        
 
   <!-- Page Content -->
   <div class="container">

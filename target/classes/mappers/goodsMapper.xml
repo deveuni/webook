@@ -8,5 +8,17 @@
 <!-- namespace : mapper를 외부에서 찾아오기 위한 속성 -->
 <mapper namespace="com.webook.mapper.GoodsMapper">
 
+	<!-- 상품 등록 -->
+	<insert id="register" parameterType="com.webook.domain.GoodsVO">
+		insert into tbl_goods (gdsName, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
+		values (#{gdsName}, #{category}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, now())
+	</insert>
+	
+	
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	
+
 
 </mapper>

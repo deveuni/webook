@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.webook.domain.GoodsVO;
+
 @Repository
 public class GoodsDAOImpl implements GoodsDAO {
 	
@@ -15,5 +17,19 @@ public class GoodsDAOImpl implements GoodsDAO {
 	/* Mapper를 구분하는 값 */
 	private static final String namespace
 		= "com.webook.mapper.GoodsMapper";
+	
+	/* 상품 등록 */
+	@Override
+	public void registerGoods(GoodsVO vo) throws Exception {
+		
+		System.out.println("DAO : 상품등록" + vo);
+		sql.insert(namespace + ".register", vo);
+		
+	}
+	
+	
+	/**/
+	/**/
+	/**/
 
 }

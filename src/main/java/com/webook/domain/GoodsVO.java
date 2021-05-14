@@ -6,7 +6,7 @@ public class GoodsVO {
 	
 	private int gdsNum;
 	private String gdsName;
-	private String cateCode;
+	private String category;
 	private int gdsPrice;
 	private int gdsStock;
 	private String gdsDes;
@@ -16,12 +16,12 @@ public class GoodsVO {
 	
 	// 생성자 
 	public GoodsVO() {}
-	public GoodsVO(int gdsNum, String gdsName, String cateCode, int gdsPrice, int gdsStock, String gdsDes,
+	public GoodsVO(int gdsNum, String gdsName, String category, int gdsPrice, int gdsStock, String gdsDes,
 			String gdsImg, Timestamp gdsDate) {
 		super();
 		this.gdsNum = gdsNum;
 		this.gdsName = gdsName;
-		this.cateCode = cateCode;
+		this.category = category;
 		this.gdsPrice = gdsPrice;
 		this.gdsStock = gdsStock;
 		this.gdsDes = gdsDes;
@@ -43,10 +43,10 @@ public class GoodsVO {
 		this.gdsName = gdsName;
 	}
 	public String getCateCode() {
-		return cateCode;
+		return category;
 	}
-	public void setCateCode(String cateCode) {
-		this.cateCode = cateCode;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public int getGdsPrice() {
 		return gdsPrice;
@@ -82,7 +82,7 @@ public class GoodsVO {
 	
 	@Override
 	public String toString() {
-		return "GoodsVO [gdsNum=" + gdsNum + ", gdsName=" + gdsName + ", cateCode=" + cateCode + ", gdsPrice="
+		return "GoodsVO [gdsNum=" + gdsNum + ", gdsName=" + gdsName + ", category=" + category + ", gdsPrice="
 				+ gdsPrice + ", gdsStock=" + gdsStock + ", gdsDes=" + gdsDes + ", gdsImg=" + gdsImg + ", gdsDate="
 				+ gdsDate + "]";
 	}
