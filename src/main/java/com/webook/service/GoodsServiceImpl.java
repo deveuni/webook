@@ -1,5 +1,7 @@
 package com.webook.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -28,8 +30,25 @@ public class GoodsServiceImpl implements GoodsService {
 		System.out.println("S : 상품등록 " + vo);
 	}
 	
-	/**/
-	/**/
+	/* 상품 목록 */
+	@Override
+	public List<GoodsVO> goodsList() throws Exception {
+
+		System.out.println("S : 상품 목록 ");
+		
+		return gdao.goodsList();
+	}	
+	
+	/* 상품 조회 */
+	@Override
+	public GoodsVO goodsDetail(int gdsNum) throws Exception {
+
+		System.out.println("S : 상품 조회");
+		
+		return gdao.goodsDetail(gdsNum);
+	}
+	
+	
 	/**/
 	/**/
 	

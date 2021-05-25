@@ -10,13 +10,25 @@
 
 	<!-- 상품 등록 -->
 	<insert id="register" parameterType="com.webook.domain.GoodsVO">
-		insert into tbl_goods (gdsName, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
-		values (#{gdsName}, #{category}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, now())
+		insert into tbl_goods (gdsName, gdsAuthor, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
+		values (#{gdsName}, #{gdsAuthor}, #{category}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, now())
 	</insert>
 	
+	<!-- 상품 목록  -->
+	<select id="goodsList" resultType="com.webook.domain.GoodsVO">
+		select * 
+		from tbl_goods 
+		order by gdsNum desc, gdsDate desc
+	</select>
 	
-	<!--  -->
-	<!--  -->
+	<!-- 상품 조회 -->
+	<select id="goodsDetail" resultType="com.webook.domain.GoodsVO">
+		select * 
+		from tbl_goods 
+		where gdsNum = #{gdsNum} 
+	</select>
+	
+	
 	<!--  -->
 	
 

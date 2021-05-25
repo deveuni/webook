@@ -81,10 +81,10 @@
               <label>도서분류</label>
               <select class="form-control" name="category">
               	<option value="" selected>카테고리 선택</option>
-              	<option value="" >국내도서</option>
-              	<option value="" >해외도서</option>
-              	<option value="" >eBook</option>
-              	<option value="" >웹소설</option>
+              	<option value="국내도서" >국내도서</option>
+              	<option value="해외도서" >해외도서</option>
+              	<option value="eBook" >eBook</option>
+              	<option value="웹소설" >웹소설</option>
               </select>
               <p class="help-block"></p>
             </div>
@@ -93,6 +93,12 @@
             <div class="controls">
               <label>도서이름</label>
               <input type="text" class="form-control" name="gdsName" id="gdsName" required data-validation-required-message="Please enter your phone number.">
+            </div>
+          </div>
+           <div class="control-group form-group">
+            <div class="controls">
+              <label>도서저자</label>
+              <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" required data-validation-required-message="Please enter your phone number.">
             </div>
           </div>
           <div class="control-group form-group">

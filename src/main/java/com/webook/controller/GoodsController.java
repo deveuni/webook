@@ -1,13 +1,17 @@
 package com.webook.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webook.domain.GoodsVO;
 import com.webook.service.GoodsService;
@@ -43,16 +47,27 @@ public class GoodsController {
 	
 	/* 상품 목록 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String goodsListGET() throws Exception {
+	public String goodsListGET(Model model) throws Exception {
+		
+		log.info("get goods list");
+		
+		List<GoodsVO> list = service.goodsList();
+		
+		model.addAttribute("list", list);
 		
 		return "/goods/goodsList";
 		
 	}
 	
-	
 	/* 상품 상세페이지 */
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String goodsDetailGET() throws Exception {
+	public String goodsDetailGET(@RequestParam("gno") int gdsNum, Model model) throws Exception {
+		
+		log.info("get goods detail");
+		
+		GoodsVO goods = service.goodsDetail(gdsNum);
+		
+		model.addAttribute("goods", goods);
 		
 		return "/goods/goodsDetail";
 	}

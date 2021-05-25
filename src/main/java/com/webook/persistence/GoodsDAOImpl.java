@@ -1,5 +1,7 @@
 package com.webook.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,9 +29,20 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 	}
 	
+	/* 상품 목록 */
+	@Override
+	public List<GoodsVO> goodsList() throws Exception {
+
+		return sql.selectList(namespace + ".goodsList");
+	}
 	
-	/**/
-	/**/
+	/* 상품 조회 */
+	@Override
+	public GoodsVO goodsDetail(int gdsNum) throws Exception {
+		
+		return sql.selectOne(namespace + ".goodsDetail", gdsNum);
+	}
+	
 	/**/
 
 }
