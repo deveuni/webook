@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,31 @@
 
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
+
+<script type="text/javascript">
+
+// 수정/삭제 이동
+$(document).ready(function(){
+	var gdsNum = $('#gdsNum').val();
+
+	// 수정
+	$(document).on("click", "#modify_Btn",function(){
+		location.href = '/goods/modify?gdsNum=${goods.gdsNum}';
+	});
+
+	// 삭제
+	$(document).on("click", "delete_Btn",function(){
+		var con = confirm("정말로 삭제하시겠습니까?");
+		if(con){
+			location.href = '/goods/delete?gdsNum=${goods.gdsNum}';
+		}
+	});
+});
+
+</script>
+
+
+
 </head>
 
 <body>
@@ -33,11 +59,22 @@
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">${goods.gdsName}</h1>
-
-    <ol class="breadcrumb">
-     <!--  <li class="breadcrumb-item active">오오오</li> -->
-    </ol>
-
+    
+    
+	<!-- 수정/삭제 버튼 관리자만 보이기 -->
+     <ol class="breadcrumb">
+      <c:if test="${userId == 'webook'}">
+       <li class="breadcrumb-item active">
+      	<form action="" role="form" name="form">
+      		<input type="hidden" name="gdsNum" id="gdsNum" value="${goods.gdsNum}">
+    		<input type="button" id="modify_Btn" value="수정">
+    		<input type="button" id="delete_Btn" value="삭제">
+    	</form>
+       </li>
+      </c:if>
+     </ol> 
+	<!-- 수정/삭제 버튼 관리자만 보이기 끝 -->
+	
     <!-- Portfolio Item Row -->
     <div class="row">
 

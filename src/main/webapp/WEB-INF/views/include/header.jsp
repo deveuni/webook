@@ -99,9 +99,16 @@
           </li>
          </c:if>    
          
-          <li class="nav-item">
-            <a class="nav-link" href="/goods/register">상품등록</a>
-          </li>
+         <!-- 관리자만 상품등록 보이기 -->
+         <c:if test="${member != null}">
+          <c:if test="${userId == 'webook'}">
+          	<li class="nav-item">
+            	<a class="nav-link" href="/goods/register">상품등록</a>
+          	</li>
+          </c:if>
+         </c:if>
+          
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Portfolio

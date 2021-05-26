@@ -3,6 +3,7 @@ package com.webook.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,10 +61,13 @@ public class GoodsController {
 	}
 	
 	/* 상품 상세페이지 */
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String goodsDetailGET(@RequestParam("gno") int gdsNum, Model model) throws Exception {
+	@RequestMapping(value = "/detail", method = { RequestMethod.GET, RequestMethod.POST })
+	public String goodsDetailGET(@RequestParam("gno") int gdsNum, Model model, HttpSession session) throws Exception {
 		
 		log.info("get goods detail");
+		
+		// 아이디 세션값
+		String userId = (String) session.getAttribute("userId");
 		
 		GoodsVO goods = service.goodsDetail(gdsNum);
 		
