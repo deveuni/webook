@@ -27,12 +27,12 @@ $(document).ready(function(){
 	var gdsNum = $('#gdsNum').val();
 
 	// 수정
-	$(document).on("click", "#modify_Btn",function(){
+	$(document).on("click","#modify_Btn",function(){
 		location.href = '/goods/modify?gdsNum=${goods.gdsNum}';
 	});
 
 	// 삭제
-	$(document).on("click", "delete_Btn",function(){
+	$(document).on("click","#delete_Btn",function(){
 		var con = confirm("정말로 삭제하시겠습니까?");
 		if(con){
 			location.href = '/goods/delete?gdsNum=${goods.gdsNum}';

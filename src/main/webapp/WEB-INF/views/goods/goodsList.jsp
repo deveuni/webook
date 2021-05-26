@@ -52,7 +52,7 @@
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="/goods/detail?gno=${list.gdsNum}">${list.gdsName}</a>
+              <a href="/goods/detail?gdsNum=${list.gdsNum}">${list.gdsName}</a>
             </h4>
             <p class="card-text">
             ${list.gdsAuthor} <br>
