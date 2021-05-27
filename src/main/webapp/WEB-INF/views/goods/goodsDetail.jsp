@@ -19,11 +19,14 @@
 
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
+  
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 
 <script type="text/javascript">
 
 // 수정/삭제 이동
-$(document).ready(function(){
+ $(document).ready(function(){
 	var gdsNum = $('#gdsNum').val();
 
 	// 수정
@@ -35,10 +38,14 @@ $(document).ready(function(){
 	$(document).on("click","#delete_Btn",function(){
 		var con = confirm("정말로 삭제하시겠습니까?");
 		if(con){
-			location.href = '/goods/delete?gdsNum=${goods.gdsNum}';
+			location.href = '/goods/delete';
 		}
 	});
-});
+}); 
+
+	
+	
+
 
 </script>
 
@@ -65,9 +72,9 @@ $(document).ready(function(){
      <ol class="breadcrumb">
       <c:if test="${userId == 'webook'}">
        <li class="breadcrumb-item active">
-      	<form action="" role="form" name="form">
+      	<form action=""  role="form" name="form">
       		<input type="hidden" name="gdsNum" id="gdsNum" value="${goods.gdsNum}">
-    		<input type="button" id="modify_Btn" value="수정">
+    	    <input type="button" id="modify_Btn" value="수정"> 
     		<input type="button" id="delete_Btn" value="삭제">
     	</form>
        </li>
