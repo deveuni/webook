@@ -28,9 +28,18 @@
 		where gdsNum = #{gdsNum} 
 	</select>
 	
-	
-	<!--  -->
-	
+	<!-- 상품 수정 -->
+	<update id="goodsModify">
+		update tbl_goods 
+		 set 
+		  gdsName = #{gdsName}, 
+		  gdsAuthor = #{gdsAuthor}, 
+		  category = #{category}, 
+		  gdsPrice = #{gdsPrice}, 
+		  gdsStock = #{gdsStock}, 
+		  gdsDes = #{gdsDes}
+		 where gdsNum = #{gdsNum} 
+	</update>
 
 
 </mapper>

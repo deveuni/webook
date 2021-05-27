@@ -15,7 +15,9 @@ public interface GoodsDAO {
 	/* 상품 조회 */
 	public GoodsVO goodsDetail(int gdsNum) throws Exception;
 	
-	/**/
+	/* 상품 수정 */
+	public void goodsModify(GoodsVO vo) throws Exception;
+	
 	/**/
 
 }

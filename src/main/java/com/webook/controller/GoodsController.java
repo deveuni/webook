@@ -32,6 +32,8 @@ public class GoodsController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String goodsRegisterGET() throws Exception {
 		
+		log.info("get goods register");
+		
 		return "/goods/goodsRegister";
 	}
 	
@@ -80,14 +82,24 @@ public class GoodsController {
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String goodsModifyGET(@RequestParam("gdsNum") int gdsNum, Model model, HttpSession session) throws Exception {
 		
+		log.info("get goods modify");
+		
 		// 아이디 세션값
 		model.addAttribute("userId", (String) session.getAttribute("userId"));
+		
+		// 상품 수정 페이지 입력된 값 서비스
+		model.addAttribute("goods", service.goodsDetail(gdsNum));
 		
 		return "/goods/goodsModify";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String goodsModifyPOST(GoodsVO vo) throws Exception {
+		
+		log.info("post goods modify");
+		
+		// 상품 수정 서비스 호출
+		service.goodsModify(vo);
 		
 		return "redirect:/goods/list";
 	}

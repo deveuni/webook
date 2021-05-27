@@ -39,50 +39,89 @@
     <!-- Contact Form -->
     <div class="row">
       <div class="col-lg-8 mb-4">
-        <form action="/goods/register" method="post" name="sentMessage" id="contactForm" novalidate>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>도서분류</label>
-              <select class="form-control" name="category">
-              	<option value="" selected>카테고리 선택</option>
-              	<option value="국내도서" >국내도서</option>
-              	<option value="해외도서" >해외도서</option>
-              	<option value="eBook" >eBook</option>
-              	<option value="웹소설" >웹소설</option>
-              </select>
-              <p class="help-block"></p>
-            </div>
-          </div>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>도서이름</label>
-              <input type="text" class="form-control" name="gdsName" id="gdsName" required data-validation-required-message="Please enter your phone number.">
-            </div>
-          </div>
-           <div class="control-group form-group">
-            <div class="controls">
-              <label>도서저자</label>
-              <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" required data-validation-required-message="Please enter your phone number.">
-            </div>
-          </div>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>도서가격</label>
-              <input type="text" class="form-control" name="gdsPrice" id="gdsPrice" required data-validation-required-message="Please enter your email address.">
-            </div>
-          </div>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>도서설명</label>
-              <textarea rows="10" cols="100" class="form-control" name="gdsDes" id="gdsDes" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-            </div>
-          </div>
+        <form action="/goods/modify" method="post" name="fr" role="form" >
+        	<input type="hidden" name="gdsNum" value="${goods.gdsNum}">
+
+	          <div class="control-group form-group">
+    	        <div class="controls">
+        	      <label>도서분류</label>
+            	  <select class="form-control" name="category" id="category">
+              		<option value="" selected>카테고리 선택</option>
+              		<option value="국내도서" >국내도서</option>
+              		<option value="해외도서" >해외도서</option>
+              		<option value="eBook" >eBook</option>
+              		<option value="웹소설" >웹소설</option>
+              	  </select>
+            	  <p class="help-block"></p>
+            	</div>
+          	  </div>
+          	  
+          	<div class="control-group form-group">
+               <div class="controls">
+               <label>도서이름</label>
+              	  <input type="text" class="form-control" name="gdsName" id="gdsName" value="${goods.gdsName}" required >
+               </div>
+          	</div>
+           
+            <div class="control-group form-group">
+            	<div class="controls">
+              	<label>도서저자</label>
+              	  <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" value="${goods.gdsAuthor}" required >
+            	</div>
+          	</div>
+          
+          	<div class="control-group form-group">
+            	<div class="controls">
+              	<label>도서가격</label>
+              	  <input type="text" class="form-control" name="gdsPrice" id="gdsPrice" value="${goods.gdsPrice}" required >
+            	</div>
+          	</div>
+          	
+          	<div class="control-group form-group">
+            	<div class="controls">
+              	<label>도서수량</label>
+              	  <input type="text" class="form-control" name="gdsStock" id="gdsStock" value="${goods.gdsStock}" required >
+            	</div>
+          	</div>
+          
+          	<div class="control-group form-group">
+            	<div class="controls">
+              	<label>도서설명</label>
+              	  <textarea rows="10" cols="100" class="form-control" name="gdsDes" id="gdsDes" required  maxlength="999" style="resize:none">${goods.gdsDes}</textarea>
+            	</div>
+          	</div>
+          
           <div id="success"></div>
-          <!-- For success/fail messages -->
-          <input type="submit" value="수정하기" class="btn btn-primary" id="sendMessageButton">
+	          <input type="submit" value="수정하기" id="modify_Btn" class="btn btn-primary" >
+	          <input type="button" value="취소하기" id="back" class="btn btn-primary" onclick="cancel()">
         </form>
       </div>
+      
+<script type="text/javascript">
 
+ // 수정,목록,취소 버튼
+ $(document).ready(function(){
+	 
+ var formObj = $("form[role='form']");
+
+		// 수정하기 
+		$("#modify_Btn").on("click",function(){
+			formObj.submit();
+		});
+ 
+ 	
+ });    
+
+ 	function cancel(){
+		var result = confirm("취소하시겠습니까? 변경사항이 저장되지 않을 수 있습니다.");
+		if(result){
+		    history.back();
+		}
+	}
+ // 수정,목록,취소 버튼
+</script> 
+      
+      
     </div>
     <!-- /.row -->
 

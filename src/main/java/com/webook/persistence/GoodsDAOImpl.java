@@ -43,6 +43,18 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return sql.selectOne(namespace + ".goodsDetail", gdsNum);
 	}
 	
+	/* 상품 수정 */
+	@Override
+	public void goodsModify(GoodsVO vo) throws Exception {
+		System.out.println("DAO : 상품 수정");
+		sql.update(namespace + ".goodsModify", vo);
+		System.out.println("DAP : 수정된 상품 정보 -> " + vo);
+		
+	}
+	
+	
+	/**/
+	/**/
 	/**/
 
 }

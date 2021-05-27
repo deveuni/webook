@@ -48,8 +48,19 @@ public class GoodsServiceImpl implements GoodsService {
 		return gdao.goodsDetail(gdsNum);
 	}
 	
+	/* 상품 수정 */
+	@Override
+	public void goodsModify(GoodsVO vo) throws Exception {
+
+		System.out.println("S : 상품 수정");
+		
+		gdao.goodsModify(vo);
+		
+		System.out.println("S : 수정된 상품 정보 -> " + vo);
+		
+	}
 	
-	/**/
+	
 	/**/
 	
 	
