@@ -41,5 +41,15 @@
 		 where gdsNum = #{gdsNum} 
 	</update>
 
+	<!-- 상품 삭제 -->
+	<delete id="goodsDelete">
+		delete from tbl_goods 
+		where gdsNum = #{gdsNum}
+	</delete>
+	
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
 
 </mapper>

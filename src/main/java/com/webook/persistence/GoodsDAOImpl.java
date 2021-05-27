@@ -49,11 +49,16 @@ public class GoodsDAOImpl implements GoodsDAO {
 		System.out.println("DAO : 상품 수정");
 		sql.update(namespace + ".goodsModify", vo);
 		System.out.println("DAP : 수정된 상품 정보 -> " + vo);
-		
+	}
+	
+	/* 상품 삭제 */
+	@Override
+	public void goodsDelete(int gdsNum) throws Exception {
+		System.out.println("DAO : 상품 삭제");
+		sql.delete(namespace + ".goodsDelete", gdsNum);
 	}
 	
 	
-	/**/
 	/**/
 	/**/
 

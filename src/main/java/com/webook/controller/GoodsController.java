@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webook.domain.GoodsVO;
 import com.webook.service.GoodsService;
@@ -104,8 +105,15 @@ public class GoodsController {
 		return "redirect:/goods/list";
 	}
 	
-	
-	/**/
+	/* 상품 삭제 */
+	@RequestMapping(value = "/delete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String goodsDeletePOST(@RequestParam("gdsNum") int gdsNum, Model model, RedirectAttributes rttr) throws Exception {
+		
+		// 상품 삭제 서비스 호출
+		service.goodsDelete(gdsNum);
+		
+		return "redirect:/goods/list";
+	}
 	
 	/**/
 	

@@ -38,7 +38,7 @@
 	$(document).on("click","#delete_Btn",function(){
 		var con = confirm("정말로 삭제하시겠습니까?");
 		if(con){
-			location.href = '/goods/delete';
+			location.href = '/goods/delete?gdsNum=${goods.gdsNum}';
 		}
 	});
 }); 
