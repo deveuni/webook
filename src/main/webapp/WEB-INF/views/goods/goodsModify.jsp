@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -14,11 +12,9 @@
 
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
 </head>
-
 <body>
 
  <!-- header -->
@@ -98,7 +94,6 @@
       </div>
       
 <script type="text/javascript">
-
  // 수정,목록,취소 버튼
  $(document).ready(function(){
 	 
@@ -108,8 +103,6 @@
 		$("#modify_Btn").on("click",function(){
 			formObj.submit();
 		});
- 
- 	
  });    
 
  	function cancel(){
@@ -120,11 +113,8 @@
 	}
  // 수정,목록,취소 버튼
 </script> 
-      
-      
     </div>
     <!-- /.row -->
-
   </div>
   <!-- /.container -->
 
@@ -142,6 +132,5 @@
   <script src="js/contact_me.js"></script>
 
 </body>
-
 </html>
     

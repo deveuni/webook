@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -18,7 +16,6 @@
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
 </head>
-
 <body>
 
  <!-- header -->
@@ -42,7 +39,6 @@
     </ol>
 
     <!-- Contact Form -->
-    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
     <div class="row">
       <div class="col-lg-8 mb-4">
         <form action="/goods/register" method="post" name="sentMessage" id="contactForm" novalidate>
@@ -62,55 +58,45 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>도서이름</label>
-              <input type="text" class="form-control" name="gdsName" id="gdsName" required data-validation-required-message="Please enter your phone number.">
+              <input type="text" class="form-control" name="gdsName" id="gdsName" required>
             </div>
           </div>
-           <div class="control-group form-group">
+          
+          <div class="control-group form-group">
             <div class="controls">
               <label>도서저자</label>
-              <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" required data-validation-required-message="Please enter your phone number.">
+              <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" required>
             </div>
           </div>
+          
           <div class="control-group form-group">
             <div class="controls">
               <label>도서가격</label>
-              <input type="text" class="form-control" name="gdsPrice" id="gdsPrice" required data-validation-required-message="Please enter your email address.">
+              <input type="text" class="form-control" name="gdsPrice" id="gdsPrice" required>
             </div>
           </div>
           
           <div class="control-group form-group">
-            	<div class="controls">
-              	<label>도서수량</label>
-              	  <input type="text" class="form-control" name="gdsStock" id="gdsStock"  required >
-            	</div>
+            <div class="controls">
+              <label>도서수량</label>
+              <input type="text" class="form-control" name="gdsStock" id="gdsStock"  required>
+            </div>
           </div>
-          
           
           <div class="control-group form-group">
             <div class="controls">
               <label>도서설명</label>
-              <textarea rows="10" cols="100" class="form-control" name="gdsDes" id="gdsDes" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+              <textarea rows="10" cols="100" class="form-control" name="gdsDes" id="gdsDes" required  maxlength="999" style="resize:none"></textarea>
             </div>
           </div>
+          
           <div id="success"></div>
-          <!-- For success/fail messages -->
           <input type="submit" value="등록하기" class="btn btn-primary" >
           <input type="button" value="취소하기" class="btn btn-primary" onclick="cancel()">
         </form>
       </div>
-      
-   <script type="text/javascript">
-		function cancel(){
-			var result = confirm("취소하시겠습니까? 변경사항이 저장되지 않을 수 있습니다.");
-			if(result){
-			    history.back();
-			}
-		}
-   </script>
-
     </div>
     <!-- /.row -->
-
   </div>
   <!-- /.container -->
 
@@ -127,7 +113,14 @@
   <script src="js/jqBootstrapValidation.js"></script>
   <script src="js/contact_me.js"></script>
 
+<script type="text/javascript">
+	function cancel(){
+		var result = confirm("취소하시겠습니까? 변경사항이 저장되지 않을 수 있습니다.");
+		if(result){
+			history.back();
+		}
+	}
+</script>
 </body>
-
 </html>
     
