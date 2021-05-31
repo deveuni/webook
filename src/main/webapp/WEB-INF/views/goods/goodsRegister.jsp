@@ -12,9 +12,11 @@
 
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
+
+  <!-- ck에디터 -->
+  <script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 
@@ -41,7 +43,7 @@
     <!-- Contact Form -->
     <div class="row">
       <div class="col-lg-8 mb-4">
-        <form action="/goods/register" method="post" name="sentMessage" id="contactForm" novalidate>
+        <form action="/goods/register" method="post" enctype="multipart/form-data" name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
               <label>도서분류</label>
@@ -89,6 +91,23 @@
               <textarea rows="10" cols="100" class="form-control" name="gdsDes" id="gdsDes" required  maxlength="999" style="resize:none"></textarea>
             </div>
           </div>
+          
+          <!-- ck에디터 -->   
+          <script>
+ 				var ckeditor_config = {
+ 		 			width: 1000,
+ 					height: 500,
+   					resize_enaleb : false,
+   					enterMode : CKEDITOR.ENTER_BR,
+   					shiftEnterMode : CKEDITOR.ENTER_P,
+   					uploadUrl: "/goods/ckUpload",
+   					filebrowserUploadUrl : "/goods/ckUpload"
+ 				};
+ 
+				 CKEDITOR.replace("gdsDes", ckeditor_config);
+
+		  </script>
+		  <!-- ck 에디터 끝 -->
           
           <div id="success"></div>
           <input type="submit" value="등록하기" class="btn btn-primary" >
