@@ -14,6 +14,9 @@
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
+  
+  <!-- ck에디터 -->
+  <script src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 
@@ -130,6 +133,7 @@
   <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
   <script src="js/jqBootstrapValidation.js"></script>
   <script src="js/contact_me.js"></script>
+  
 
 </body>
 </html>

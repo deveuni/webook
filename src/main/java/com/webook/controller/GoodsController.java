@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -235,6 +236,7 @@ public class GoodsController {
 	}
 	// ck 이미지 업로드
 	
+
 	/**/
 	/**/
 	/**/
