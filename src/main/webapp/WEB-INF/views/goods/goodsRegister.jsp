@@ -43,7 +43,7 @@
     <!-- Contact Form -->
     <div class="row">
       <div class="col-lg-8 mb-4">
-        <form action="/goods/register" method="post"  name="sentMessage" id="contactForm" novalidate>
+        <form action="/goods/register" method="post" enctype="multipart/form-data" >
           <div class="control-group form-group">
             <div class="controls">
               <label>도서분류</label>

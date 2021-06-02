@@ -38,7 +38,7 @@
     <!-- Contact Form -->
     <div class="row">
       <div class="col-lg-8 mb-4">
-        <form action="/goods/modify" method="post" name="fr" role="form" >
+        <form action="/goods/modify" method="post" enctype="multipart/form-data" name="fr" role="form" >
         	<input type="hidden" name="gdsNum" value="${goods.gdsNum}">
 
 	          <div class="control-group form-group">
@@ -89,6 +89,23 @@
               	  <textarea rows="10" cols="100" class="form-control" name="gdsDes" id="gdsDes" required  maxlength="999" style="resize:none">${goods.gdsDes}</textarea>
             	</div>
           	</div>
+          	
+          	<!-- ck에디터 -->   
+          	<script>
+ 				var ckeditor_config = {
+ 		 			width: 1000,
+ 					height: 500,
+   					resize_enaleb : false,
+   					enterMode : CKEDITOR.ENTER_BR,
+   					shiftEnterMode : CKEDITOR.ENTER_P,
+   					uploadUrl: "/goods/ckUpload",
+   					filebrowserUploadUrl : "/goods/ckUpload"
+ 				};
+ 
+				 CKEDITOR.replace("gdsDes", ckeditor_config);
+
+		  	</script>
+		  	<!-- ck 에디터 끝 -->
           
           <div id="success"></div>
 	          <input type="submit" value="수정하기" id="modify_Btn" class="btn btn-primary" >
