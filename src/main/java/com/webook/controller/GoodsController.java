@@ -56,6 +56,33 @@ public class GoodsController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String goodsRegisterePOST(GoodsVO vo) throws Exception {
 		
+		// 본문 첫번째 이미지 섬네일로 
+		
+		String DesImg = vo.getGdsDes();
+		
+		if(DesImg.indexOf("src=")!=-1) { // 본문에 'src='가 포함되어 있을 경우
+			
+			log.info("본문에 이미지 존재@@@@");
+			String[] result = DesImg.split("<img src=\"");
+			//String[] result = DesImg.split("style");
+			
+			//log.info("@@@@@@@@@@@@@@@@@@@섬넬 이미지0" + result[0]);
+			log.info("@@@@@@@@@@@@@@@@@@@섬넬 이미지1 : " + result[1]);
+			
+			String resultTwo = result[1];
+			String[] resultTwoPath = resultTwo.split("style");
+				
+			
+			vo.setGdsImg(resultTwoPath[0]);
+			
+			log.info("작성글내용 파싱1: "+resultTwoPath[0]);
+			log.info("작성글내용: "+vo);
+			
+		}
+		
+		
+		
+		
 		// 상품 등록 서비스 
 		service.goodsRegister(vo);
 		

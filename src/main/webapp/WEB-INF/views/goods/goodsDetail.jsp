@@ -64,11 +64,12 @@
      </ol> 
 	<!-- 수정/삭제 버튼 관리자만 보이기 끝 -->
 	
+	
+	
     <!-- Portfolio Item Row -->
     <div class="row">
       <div class="col-md-8">
-      <!--  <img class="img-fluid" src="http://placehold.it/750x500" alt="" height="300px"> -->
-      <img class="img-fluid" src="http://placehold.it/500x300" alt="" width="750px" height="400px"> 
+      <img src="${goods.gdsImg}" alt="" width="300px" height="300px"> 
       </div>
 
       <div class="col-md-4" style="margin-left: 0px">
