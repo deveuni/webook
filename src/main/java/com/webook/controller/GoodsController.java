@@ -63,24 +63,23 @@ public class GoodsController {
 		if(DesImg.indexOf("src=")!=-1) { // 본문에 'src='가 포함되어 있을 경우
 			
 			log.info("본문에 이미지 존재@@@@");
-			String[] result = DesImg.split("<img src=\"");
-			//String[] result = DesImg.split("style");
 			
-			//log.info("@@@@@@@@@@@@@@@@@@@섬넬 이미지0" + result[0]);
+			// 본문 첫번째 이미지 메인이미지로
+			String[] result = DesImg.split("<img src=\"");
+			
 			log.info("@@@@@@@@@@@@@@@@@@@섬넬 이미지1 : " + result[1]);
 			
+			// 한번 더 split
 			String resultTwo = result[1];
 			String[] resultTwoPath = resultTwo.split("style");
 				
-			
+			// split한 문자열을 GdsImg로 넣기
 			vo.setGdsImg(resultTwoPath[0]);
 			
 			log.info("작성글내용 파싱1: "+resultTwoPath[0]);
 			log.info("작성글내용: "+vo);
 			
 		}
-		
-		
 		
 		
 		// 상품 등록 서비스 
