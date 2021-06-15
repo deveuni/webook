@@ -69,7 +69,7 @@
     <!-- Portfolio Item Row -->
     <div class="row">
       <div class="col-md-8">
-      <img src="${goods.gdsImg}" alt="" width="300px" height="300px"> 
+      <img src="${goods.gdsImg}" alt="" width="400px" height="300px"> 
       </div>
 
       <div class="col-md-4" style="margin-left: 0px">

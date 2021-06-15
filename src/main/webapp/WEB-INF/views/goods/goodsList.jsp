@@ -43,7 +43,8 @@
     <c:forEach items="${list}" var="list">
       <div class="col-lg-4 col-sm-6 portfolio-item" style="width: 100px; height: 320px; text-align: center;">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${goods.gdsImg}" alt=""></a>
+          <%-- <img src="${goods.gdsImg}" alt="" width="400px" height="300px"> --%>
           <div class="card-body">
             <h4 class="card-title">
               <a href="/goods/detail?gdsNum=${list.gdsNum}">${list.gdsName}</a>

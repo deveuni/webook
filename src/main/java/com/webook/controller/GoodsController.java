@@ -92,13 +92,19 @@ public class GoodsController {
 	
 	/* 상품 목록 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String goodsListGET(Model model) throws Exception {
+	public String goodsListGET(Model model, @RequestParam("gdsNum") int gdsNum) throws Exception {
 		
 		log.info("get goods list");
 		
 		List<GoodsVO> list = service.goodsList();
 		
 		model.addAttribute("list", list);
+		
+		
+		// d여기서 gdsNum 넘어오는거 안된듯!!!!!
+		GoodsVO goods = service.goodsDetail(gdsNum);
+		
+		model.addAttribute("goods", goods);
 		
 		return "/goods/goodsList";
 		
