@@ -44,7 +44,7 @@
       <div class="col-lg-4 col-sm-6 portfolio-item" style="width: 100px; height: 320px; text-align: center;">
         <div class="card h-100">
           <%-- <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${goods.gdsImg}" alt=""></a> --%>
-           <img src="${goods.gdsImg}" alt="" width="400px" height="300px"> 
+           <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${list.gdsImg}" alt="" width="400px" height="300px"></a> 
           <div class="card-body">
             <h4 class="card-title">
               <a href="/goods/detail?gdsNum=${list.gdsNum}">${list.gdsName}</a>
