@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+ 
 
   <title>webook 온라인서점</title>
 
@@ -78,15 +79,46 @@
           <li> 분류 <b>${goods.category}</b></li>
           <li> 저자 <b>${goods.gdsAuthor}</b></li>
           <li> 정가 <b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b></li>
-          <li> 수량 <b>${goods.gdsStock}</b></li>
+          <li> 수량 <b>+ ${goods.gdsStock} - </b></li>
+          
+          카트에 넣기 / 바로구매 / 배송안내
+        
+          
         </ul>
       </div> 
     </div>
     <!-- /.row -->
     <br>
-    
-    <h3 class="my-3">책 소개</h3>
-	<p>${goods.gdsDes}</p>
+
+  <!-- 도서정보, 도서리뷰 tab -->
+  <div class="product-info-tabs">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+				  <a href="#description" class="nav-link active" id="description-tab" data-toggle="tab"
+			              role="tab" aria-controls="description" aria-selected="true">도서정보</a>
+				</li>
+				<li class="nav-item">
+				  <a href="#review" class="nav-link" id="review-tab" data-toggle="tab" role="tab"
+					aria-controls="review" aria-selected="false">도서리뷰</a>
+				</li>
+			</ul>
+
+			<!-- 탭전환  -->
+			<div class="tab-content" id="myTabContent">
+				<!-- 상품정보 -->
+				<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+					${goods.gdsDes}
+				</div>
+				<!-- 상품정보 끝-->
+			</div>		
+  </div>
+	
+	
+	
+	
+	
+	
+	
 
 	
     <!-- Related Projects Row -->
