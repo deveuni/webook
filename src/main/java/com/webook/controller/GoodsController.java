@@ -100,12 +100,6 @@ public class GoodsController {
 		
 		model.addAttribute("list", list);
 		
-		
-		// d여기서 gdsNum 넘어오는거 안된듯!!!!!
-		//GoodsVO goods = service.goodsDetail(gdsNum);
-		
-		//model.addAttribute("goods", goods);
-		
 		return "/goods/goodsList";
 		
 	}
