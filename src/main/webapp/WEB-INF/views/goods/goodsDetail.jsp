@@ -67,10 +67,10 @@
 	
 	
 	
-    <!-- Portfolio Item Row -->
+    <!-- 본문 -->
     <div class="row">
       <div class="col-md-8">
-      <img src="${goods.gdsImg}" alt="" width="400px" height="300px"> 
+      <img src="${goods.gdsImg}" alt="" width="450px" height="500px"> 
       </div>
 
       <div class="col-md-4" style="margin-left: 0px">
@@ -88,6 +88,7 @@
       </div> 
     </div>
     <!-- /.row -->
+    <br>
     <br>
 
   <!-- 도서정보, 도서리뷰 tab -->
