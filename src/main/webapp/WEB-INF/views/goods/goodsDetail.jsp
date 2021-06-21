@@ -75,16 +75,38 @@
 
       <div class="col-md-4" style="margin-left: 0px">
         <h3 class="my-3">도서 정보</h3>
-        <ul>
+      <%--   <ul>
           <li> 분류 <b>${goods.category}</b></li>
           <li> 저자 <b>${goods.gdsAuthor}</b></li>
           <li> 정가 <b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b></li>
           <li> 수량 <b>+ ${goods.gdsStock} - </b></li>
           
           카트에 넣기 / 바로구매 / 배송안내
-        
           
-        </ul>
+        </ul> --%>
+        
+         <table>
+           <colgroup>
+            <col width="110">
+            <col width="*">
+           </colgroup>
+         	<tr>
+         		<td>분류</td>
+         		<td><b>${goods.category}</b></td>
+         	</tr>
+         	<tr>
+         		<td>저자</td>
+         		<td><b>${goods.gdsAuthor}</b></td>
+         	</tr>
+			<tr>
+				<td>가격</td>
+				<td><b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b></td>
+			</tr>
+			<tr>
+				<td>수량</td>
+				<td><b>+ ${goods.gdsStock} - </b></td>
+			</tr>          
+         </table>
       </div> 
     </div>
     <!-- /.row -->
@@ -103,6 +125,8 @@
 					aria-controls="review" aria-selected="false">도서리뷰</a>
 				</li>
 			</ul>
+			
+			<br>
 
 			<!-- 탭전환  -->
 			<div class="tab-content" id="myTabContent">
