@@ -37,6 +37,32 @@
 	});
 }); 
 </script>
+<style type="text/css">
+/* 버튼 */
+.button {
+  background-color: #008CBA; /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #199db3;} /* Blue */
+/* 버튼 끝 */
+
+/* 도서정보 테이블 */
+table {
+	 font-size: 18px; 
+} 
+tr.space {
+  border-bottom: 10px solid #fff;
+}
+/* 도서정보 테이블 끝 */
+</style>
 </head>
 <body>
 
@@ -65,12 +91,10 @@
      </ol> 
 	<!-- 수정/삭제 버튼 관리자만 보이기 끝 -->
 	
-	
-	
     <!-- 본문 -->
     <div class="row">
       <div class="col-md-8">
-      <img src="${goods.gdsImg}" alt="" width="450px" height="500px"> 
+      <img src="${goods.gdsImg}" alt="" width="400px" height="450px"> 
       </div>
 
       <div class="col-md-4" style="margin-left: 0px">
@@ -82,6 +106,7 @@
           <li> 수량 <b>+ ${goods.gdsStock} - </b></li>
           
           카트에 넣기 / 바로구매 / 배송안내
+          출판사 출간날짜
           
         </ul> --%>
         
@@ -90,26 +115,34 @@
             <col width="110">
             <col width="*">
            </colgroup>
-         	<tr>
+         	<tr class="space">
          		<td>분류</td>
          		<td><b>${goods.category}</b></td>
          	</tr>
-         	<tr>
+         	<tr class="space">
          		<td>저자</td>
          		<td><b>${goods.gdsAuthor}</b></td>
          	</tr>
-			<tr>
+         	<tr class="space">
+         		<td>출판사</td>
+         		<td>x</td>
+         	</tr>
+			<tr class="space">
 				<td>가격</td>
 				<td><b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b></td>
 			</tr>
-			<tr>
+			<tr class="space">
 				<td>수량</td>
 				<td><b>+ ${goods.gdsStock} - </b></td>
-			</tr>          
+			</tr>   
          </table>
+         <br>
+         <button class="button">카트에 넣기</button>
+         <button class="button button2">바로구매</button>
       </div> 
     </div>
-    <!-- /.row -->
+    <!-- 본문 끝 -->
+    
     <br>
     <br>
 
@@ -137,6 +170,7 @@
 				<!-- 상품정보 끝-->
 			</div>		
   </div>
+  <!-- 도서정보, 도서리뷰 tab 끝 -->
 	
 	
 	
