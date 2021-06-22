@@ -27,37 +27,25 @@
   <!-- Page Content -->
   <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Portfolio 3
-      <small>Subheading</small>
-    </h1>
+    <h1 class="mt-4 mb-3">도서목록</h1>
 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item active">Portfolio 3</li>
-    </ol>
-
+	<!-- 도서목록 카드 -->
     <div class="row">
     <c:forEach items="${list}" var="list">
-      <div class="col-lg-4 col-sm-6 portfolio-item" style="width: 100px; height: 320px; text-align: center;">
+      <div class="col-lg-4 col-sm-6 portfolio-item"  style="text-align: center;">
         <div class="card h-100">
-          <%-- <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${goods.gdsImg}" alt=""></a> --%>
-           <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${list.gdsImg}" alt="" width="400px" height="300px"></a> 
+         <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${list.gdsImg}" alt="" width="400px" height="300px"></a>   
           <div class="card-body">
-            <h4 class="card-title">
-              <a href="/goods/detail?gdsNum=${list.gdsNum}">${list.gdsName}</a>
-            </h4>
-            <p class="card-text">
-            ${list.gdsAuthor} <br>
-            <fmt:formatNumber value="${list.gdsPrice}" pattern="###,###,###"/>
-            </p>
+              <a href="/goods/detail?gdsNum=${list.gdsNum}">${list.gdsName}</a> <br>
+            	${list.gdsAuthor} | 출판사
+            	<br>
+            	<fmt:formatNumber value="${list.gdsPrice}" pattern="###,###,###"/>원
           </div>
         </div>
       </div>
-      </c:forEach>
-    </div>
+     </c:forEach>
+     </div>
+     <!-- 도서목록 카드 끝 -->
 
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
