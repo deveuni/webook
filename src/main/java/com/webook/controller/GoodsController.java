@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
+import com.webook.domain.PageMaker;
 import com.webook.service.GoodsService;
 
 @Controller
@@ -92,13 +95,21 @@ public class GoodsController {
 	
 	/* 상품 목록 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String goodsListGET(Model model) throws Exception {
+	public String goodsListGET(Model model, HttpSession session, @ModelAttribute("cri") Criteria cri) throws Exception {
 		
 		log.info("get goods list");
 		
+		// 상품 목록
 		List<GoodsVO> list = service.goodsList();
 		
 		model.addAttribute("list", list);
+		
+		// 페이징처리
+		PageMaker pm = new PageMaker(cri);
+		pm.setCri(cri);
+		//pm.setTotalCount(service.CategoryCount(category));
+		model.addAttribute("pm", pm);
+		
 		
 		return "/goods/goodsList";
 		

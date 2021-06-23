@@ -49,27 +49,37 @@
 
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
+    <!-- 이전 -->
+     <c:if test="${pm.prev}">
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+        <a class="page-link" href="/goods/list?page=${idx}" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="#">1</a>
+     </c:if> 
+     <!-- 이전 끝 -->
+      
+     <!-- 페이지 번호 -->
+     <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="idx">
+      <li class="page-item"
+      		${pm.cri.page == idx? 'class=active':''}
+      >
+        <a class="page-link" href="/goods/list?page=${idx}">${idx}</a>
       </li>
+     </c:forEach> 
+     <!-- 페이지 번호 끝 --> 
+      
+      <!-- 다음 -->
+      <c:if test="${pm.next && pm.endPage > 0}">
       <li class="page-item">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+        <a class="page-link" href="/goods/list?page=${pm.endPage+1}" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
       </li>
+      </c:if>
+      <!-- 다음 끝 -->
     </ul>
 
   </div>
