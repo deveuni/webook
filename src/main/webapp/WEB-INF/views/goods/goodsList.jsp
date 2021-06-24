@@ -52,7 +52,7 @@
     <!-- 이전 -->
      <c:if test="${pm.prev}">
       <li class="page-item">
-        <a class="page-link" href="/goods/list?page=${idx}" aria-label="Previous">
+        <a class="page-link" href="/goods/list?page=${pm.startPage-1}" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a>

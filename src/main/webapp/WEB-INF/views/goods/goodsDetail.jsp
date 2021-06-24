@@ -83,6 +83,9 @@ tr.space {
        <li class="breadcrumb-item active">
       	<form action=""  role="form" name="form">
       		<input type="hidden" name="gdsNum" id="gdsNum" value="${goods.gdsNum}">
+      		<input type="hidden" name="page" value="${cri.page}"> 
+			<input type="hidden" name="pageSize" value="${cri.pageSize}">
+			<%-- <input type="hidden" name="category" value="${category}"> --%>
     	    <input type="button" id="modify_Btn" value="수정"> 
     		<input type="button" id="delete_Btn" value="삭제">
     	</form>
