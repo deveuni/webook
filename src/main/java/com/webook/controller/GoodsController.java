@@ -278,9 +278,6 @@ public class GoodsController {
 	/**/
 	/**/
 	/**/	
-	/**/	
-	/**/	
-	/**/	
 	
 	
 }
