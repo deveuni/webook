@@ -14,7 +14,7 @@ public class Criteria {
 	
 	public Criteria() {
 		this.page = 1;
-		this.pageSize = 9;
+		this.pageSize = 6;
 		this.searchType = null;
 		this.keyword = null;
 	}

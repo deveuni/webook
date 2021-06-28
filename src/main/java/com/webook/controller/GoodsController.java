@@ -49,18 +49,21 @@ public class GoodsController {
 	
 	/* 상품 등록 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String goodsRegisterGET() throws Exception {
+	public String goodsRegisterGET(Model model, HttpSession session, Criteria cri, @ModelAttribute("category") String category) throws Exception {
 		
 		log.info("get goods register");
+		
+		model.addAttribute("userId", (String) session.getAttribute("userId"));
+		model.addAttribute("category", category);
+		model.addAttribute("cri", cri);
 		
 		return "/goods/goodsRegister";
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String goodsRegisterePOST(GoodsVO vo) throws Exception {
+	public String goodsRegisterePOST(GoodsVO vo, Criteria cri, @ModelAttribute("category") String category) throws Exception {
 		
 		// 본문 첫번째 이미지 섬네일로 
-		
 		String DesImg = vo.getGdsDes();
 		
 		if(DesImg.indexOf("src=")!=-1) { // 본문에 'src='가 포함되어 있을 경우
@@ -93,21 +96,29 @@ public class GoodsController {
 		return "redirect:/goods/list";
 	}
 	
-	/* 상품 목록 */
+	/* 상품 목록 + 카테고리 분류 + 페이징처리 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String goodsListGET(Model model, HttpSession session, @ModelAttribute("cri") Criteria cri) throws Exception {
+	public String goodsListGET(Model model, HttpSession session, @ModelAttribute("cri") Criteria cri, String category) throws Exception {
 		
 		log.info("get goods list");
 		
+		// id 세션값
+		model.addAttribute("userId", (String) session.getAttribute("userId"));
+		
 		// 상품 목록
 		List<GoodsVO> list = service.goodsList();
-		
 		model.addAttribute("list", list);
+		
+		// 페이징 처리된 카테고리 목록
+		model.addAttribute("categoryList", service.goodsCategoryList(category, cri));
+		
+		// 카테고리
+		model.addAttribute("category", category);
 		
 		// 페이징처리
 		PageMaker pm = new PageMaker(cri);
-		pm.setCri(cri);
-		//pm.setTotalCount(service.CategoryCount(category));
+		//pm.setCri(cri);
+		pm.setTotalCount(service.CategoryCount(category));
 		model.addAttribute("pm", pm);
 		
 		

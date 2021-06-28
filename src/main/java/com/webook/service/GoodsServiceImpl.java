@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 import com.webook.persistence.GoodsDAO;
 
@@ -38,6 +39,28 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		return gdao.goodsList();
 	}	
+	
+	
+	/* 카테고리별 상품 목록 + 페이징처리 */
+	@Override
+	public List<GoodsVO> goodsCategoryList(String category, Criteria cri) throws Exception {
+
+		System.out.println("S : 카테고리 분류");
+		System.out.println("S : 카테고리 실행 ? " + gdao.goodsCategoryList(category, cri));
+		
+		return gdao.goodsCategoryList(category, cri);
+	}
+	
+	/* 카테고리별 글 개수 가져오는 처리 */
+	@Override
+	public int CategoryCount(String category) throws Exception {
+		
+		int result = gdao.CategoryCount(category);
+		
+		System.out.println("S : 카테고리글 개수 -> " + result);
+		
+		return result;
+	}
 	
 	/* 상품 조회 */
 	@Override

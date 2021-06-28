@@ -24,17 +24,20 @@
  <!-- header -->
  
  <br><br>
-  <!-- Page Content -->
+  <!-- 상품목록 -->
   <div class="container">
 
     <h1 class="mt-4 mb-3">도서목록</h1>
 
-	<!-- 도서목록 카드 -->
-    <div class="row">
-    <c:forEach items="${list}" var="list">
-      <div class="col-lg-4 col-sm-6 portfolio-item"  style="text-align: center;">
+	<!-- 전체도서목록 카드 -->
+<%-- 	<c:set var="cate" value="${category}" />
+	<c:if test="${category eq cate}">
+      <div class="row">
+      <c:forEach var="category" items="${categoryList}">
+        <div class="col-lg-4 col-sm-6 portfolio-item"  style="text-align: center;">
         <div class="card h-100">
-         <a href="/goods/detail?gdsNum=${list.gdsNum}"><img class="card-img-top" src="${list.gdsImg}" alt="" width="400px" height="300px"></a>   
+         <a href="/goods/detail?gdsNum=${list.gdsNum}">
+         	<img class="card-img-top" src="${list.gdsImg}" alt="" width="400px" height="300px"></a>   
           <div class="card-body">
               <a href="/goods/detail?gdsNum=${list.gdsNum}">${list.gdsName}</a> <br>
             	${list.gdsAuthor} | 출판사
@@ -42,13 +45,40 @@
             	<fmt:formatNumber value="${list.gdsPrice}" pattern="###,###,###"/>원
           </div>
         </div>
+        </div>
+      </c:forEach>
       </div>
-     </c:forEach>
-     </div>
-     <!-- 도서목록 카드 끝 -->
+     </c:if> --%>
+     <!-- 전체 도서목록 카드 끝 -->
+     
+     <!-- 카테고리별 도서목록 카드 -->
+	<c:set var="cate" value="${category}" />
+	<c:if test="${category eq cate}">
+      <div class="row">
+      <c:forEach var="category" items="${categoryList}">
+        <div class="col-lg-4 col-sm-6 portfolio-item"  style="text-align: center;">
+        <div class="card h-100">
+         <a href="/goods/detail?gdsNum=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">
+         	<img class="card-img-top" src="${category.gdsImg}" alt="" width="400px" height="300px">
+         </a>   
+          <div class="card-body">
+              <a href="/goods/detail?gdsNum=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">${category.gdsName}</a> <br>
+            	${category.gdsAuthor} | 출판사
+            	<br>
+            	<fmt:formatNumber value="${category.gdsPrice}" pattern="###,###,###"/>원
+          </div>
+        </div>
+        </div>
+      </c:forEach>
+      </div>
+     </c:if>
+     <!-- 카테고리별 도서목록 카드 끝 -->
+     
+     
+     
 
     <!-- Pagination -->
-    <ul class="pagination justify-content-center">
+  <%--   <ul class="pagination justify-content-center">
     <!-- 이전 -->
      <c:if test="${pm.prev}">
       <li class="page-item">
@@ -80,11 +110,52 @@
       </li>
       </c:if>
       <!-- 다음 끝 -->
+    </ul> --%>
+    
+    <!-- 카테고리별 페이징처리 -->
+    <c:set var="cate" value="${category}" />
+    <c:if test="${category eq cate}">
+    <ul class="pagination justify-content-center">
+    <!-- 이전 -->
+     <c:if test="${pm.prev}">
+      <li class="page-item">
+        <a class="page-link" href="/goods/list?category=${category}&page=${pm.startPage-1}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+     </c:if> 
+     <!-- 이전 끝 -->
+      
+     <!-- 페이지 번호 -->
+     <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="idx">
+      <li class="page-item"
+      		${pm.cri.page == idx? 'class=active':''}
+      >
+        <a class="page-link" href="/goods/list?category=${category}&page=${idx}">${idx}</a>
+      </li>
+     </c:forEach> 
+     <!-- 페이지 번호 끝 --> 
+      
+      <!-- 다음 -->
+      <c:if test="${pm.next && pm.endPage > 0}">
+      <li class="page-item">
+        <a class="page-link" href="/goods/list?category=${category}&page=${pm.endPage+1}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      </c:if>
+      <!-- 다음 끝 -->
     </ul>
+    </c:if>
+    <!-- 카테고리별 페이징처리 끝 -->
+    
+    
 
   </div>
-  <!-- /.container -->
-
+  <!-- 상품목록 끝-->
+  
  <!-- footer -->
   <%@ include file="../include/footer.jsp" %>
   <!-- footer -->

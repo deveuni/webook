@@ -21,6 +21,20 @@
 		order by gdsNum desc, gdsDate desc
 	</select>
 	
+	<!-- 카테고리별 상품 목록 -->
+	<select id="category" resultType="com.webook.domain.GoodsVO">
+		select * 
+		from tbl_goods 
+		where category = #{category}
+		order by gdsNum desc, gdsDate desc 
+		limit #{cri.pageStart},#{cri.pageSize}
+	</select>
+	
+	<!-- 카테고리별 상품글 개수 가져오는 처리 -->
+	<select id="categoryCount" resultType="int">
+		select count(*) from tbl_goods where category = #{category}
+	</select>
+	
 	<!-- 상품 조회 -->
 	<select id="goodsDetail" resultType="com.webook.domain.GoodsVO">
 		select * 
