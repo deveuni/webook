@@ -53,6 +53,8 @@
               	<option value="해외도서" >해외도서</option>
               	<option value="eBook" >eBook</option>
               	<option value="웹소설" >웹소설</option>
+              	<option value="음반" >음반</option>
+              	<option value="중고도서" >중고도서</option>
               </select>
               <p class="help-block"></p>
             </div>

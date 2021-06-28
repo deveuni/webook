@@ -155,22 +155,22 @@
 
                 <ul class="navbar-nav w-100 justify-content-center px-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/goods/list">Link</a>
+                        <a class="nav-link" href="/goods/list?category=국내도서">국내도서</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list">Link</a>
+                        <a class="nav-link" href="/goods/list?category=외국도서">외국도서</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Link</a>
+                        <a class="nav-link" href="/goods/list?category=eBook">eBook</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Link</a>
+                        <a class="nav-link" href="/goods/list?category=웹소설">웹소설</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Link</a>
+                        <a class="nav-link" href="/goods/list?category=음반">음반</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Link</a>
+                        <a class="nav-link" href="/goods/list?category=중고도서">중고도서</a>
                     </li>
                 </ul>
             </div>
