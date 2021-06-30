@@ -36,10 +36,10 @@
         <!-- 로그아웃 상태 -->
         <c:if test="${member == null && naverUserId == null && googleId == null}">
           <li class="nav-item">
-            <a class="nav-link" href="./member/signin">로그인</a>
+            <a class="nav-link" href="/member/signin">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./member/signup">회원가입</a>
+            <a class="nav-link" href="/member/signup">회원가입</a>
           </li>
          </c:if>
          <!--  일반 회원가입 로그인 상태 -->
@@ -48,7 +48,7 @@
 			<p class="nav-link">${member.userName}님 환영합니다.</p>
           </li>
           <li class="nav-item">
-			<a class="nav-link" href="./member/signout">로그아웃</a>
+			<a class="nav-link" href="/member/signout">로그아웃</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
