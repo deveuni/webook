@@ -245,6 +245,7 @@ public class MemberController {
 	public String signout(HttpSession session) throws Exception {
 		log.info("get logout");
 		
+		//session.invalidate();
 		service.signout(session);
 		
 		return "redirect:/webook";
