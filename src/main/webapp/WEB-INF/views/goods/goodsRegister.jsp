@@ -17,6 +17,59 @@
 
   <!-- ck에디터 -->
   <script src="/resources/ckeditor/ckeditor.js"></script>
+  
+  <script type="text/javascript">
+
+	// 유효성 체크
+	function goods_register(){
+
+		var category = document.fr.category.value;
+		var gdsName = document.fr.gdsName.value;
+		var gdsAuthor = document.fr.gdsAuthor.value;
+		var gdsPrice = document.fr.gdsPrice.value;
+		var gdsStock = document.fr.gdsStock.value;
+		var gdsDes = document.fr.gdsDes.value;
+
+		if(category == ""){
+			alert("도서분류를 선택하세요.");
+			document.fr.category.focus();
+			return false;
+		}
+
+		if(gdsName == ""){
+			alert("도서이름을 입력하세요.");
+			document.fr.gdsName.focus();
+			return false;
+		}
+
+		if(gdsAuthor == ""){
+			alert("도서저자를 입력하세요.");
+			document.fr.gdsAuthor.focus();
+			return false;
+		}
+
+		if(gdsPrice == ""){
+			alert("도서가격을 입력하세요.");
+			document.fr.gdsPrice.focus();
+			return false;
+		}
+
+		if(gdsStock == ""){
+			alert("도서수량을 입력하세요.");
+			document.fr.gdsStock.focus();
+			return false;
+		}
+
+		if(CKEDITOR.instances.gdsDes.getData() == '' 
+			|| CKEDITOR.instances.gdsDes.getData().length == 0){
+				alert("도서설명을 입력하세요.");
+				$("#gdsDes").focus();
+				return false;
+			}
+	}
+  </script>
+  
+  
 </head>
 <body>
 
@@ -33,17 +86,12 @@
       <small>도서 상품 등록</small>
     </h1>
 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item active">Contact</li>
-    </ol>
+    <ol class="breadcrumb"></ol> 
 
     <!-- Contact Form -->
     <div class="row">
       <div class="col-lg-8 mb-4">
-        <form action="/goods/register" method="post" enctype="multipart/form-data" >
+        <form action="/goods/register" method="post" enctype="multipart/form-data" name="fr">
           <div class="control-group form-group">
             <div class="controls">
               <label>도서분류</label>
@@ -112,7 +160,7 @@
 		  <!-- ck 에디터 끝 -->
           
           <div id="success"></div>
-          <input type="submit" value="등록하기" class="btn btn-primary" >
+          <input type="submit" value="등록하기" class="btn btn-primary" onclick="return goods_register()">
           <input type="button" value="취소하기" class="btn btn-primary" onclick="cancel()">
         </form>
       </div>
