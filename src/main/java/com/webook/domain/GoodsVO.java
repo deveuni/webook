@@ -7,6 +7,7 @@ public class GoodsVO {
 	private int gdsNum;
 	private String gdsName;
 	private String gdsAuthor;
+	private String gdsCompany;
 	private String category;
 	private int gdsPrice;
 	private int gdsStock;
@@ -16,12 +17,13 @@ public class GoodsVO {
 	
 	// 생성자 
 	public GoodsVO() {}
-	public GoodsVO(int gdsNum, String gdsName, String gdsAuthor, String category, int gdsPrice, int gdsStock,
+	public GoodsVO(int gdsNum, String gdsName, String gdsAuthor,String gdsCompany, String category, int gdsPrice, int gdsStock,
 			String gdsDes, String gdsImg, Timestamp gdsDate) {
 		super();
 		this.gdsNum = gdsNum;
 		this.gdsName = gdsName;
 		this.gdsAuthor = gdsAuthor;
+		this.gdsCompany = gdsCompany;
 		this.category = category;
 		this.gdsPrice = gdsPrice;
 		this.gdsStock = gdsStock;
@@ -54,6 +56,14 @@ public class GoodsVO {
 
 	public void setGdsAuthor(String gdsAuthor) {
 		this.gdsAuthor = gdsAuthor;
+	}
+	
+	public String getGdsCompany() {
+		return gdsCompany;
+	}
+
+	public void setGdsCompany(String gdsCompany) {
+		this.gdsCompany = gdsCompany;
 	}
 
 	public String getCategory() {
@@ -103,15 +113,20 @@ public class GoodsVO {
 	public void setGdsDate(Timestamp gdsDate) {
 		this.gdsDate = gdsDate;
 	}
-
 	
-
+	
 	@Override
 	public String toString() {
-		return "GoodsVO [gdsNum=" + gdsNum + ", gdsName=" + gdsName + ", gdsAuthor=" + gdsAuthor + ", category="
-				+ category + ", gdsPrice=" + gdsPrice + ", gdsStock=" + gdsStock + ", gdsDes=" + gdsDes + ", gdsImg="
-				+ gdsImg + ", gdsDate=" + gdsDate + "]";
+		return "GoodsVO [gdsNum=" + gdsNum + ", gdsName=" + gdsName + ", gdsAuthor=" + gdsAuthor + ", gdsCompany="
+				+ gdsCompany + ", category=" + category + ", gdsPrice=" + gdsPrice + ", gdsStock=" + gdsStock
+				+ ", gdsDes=" + gdsDes + ", gdsImg=" + gdsImg + ", gdsDate=" + gdsDate + "]";
 	}
+	
+	
+	
+	
+	
+
 	
 	
 	

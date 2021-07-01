@@ -26,6 +26,7 @@
 		var category = document.fr.category.value;
 		var gdsName = document.fr.gdsName.value;
 		var gdsAuthor = document.fr.gdsAuthor.value;
+		var gdsCompany = document.fr.gdsCompany.value;
 		var gdsPrice = document.fr.gdsPrice.value;
 		var gdsStock = document.fr.gdsStock.value;
 		var gdsDes = document.fr.gdsDes.value;
@@ -48,6 +49,12 @@
 			return false;
 		}
 
+		if(gdsCompany == ""){
+			alert("도서출판사를 입력하세요.");
+			document.fr.gdsCompany.focus();
+			return false;
+		}
+
 		if(gdsPrice == ""){
 			alert("도서가격을 입력하세요.");
 			document.fr.gdsPrice.focus();
@@ -65,11 +72,9 @@
 				alert("도서설명을 입력하세요.");
 				$("#gdsDes").focus();
 				return false;
-			}
+		}
 	}
   </script>
-  
-  
 </head>
 <body>
 
@@ -118,6 +123,13 @@
             <div class="controls">
               <label>도서저자</label>
               <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" required>
+            </div>
+          </div>
+          
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>도서출판사</label>
+              <input type="text" class="form-control" name="gdsCompany" id="gdsCompany" required>
             </div>
           </div>
           

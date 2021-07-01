@@ -10,8 +10,8 @@
 
 	<!-- 상품 등록 -->
 	<insert id="register" parameterType="com.webook.domain.GoodsVO">
-		insert into tbl_goods (gdsName, gdsAuthor, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
-		values (#{gdsName}, #{gdsAuthor}, #{category}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, now())
+		insert into tbl_goods (gdsName, gdsAuthor, gdsCompany, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
+		values (#{gdsName}, #{gdsAuthor}, #{gdsCompany}, #{category}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, now())
 	</insert>
 	
 	<!-- 상품 목록  -->
@@ -47,7 +47,8 @@
 		update tbl_goods 
 		 set 
 		  gdsName = #{gdsName}, 
-		  gdsAuthor = #{gdsAuthor}, 
+		  gdsAuthor = #{gdsAuthor},
+		  gdsCompany = #{gdsCompany},  
 		  category = #{category}, 
 		  gdsPrice = #{gdsPrice}, 
 		  gdsStock = #{gdsStock}, 

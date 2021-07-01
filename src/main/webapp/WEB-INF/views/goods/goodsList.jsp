@@ -63,7 +63,7 @@
          </a>   
           <div class="card-body">
               <a href="/goods/detail?gdsNum=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">${category.gdsName}</a> <br>
-            	${category.gdsAuthor} | 출판사
+            	${category.gdsAuthor} | ${category.gdsCompany}
             	<br>
             	<fmt:formatNumber value="${category.gdsPrice}" pattern="###,###,###"/>원
           </div>

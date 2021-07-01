@@ -17,6 +17,68 @@
   
   <!-- ck에디터 -->
   <script src="/resources/ckeditor/ckeditor.js"></script>
+  
+  <script type="text/javascript">
+	// 유효성체크
+	function goods_modify(){
+
+		var category = document.fr.category.value;
+		var gdsName = document.fr.gdsName.value;
+		var gdsAuthor = document.fr.gdsAuthor.value;
+		var gdsCompany = document.fr.gdsCompany.value;
+		var gdsPrice = document.fr.gdsPrice.value;
+		var gdsStock = document.fr.gdsStock.value;
+		var gdsDes = document.fr.gdsDes.value;
+
+		if(category == ""){
+			alert("도서분류를 선택하세요.");
+			document.fr.category.focus();
+			return false;
+		}
+
+		if(gdsName == ""){
+			alert("도서이름을 입력하세요.");
+			document.fr.gdsName.focus();
+			return false;
+		}
+
+		if(gdsAuthor == ""){
+			alert("도서저자를 입력하세요.");
+			document.fr.gdsAuthor.focus();
+			return false;
+		}
+
+		if(gdsCompany == ""){
+			alert("도서출판사를 입력하세요.");
+			document.fr.gdsCompany.focus();
+			return false;
+		}
+
+		if(gdsPrice == ""){
+			alert("도서가격을 입력하세요.");
+			document.fr.gdsPrice.focus();
+			return false;
+		}
+
+		if(gdsStock == ""){
+			alert("도서수량을 입력하세요.");
+			document.fr.gdsStock.focus();
+			return false;
+		}
+
+		if(CKEDITOR.instances.gdsDes.getData() == '' 
+			|| CKEDITOR.instances.gdsDes.getData().length == 0){
+				alert("도서설명을 입력하세요.");
+				$("#gdsDes").focus();
+				return false;
+		}
+	}
+
+	// 카테고리
+	$(function(){
+		$("#category").val("${goods.category}").attr("selected","true");
+	});
+  </script>
 </head>
 <body>
 
@@ -40,16 +102,20 @@
       <div class="col-lg-8 mb-4">
         <form action="/goods/modify" method="post" enctype="multipart/form-data" name="fr" role="form" >
         	<input type="hidden" name="gdsNum" value="${goods.gdsNum}">
-
+			 <input type="hidden" name="page" value="${cri.page}">
+             <input type="hidden" name="pageSize" value="${cri.pageSize}">
+	         
 	          <div class="control-group form-group">
     	        <div class="controls">
         	      <label>도서분류</label>
             	  <select class="form-control" name="category" id="category">
-              		<option value="" selected>카테고리 선택</option>
+              		<option value="">카테고리 선택</option>
               		<option value="국내도서" >국내도서</option>
               		<option value="해외도서" >해외도서</option>
               		<option value="eBook" >eBook</option>
               		<option value="웹소설" >웹소설</option>
+              		<option value="음반" >음반</option>
+              		<option value="중고도서" >중고도서</option>
               	  </select>
             	  <p class="help-block"></p>
             	</div>
@@ -68,6 +134,13 @@
               	  <input type="text" class="form-control" name="gdsAuthor" id="gdsAuthor" value="${goods.gdsAuthor}" required >
             	</div>
           	</div>
+          	
+          	<div class="control-group form-group">
+            <div class="controls">
+              <label>도서출판사</label>
+              <input type="text" class="form-control" name="gdsCompany" id="gdsCompany" value="${goods.gdsCompany}" required>
+            </div>
+          </div>
           
           	<div class="control-group form-group">
             	<div class="controls">
@@ -108,7 +181,7 @@
 		  	<!-- ck 에디터 끝 -->
           
           <div id="success"></div>
-	          <input type="submit" value="수정하기" id="modify_Btn" class="btn btn-primary" >
+	          <input type="submit" value="수정하기" id="modify_Btn" class="btn btn-primary" onclick="return goods_modify()">
 	          <input type="button" value="취소하기" id="back" class="btn btn-primary" onclick="cancel()">
         </form>
       </div>
