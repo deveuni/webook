@@ -171,6 +171,12 @@ tr.space {
 					${goods.gdsDes}
 				</div>
 				<!-- 상품정보 끝-->
+				<!-- 상품리뷰 -->
+				<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+					
+					
+				</div>
+				<!-- 상품리뷰 끝 -->
 			</div>		
   </div>
   <!-- 도서정보, 도서리뷰 tab 끝 -->
