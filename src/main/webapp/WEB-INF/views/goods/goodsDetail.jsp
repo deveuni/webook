@@ -171,27 +171,34 @@ tr.space {
 					${goods.gdsDes}
 				</div>
 				<!-- 상품정보 끝-->
+				
 				<!-- 상품리뷰 -->
 				<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+					
+					<c:if test="${userId != null}">
 					<div class="card mb-2">
 						<div class="card-header bg-light">
 	        				<i class="fa fa-comment fa"></i> 도서리뷰
 						</div>
 						<div class="card-body">
+						  <form name="frRe" id="frRe" method="post">
 							<ul class="list-group list-group-flush">
 		    					<li class="list-group-item">
-									<!-- <div class="form-inline mb-2">
+									<div class="form-inline mb-2">
+										<input type="hidden" name="reGdsNum" value="${goods.gdsNum}">
 										<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
-										  <input type="text" class="form-control ml-2" placeholder="Enter yourId" id="replyId">
+										 <%--  <input type="text" class="form-control ml-2" id="replyId" name="reUserId" value="${goods.userId}"> --%>
 										<label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword">
-									</div> -->
+									</div> 
 									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 									<button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button>
 		    					</li>
 							</ul>
+						   </form>	
 						</div>
 					</div>
+					</c:if>
 				</div>
 				<!-- 상품리뷰 끝 -->
 			</div>		

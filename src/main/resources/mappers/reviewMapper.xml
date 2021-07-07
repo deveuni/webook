@@ -7,4 +7,26 @@
   
 <mapper namespace="com.webook.mappers.GoodsReviewMapper">
 
+	<!-- 리뷰작성 -->
+	<insert id="reviewInsert">
+		insert into tbl_review (reUserId, reGdsNum, reDes, reRegdate) 
+		values(#{reUserId}, #{reGdsNum}, #{reDes}, now()) 
+	</insert>
+	
+	<!-- AI제약조건 있는 reNum 가져오기  -->
+	<select id="getRenum" resultType="int">
+		select max(reNum) from tbl_review;
+	</select>
+	
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+
+
+
+
+
+
+
 </mapper>
