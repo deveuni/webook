@@ -65,6 +65,10 @@ tr.space {
 </style>
 </head>
 <body>
+<%
+String userId = (String) session.getAttribute("userId");
+
+%>
 
  <!-- header -->
  <%@ include file="../include/header.jsp" %>
@@ -187,7 +191,7 @@ tr.space {
 									<div class="form-inline mb-2">
 										<input type="hidden" name="reGdsNum" value="${goods.gdsNum}">
 										<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
-										 <%--  <input type="text" class="form-control ml-2" id="replyId" name="reUserId" value="${goods.userId}"> --%>
+										<input type="text" class="form-control ml-2" id="replyId" name="reUserId" value="<%=userId%>" readonly> 
 										<label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword">
 									</div> 
