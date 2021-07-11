@@ -192,17 +192,21 @@ String userId = (String) session.getAttribute("userId");
 										<input type="hidden" name="reGdsNum" value="${goods.gdsNum}">
 										<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
 										<input type="text" class="form-control ml-2" id="replyId" name="reUserId" value="<%=userId%>" readonly> 
-										<label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
-										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword">
+										<!-- <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
+										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
-									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-									<button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button>
+									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
+									<button type="button" class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
 		    					</li>
 							</ul>
 						   </form>	
+						  <!--  <button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button> -->
 						</div>
 					</div>
 					</c:if>
+					<!-- 리뷰 목록 -->
+					<!-- 리뷰 목록 끝 -->
+					
 				</div>
 				<!-- 상품리뷰 끝 -->
 			</div>		
