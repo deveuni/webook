@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 <div class="card mb-2">
 	<div class="card-header bg-light">
 	     <i class="fa fa-comment fa"></i> 도서리뷰목록
@@ -71,7 +72,23 @@
 <script type="text/javascript">
 // 공통 변수 초기화
 let gdsNum = ${param.gdsNum};
+let ck_reDes = "";
+let ck_reGdsNum = 0;
 
+// 오늘일자 포맷팅
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth()+1; // January is 0
+let yyyy = today.getFullYear();
+
+	if(dd<10) {
+		dd='0'+dd
+	}
+	if(mm<10) {
+		mm='0'+mm
+	}
+
+today = yyyy+'-'+mm+'-'_dd;
 
 
 </script>
