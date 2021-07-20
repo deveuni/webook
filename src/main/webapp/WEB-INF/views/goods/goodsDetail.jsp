@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,8 @@
 		}
 	});
 }); 
+
+
 </script>
 <style type="text/css">
 /* 버튼 */
@@ -176,14 +179,23 @@ String userId = (String) session.getAttribute("userId");
 				</div>
 				<!-- 상품정보 끝-->
 				
+				<!-- <script type="text/javascript">
+				$('#reviewToggle').hide();
+				$('#reviewToggleBtn').click(function(){
+					$('#reviewToggle').slideToggle();
+				});
+				</script> -->
+				
 				<!-- 상품리뷰 -->
 				<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 					
 					<c:if test="${userId != null}">
-					<div class="card mb-2">
+					<button class="btn btn-dark mt-3" id="reviewToggleBtn">리뷰쓰기</button>
+					<div class="card mb-2" id="reviewToggle">
 						<div class="card-header bg-light">
 	        				<i class="fa fa-comment fa"></i> 도서리뷰
 						</div>
+						
 						<div class="card-body">
 						  <form name="frRe" id="frRe" method="post">
 							<ul class="list-group list-group-flush">
@@ -195,7 +207,7 @@ String userId = (String) session.getAttribute("userId");
 										<!-- <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
-									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
+									<textarea class="form-control" name="reDes" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
 									<button type="button" class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
 		    					</li>
 							</ul>

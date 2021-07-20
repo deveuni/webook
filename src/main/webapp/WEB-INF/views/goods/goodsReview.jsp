@@ -3,12 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+
 <body>
 <div class="card mb-2">
 	<div class="card-header bg-light">
@@ -89,6 +84,12 @@ let yyyy = today.getFullYear();
 	}
 
 today = yyyy+'-'+mm+'-'_dd;
+
+// 리뷰쓰기 토글
+$('#reviewToggle').hide();
+$('#reviewToggleBtn').click(function(){
+	$('#reviewToggle').slideToggle();
+}); 
 
 
 </script>
