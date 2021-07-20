@@ -34,6 +34,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 import com.webook.domain.PageMaker;
+import com.webook.service.GoodsReviewService;
 import com.webook.service.GoodsService;
 
 @Controller
@@ -46,6 +47,8 @@ public class GoodsController {
 	/* 서비스 처리 객체 주입 */
 	@Inject
 	private GoodsService service;
+	@Inject
+	private GoodsReviewService reService;
 	
 	/* 상품 등록 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -135,9 +138,12 @@ public class GoodsController {
 		// 아이디 세션값
 		model.addAttribute("userId", (String) session.getAttribute("userId"));
 		
+		// 상세페이지 출력
 		GoodsVO goods = service.goodsDetail(gdsNum);
-		
 		model.addAttribute("goods", goods);
+		
+		// 리뷰 조회 후 출력
+		model.addAttribute("reviewList", reService.reviewList(gdsNum));
 		
 		return "/goods/goodsDetail";
 	}

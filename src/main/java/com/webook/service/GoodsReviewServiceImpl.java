@@ -1,5 +1,7 @@
 package com.webook.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +15,25 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 	// DAO 의존 주입
 	@Inject
 	private GoodsReviewDAO grdao;
+	
+	/* 리뷰 목록 */
+	@Override
+	public List<GoodsReviewVO> reviewList(Integer gdsNum) throws Exception {
+		System.out.println("S : 리뷰 목록 서비스");
+		return grdao.reviewList(gdsNum);
+	}
+	
+	/* 리뷰 목록 each */
+	@Override
+	public GoodsReviewVO reviewListEach(Integer reNum) throws Exception {
+		return grdao.reviewListEach(reNum);
+	}
+	
+	/* AI제약조건 있는 reNum 가져오기 */
+	@Override
+	public int getRenum() throws Exception {
+		return grdao.getRenum();
+	}
 	
 	/* 리뷰작성 */
 	@Override
@@ -31,15 +52,11 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 		}
 	}
 	
-	/* AI제약조건 있는 reNum 가져오기 */
-	@Override
-	public int getRenum() throws Exception {
-		return grdao.getRenum();
-	}
 	
 	
 	
-	/* */
+	
+
 	/* */
 	/* */
 	/* */

@@ -1,5 +1,7 @@
 package com.webook.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,10 +17,16 @@ public class GoodsReviewDAOImpl implements GoodsReviewDAO {
 	private SqlSession sql;
 	private static final String namespace = "com.webook.mappers.reviewMapper";
 	
-	/* 리뷰작성 */
+	/* 리뷰 목록 */
 	@Override
-	public void reviewInsert(GoodsReviewVO reVO) throws Exception {
-		sql.insert(namespace + ".reviewInsert", reVO);
+	public List<GoodsReviewVO> reviewList(Integer gdsNum) throws Exception {
+		return sql.selectList(namespace + ".reviewList", gdsNum);
+	}
+	
+	/* 리뷰 목록 each */
+	@Override
+	public GoodsReviewVO reviewListEach(Integer reNum) throws Exception {
+		return sql.selectOne(namespace + ".reviewListEach", reNum);
 	}
 	
 	/* AI제약조건 있는 reNum 가져오기 */
@@ -27,7 +35,14 @@ public class GoodsReviewDAOImpl implements GoodsReviewDAO {
 		return sql.selectOne(namespace+ ".getRenum");
 	}
 	
-	/* */
+	/* 리뷰작성 */
+	@Override
+	public void reviewInsert(GoodsReviewVO reVO) throws Exception {
+		sql.insert(namespace + ".reviewInsert", reVO);
+	}
+	
+	
+	
 	/* */
 	/* */
 	/* */

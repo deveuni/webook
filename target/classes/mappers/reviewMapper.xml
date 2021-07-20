@@ -18,8 +18,21 @@
 		select max(reNum) from tbl_review;
 	</select>
 	
-	<!--  -->
-	<!--  -->
+	<!-- 리뷰 목록 -->
+	<select id="reviewList" resultType="com.webook.domain.GoodsReviewVO">
+		select * 
+		from tbl_review 
+		where reGdsNum = #{gdsNum}
+		order by re_ref asc, re_seq asc
+	</select>
+	
+	<!-- 리뷰 목록 each -->
+	<select id="reviewListEach" resultType="com.webook.domain.GoodsReviewVO">
+		select * 
+		from tbl_review 
+		where reNum = #{reNum}
+	</select>
+	
 	<!--  -->
 	<!--  -->
 
