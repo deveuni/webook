@@ -92,6 +92,8 @@ $('#reviewToggleBtn').click(function(){
 }); 
 
 
+// 리뷰 목록!! 등록!! 중임다. 상세페이지랑 리뷰페이징 연결
+
 // 리뷰 등록 버튼 클릭시
 function clickedReviewBtn(){
 	let reDes = document.frRe.reDes.value;
