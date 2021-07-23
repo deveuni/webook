@@ -5,12 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <body>
+<%
+String userId = (String) session.getAttribute("userId");
+
+%>
+
+
 <div class="card mb-2">
 	<div class="card-header bg-light">
 	     <i class="fa fa-comment fa"></i> 도서리뷰목록
 	</div>
 	
-	<!-- <table id="reviewList" class="container">
+	<table id="reviewList" class="container">
 		<colgroup>
 			<col width="7%" />
 			<col width="15%" />
@@ -28,20 +34,31 @@
 			</tr>
 		</thead>
 		<tbody id="ppap2">
-			<tr>
-				<td></td>
-				<td></td>
-				<td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea></td>
-				<td></td>
-				<td></td>
+		<c:forEach items="${reviewList}" var="review">
+			<tr id="tr_${review.reNum}">
+				<td><input type="hidden" id="td_reNum_${review.reNum}" class="collapseInputCss" value="${review.reNum}" readonly></td>
+				<td>${fn:substring(review.reUserId,0, 4)}*****</td>
+				<td><textarea class="collapseTextareaCss" id="id_reDes_${review.reNum}" rows="3" readonly>${review.reDes}</textarea></td>
+				<td><fmt:formatDate value="${review.reRegdate}" pattern="yyyy-MM-dd" /></td>
+				<td>
+					<%-- <c:if test="${userId == review.reUserId || userId == 'webook' || userId == goods.gdsName}"> --%>
+					<c:if test="${review.re_seq == 0 }">
+					<button class="round-black-btn" id="rereplyBtn_${review.reNum}" onclick="rereplyRe(${review.reNum});">댓글</button><br>
+					</c:if>
+				<button class="round-black-btn updateBtnCustom" id="updateBtn_${review.reNum}" onclick="updateRe(${review.reNum});"> 수정 </button>
+				<button class="round-black-btn deleteBtnCustom" onclick="deleteRe(${review.reNum});">삭제</button>
+				
+				</td>
 			</tr>
+		</c:forEach>
 		</tbody>
 	
-	</table> -->
+	</table> 
 	
 	
-	<div class="card-body">
-		<form name="frRe" id="frRe" method="post">
+	<%-- <div class="card-body">
+		<!-- <form name="frRe" id="frRe" method="post"> -->
+			<c:forEach items="${reviewList}" var="review">
 			<ul class="list-group list-group-flush">
 		    	<li class="list-group-item">
 					<div class="form-inline mb-2">
@@ -59,9 +76,10 @@
 						<button type="button" class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
 		    	</li>
 			</ul>
-		</form>	
+			</c:forEach>
+		<!-- </form>	 -->
 						  <!--  <button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button> -->
-	</div>
+	</div> --%>
 </div>
 
 <script type="text/javascript">
