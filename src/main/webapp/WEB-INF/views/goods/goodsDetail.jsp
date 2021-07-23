@@ -192,12 +192,13 @@ String userId = (String) session.getAttribute("userId");
 					<c:if test="${userId != null}">
 					<button class="btn btn-dark mt-3" id="reviewToggleBtn">리뷰쓰기</button>
 					<div class="card mb-2" id="reviewToggle">
+						 <form name="frRe" id="frRe" method="post">
 						<div class="card-header bg-light">
 	        				<i class="fa fa-comment fa"></i> 도서리뷰
 						</div>
 						
 						<div class="card-body">
-						  <form name="frRe" id="frRe" method="post">
+						 
 							<ul class="list-group list-group-flush">
 		    					<li class="list-group-item">
 									<div class="form-inline mb-2">
@@ -208,14 +209,16 @@ String userId = (String) session.getAttribute("userId");
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
 									<textarea class="form-control" name="reDes" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
-									<button type="button" class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
+									<button class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
 		    					</li>
 							</ul>
+							</div>
 						   </form>	
 						  <!--  <button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button> -->
 						</div>
-					</div>
+					
 					</c:if>
+					</div>
 					<!-- 리뷰 목록 -->
 					<%@ include file="../goods/goodsReview.jsp" %>
 					<!-- 리뷰 목록 끝 -->

@@ -3,12 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<style>
+.updateBtnCustom{
+	width:60px;padding-right:0px;padding-left:0px;display:inline;background:#FFC107;border:solid 2px #FFC107;
+}
+.deleteBtnCustom{
+	width:60px;padding-right:0px;padding-left:0px;display:inline;background:#DC3545;border:solid 2px #DC3545;
+}
+.collapseTextareaCss{
+	width:100%; border: 0;
+}
+.collapseInputCss{
+	width:100%; border: 0;
+}
+</style>
 <body>
-<%
+<%-- <%
 String userId = (String) session.getAttribute("userId");
-
-%>
+%> --%>
 
 
 <div class="card mb-2">
@@ -109,15 +121,49 @@ $('#reviewToggleBtn').click(function(){
 	$('#reviewToggle').slideToggle();
 }); 
 
-
-// 리뷰 목록!! 등록!! 중임다. 상세페이지랑 리뷰페이징 연결
-
 // 리뷰 등록 버튼 클릭시
 function clickedReviewBtn(){
 	let reDes = document.frRe.reDes.value;
-	let 
-}
+	let reUserIdFormat = document.frRe.reUserId.value;
 
+	let info = {
+		reUserId: reUserIdFormat, 
+		reGdsNum: document.frRe.reGdsNum.value, 
+		reDes: reDes,
+	};
+
+	// 리뷰 내용이 없는 경우
+	if(reDes == ""){
+		alert("리뷰를 작성해주세요");
+		document.getElementById('reDes').focus();
+		return false;
+	}
+
+	$.ajax({
+		type: "post", // 데이터를 보낼 방식
+		url: "/detail/review/insert", // 데이터를 보낼 url
+		data: {
+			reUserId: document.frRe.reUserId.value, 
+			reGdsNum: document.frRe.reGdsNum.value, 
+			reDes: reDes
+		}, 
+		success: function(data){//데이터를 보내는 것이 성공했을 시 출력 메시지
+			if(data){
+				alert("리뷰가 등록되었습니다.");
+				$("#reDes").val("");
+				$("#ppap2").after("<tr><td> </td><td>"+info.reUserId+"</td><td>"+info.reDes+"</td><td>"+today+"</td>"
+						+"<td><button class='round-black-btn updateBtnCustom' id='updateBtn_"+data+"' onclick='updateReview("+data+");'> 수정 </button>"
+						+"<button class='round-black-btn deleteBtnCustom' style='margin-left: 5px;' onclick='deleteReview("+data+");'>삭제</button></td></tr>"
+						);
+			}else{
+				alert("리뷰 등록에 오류가 발생했습니다. 다시 시도하세요");
+			}
+		},
+		error:function(request,status,error){
+				alert("예상치 못한 에러가 발생했습니다. 재접속하세요");
+		}
+	});
+};
 // 리뷰 등록 버튼 클릭시 끝
 
 

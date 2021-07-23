@@ -41,11 +41,13 @@ public class GoodsReviewDAOImpl implements GoodsReviewDAO {
 		sql.insert(namespace + ".reviewInsert", reVO);
 	}
 	
-	
-	
 	/* */
 	/* */
-	/* */
+	/* re_ref와 reNum 동가화 */
+	@Override
+	public void syncRe_ref(Integer reNum) throws Exception {
+		sql.update(namespace + ".syncRe_ref", reNum);
+	}
 	/* */
 	
 	

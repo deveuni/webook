@@ -5,7 +5,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.webook.mappers.GoodsReviewMapper">
+<mapper namespace="com.webook.mappers.reviewMapper">
 
 	<!-- 리뷰작성 -->
 	<insert id="reviewInsert">
@@ -33,7 +33,13 @@
 		where reNum = #{reNum}
 	</select>
 	
-	<!--  -->
+	<!-- re_ref와 reNum 동기화 -->
+	<update id="syncRe_ref">
+		update tbl_review set re_ref = #{reNum} 
+		where reNum = #{reNum}
+	</update>
+	
+	
 	<!--  -->
 
 

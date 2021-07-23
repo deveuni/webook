@@ -17,13 +17,11 @@ public interface GoodsReviewDAO {
 	
 	/* 리뷰작성 */
 	public void reviewInsert(GoodsReviewVO reVO) throws Exception;
-	
-	
-	
 
 	/* */
 	/* */
-	/* */
+	/* re_ref와 reNum 동가화 */
+	public void syncRe_ref(Integer reNum) throws Exception;
 	/* */
 
 }

@@ -51,16 +51,15 @@ public class GoodsReviewServiceImpl implements GoodsReviewService {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
 
 	/* */
 	/* */
 	/* */
-	/* */
+	/* re_ref와 reNum 동가화 */
+	@Override
+	public void syncRe_ref(Integer reNum) throws Exception {
+		grdao.syncRe_ref(reNum);
+	}
 	
 	
 }
