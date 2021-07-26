@@ -220,7 +220,8 @@ String userId = (String) session.getAttribute("userId");
 					</c:if>
 					</div>
 					<!-- 리뷰 목록 -->
-					<%@ include file="../goods/goodsReview.jsp" %>
+				<%-- 	<%@ include file="../goods/goodsReview.jsp" %> --%>
+					<jsp:include page="../goods/goodsReview.jsp" />
 					<!-- 리뷰 목록 끝 -->
 					
 				</div>
