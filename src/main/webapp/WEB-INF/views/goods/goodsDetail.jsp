@@ -74,7 +74,7 @@ String userId = (String) session.getAttribute("userId");
 %>
 
  <!-- header -->
- <%@ include file="../include/header.jsp" %>
+ <jsp:include page="../include/header.jsp"/>
  <!-- header -->
  <br><br>
 
@@ -209,20 +209,25 @@ String userId = (String) session.getAttribute("userId");
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
 									<textarea class="form-control" name="reDes" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
-									<button class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
+									<!-- <button class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button>  -->
 		    					</li>
 							</ul>
 							</div>
 						   </form>	
+						   <button class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
 						  <!--  <button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button> -->
 						</div>
 					
 					</c:if>
 					</div>
 					<!-- 리뷰 목록 -->
-				<%-- 	<%@ include file="../goods/goodsReview.jsp" %> --%>
-					<jsp:include page="../goods/goodsReview.jsp" />
+				<%@ include file="../goods/goodsReview.jsp" %> 
+<%-- 				<%@ include file="../goods/goodsReview.jsp" %>  --%>
+				<%-- 	<jsp:include page="goodsReview.jsp" /> --%>
 					<!-- 리뷰 목록 끝 -->
+					
+					
+					
 					
 				</div>
 				<!-- 상품리뷰 끝 -->
@@ -272,7 +277,8 @@ String userId = (String) session.getAttribute("userId");
   <!-- /.container -->
 
    <!-- footer -->
-  <%@ include file="../include/footer.jsp" %>
+   <jsp:include page="../include/footer.jsp"/>
+<%--   <%@ include file="../include/footer.jsp" %> --%>
   <!-- footer -->
 
   <!-- Bootstrap core JavaScript -->
