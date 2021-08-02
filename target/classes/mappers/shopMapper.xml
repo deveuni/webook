@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD지정  -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.webook.mappers.ShopMapper">
+
+<!-- 카트 담기 -->
+<insert id="addCart">
+	insert into tbl_cart (userId, gdsNum, cartStock, addDate) 
+	 values (#{userId}, #{gdsNum}, #{cartStock}, now())
+</insert>
+
+
+<!--  -->
+<!--  -->
+<!--  -->
+
+
+
+</mapper>  

@@ -42,7 +42,7 @@
 </script>
 <style type="text/css">
 /* 버튼 */
-.button {
+.addCart_btn {
   background-color: #008CBA; /* Blue */
   border: none;
   color: white;
@@ -54,7 +54,19 @@
   margin: 4px 2px;
   cursor: pointer;
 }
-.button2 {background-color: #199db3;} /* Blue */
+.buyCart_btn {
+  background-color: #199db3;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
+} /* Blue */
 /* 버튼 끝 */
 
 /* 도서정보 테이블 */
@@ -147,11 +159,36 @@ String userId = (String) session.getAttribute("userId");
 			</tr>   
          </table>
          <br>
-         <button class="button">카트에 넣기</button>
-         <button class="button button2">바로구매</button>
+         <button type="button" class="addCart_btn">카트에 넣기</button>
+         <button class="buyCart_btn">바로구매</button>
       </div> 
     </div>
     <!-- 본문 끝 -->
+    
+    <script type="text/javascript">
+		$(".addCart_btn").click(function(){
+			var gdsNum = $("#gdsNum").val();
+			var cartStock = $(".numBox").val();
+
+			var data = {
+					gdsNum : gdsNum, 
+					cartStock : cartStock
+					};
+
+			$.ajax({
+				url : "/shop/detail/addCart", 
+				type : "post", 
+				success : function(){
+					alert("카트 담기 성공");
+					$(".numBox").val("1");
+				}, 
+				error : function(){
+					alert("카트 담기 실패");
+				}
+			});
+		});
+
+    </script>
     
     <br>
     <br>
