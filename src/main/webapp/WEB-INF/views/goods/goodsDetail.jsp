@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
  
-
+<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
   <title>webook 온라인서점</title>
 
   <!-- Bootstrap core CSS -->
@@ -68,6 +68,9 @@
 
 } /* Blue */
 /* 버튼 끝 */
+
+.plus{ font-size:15px; border:1px; background:gray; }
+.minus{ font-size:15px; border:1px; background:gray; }
 
 /* 도서정보 테이블 */
 table {
@@ -155,7 +158,11 @@ String userId = (String) session.getAttribute("userId");
 			</tr>
 			<tr class="space">
 				<td>수량</td>
-				<td><b>+ ${goods.gdsStock} - </b></td>
+				<td>
+				 <button type="button" class="plus">+</button>
+				 <input type="number" class="numBox" min="1" max="${goods.gdsStock}" value="1" readonly style="width: 35px;"/>
+				 <button type="button" class="minus">-</button>
+				</td> 
 			</tr>   
          </table>
          <br>
@@ -166,6 +173,33 @@ String userId = (String) session.getAttribute("userId");
     <!-- 본문 끝 -->
     
     <script type="text/javascript">
+
+		// 수량 +
+		$(".plus").click(function(){
+			var num = $(".numBox").val();
+			var plusNum = Number(num) + 1;
+
+			if(plusNum >= ${goods.gdsStock}) {
+				$(".numBox").val(num);
+			} else {
+				$(".numBox").val(plusNum);
+			}
+		});
+
+		// 수량 -
+		$(".minus").click(function(){
+			var num = $(".numBox").val();
+			var minusNum = Number(num) - 1;
+
+			if(minusNum <= 0) {
+				$(".numBox").val(num);
+			} else {
+				$(".numBox").val(minusNum);
+			}
+		});
+		
+    
+    	// 카트 담기
 		$(".addCart_btn").click(function(){
 			var gdsNum = $("#gdsNum").val();
 			var cartStock = $(".numBox").val();
