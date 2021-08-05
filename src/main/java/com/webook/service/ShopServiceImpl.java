@@ -1,11 +1,14 @@
 package com.webook.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
 import com.webook.persistence.ShopDAO;
 
@@ -25,7 +28,12 @@ public class ShopServiceImpl implements ShopService {
 		sdao.addCart(cart);
 	}
 	
-	/*  */
+	/* 카트 목록 */
+	@Override
+	public List<CartListVO> cartList(String userId) throws Exception {
+		return sdao.cartList(userId);
+	}
+	
 	/*  */
 	/*  */
 	

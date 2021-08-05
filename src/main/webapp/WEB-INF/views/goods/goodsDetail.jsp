@@ -10,15 +10,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
- 
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
-  <title>webook 온라인서점</title>
 
+  <title>webook 온라인서점</title>
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
+  
 <script type="text/javascript">
 // 수정/삭제 이동
  $(document).ready(function(){
@@ -213,9 +213,14 @@ String userId = (String) session.getAttribute("userId");
 				url : "/goods/detail/addCart",
 				type : "post",
 				data : data, 
-				success : function(){
-					alert("카트 담기 성공");
-					$(".numBox").val("1");
+				success : function(result){
+
+					if(result == 1) {
+						alert("카트 담기 성공");
+						$(".numBox").val("1");
+					} else {
+						alert("로그인한 회원만 사용할 수 있습니다.");
+					}
 				},
 				error : function(){
 					alert("카트 담기 실패");

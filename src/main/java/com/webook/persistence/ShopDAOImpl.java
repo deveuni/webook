@@ -1,10 +1,13 @@
 package com.webook.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
 
 @Repository
@@ -25,8 +28,12 @@ public class ShopDAOImpl implements ShopDAO {
 		sql.insert(namespace + ".addCart", cart);
 	}
 	
+	/* 카트 목록 */
+	@Override
+	public List<CartListVO> cartList(String userId) throws Exception {
+		return sql.selectList(namespace + ".cartList", userId);
+	}
 	
-	/*  */
 	/*  */
 	/*  */
 	

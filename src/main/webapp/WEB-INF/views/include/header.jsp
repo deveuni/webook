@@ -60,6 +60,9 @@
               <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>
             </div>
           </li>
+          <li class="nav-item">
+			<a class="nav-link" href="/goods/cartList">카트</a>
+          </li>
          </c:if> 
          <!-- 네이버 아이디 로그인 상태 --> 
          <c:if test="${naverUserId != null}">
@@ -78,7 +81,11 @@
               <a class="dropdown-item" href="/member/updatePw">비밀번호수정</a>
 			  <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>            </div>
           </li>
+          <li class="nav-item">
+			<a class="nav-link" href="/goods/cartList">카트</a>
+          </li>
          </c:if>
+         
          <!-- 구글 아이디 로그인 상태 -->
          <c:if test="${googleId != null}">
           <li class="nav-item">
@@ -96,6 +103,9 @@
               <a class="dropdown-item" href="/member/updatePw">비밀번호수정</a>
               <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>
             </div>
+          </li>
+          <li class="nav-item">
+			<a class="nav-link" href="/goods/cartList">카트</a>
           </li>
          </c:if>    
          
