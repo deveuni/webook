@@ -160,7 +160,7 @@ String userId = (String) session.getAttribute("userId");
 				<td>수량</td>
 				<td>
 				 <button type="button" class="plus">+</button>
-				 <input type="number" class="numBox" min="1" max="${goods.gdsStock}" value="1" readonly style="width: 35px;"/>
+				 <input type="number" class="numBox" min="1" max="${goods.gdsStock}" value="1" readonly style="width: 42px;"/>
 				 <button type="button" class="minus">-</button>
 				</td> 
 			</tr>   
@@ -210,18 +210,18 @@ String userId = (String) session.getAttribute("userId");
 					};
 
 			$.ajax({
-				url : "/shop/detail/addCart", 
-				type : "post", 
+				url : "/goods/detail/addCart",
+				type : "post",
+				data : data, 
 				success : function(){
 					alert("카트 담기 성공");
 					$(".numBox").val("1");
-				}, 
+				},
 				error : function(){
 					alert("카트 담기 실패");
 				}
 			});
 		});
-
     </script>
     
     <br>

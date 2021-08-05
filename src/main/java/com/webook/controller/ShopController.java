@@ -15,7 +15,7 @@ import com.webook.domain.MemberVO;
 import com.webook.service.ShopService;
 
 @Controller
-@RequestMapping("/shop/*")
+@RequestMapping("/goods/*")
 public class ShopController {
 	
 	@Inject
