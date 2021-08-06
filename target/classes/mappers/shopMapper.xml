@@ -16,6 +16,18 @@
 <!-- 카트 리스트 -->
 <select id="cartList" resultType="com.webook.domain.CartListVO">
 	select 
+	  @rownum := @rownum + 1 as num, 
+   	  c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate, 
+      g.gdsName, g.gdsPrice, g.gdsImg
+    from tbl_cart c, (select @rownum := 0) as R
+        inner join tbl_goods g
+            on c.gdsNum = g.gdsNum
+	where c.userId = #{userId}
+</select>
+
+
+<!-- 
+	select 
 	  row_number() over(order by c.cartNum desc) as num, 
 	  c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate, 
 	  g.gdsName, g.gdsPrice, g.gdsImg 
@@ -23,10 +35,10 @@
 		inner join tbl_goods g
 			on c.gdsNum = g.gdsNum
 		where c.userId = #{userId}  
-</select>
 
 
-<!--  -->
+
+ -->
 <!--  -->
 
 
