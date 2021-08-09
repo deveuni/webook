@@ -19,9 +19,10 @@
 	  @rownum := @rownum + 1 as num, 
    	  c.cartNum, c.userId, c.gdsNum, c.cartStock, c.addDate, 
       g.gdsName, g.gdsPrice, g.gdsImg
-    from tbl_cart c, (select @rownum := 0) as R
+    from tbl_cart c
         inner join tbl_goods g
             on c.gdsNum = g.gdsNum
+            , (select @rownum := 0) as R
 	where c.userId = #{userId}
 </select>
 
