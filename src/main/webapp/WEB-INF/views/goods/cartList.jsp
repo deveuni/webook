@@ -30,57 +30,139 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Blog Home Two
-      <small>Subheading</small>
-    </h1>
+    <h1 class="mt-4 mb-3">카트리스트</h1>
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
+      <!-- <li class="breadcrumb-item">
         <a href="index.html">Home</a>
       </li>
-      <li class="breadcrumb-item active">Blog Home 2</li>
+      <li class="breadcrumb-item active">Blog Home 2</li> -->
     </ol>
 
     <!-- 장바구니 목록 -->
+   <%--  <table>
+    	<c:forEach items="${cartList}" var="cartList">
+    	 <div class="card mb-4">
+      <div class="card-body">
+        <div class="row"> 
+        <tr>
+    		<td>이미지</td>
+    		<td>상품정보</td>
+    		<td>가격</td>
+    		<td>주문</td>
+    	</tr>
+    	<tr>
+    		<td>
+    		<div class="col-lg-6">
+            <a href="#">
+              <img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="150px" height="150px">
+            </a>
+          </div></td>
+          <td>상품정보</td>
+    		<td>가격</td>
+    		<td>주문</td>
+    	</tr>
+         </div>
+      </div>
+      <div class="card-footer text-muted"></div>
+    </div>
+    	<tr>
+    		<td>이미지</td>
+    		<td>상품정보</td>
+    		<td>가격</td>
+    		<td>주문</td>
+    	</tr>
+    	<tr>
+    		<td>
+    		<div class="col-lg-6">
+            <a href="#">
+              <img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="150px" height="150px">
+            </a>
+          </div></td>
+          <td>상품정보</td>
+    		<td>가격</td>
+    		<td>주문</td>
+    	</tr>
+    	
+    	</c:forEach>
+    	<tr>
+    		<c:forEach items="${cartList}" var="cartList"> 
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+        
+          <div class="col-lg-6">
+            <a href="#">
+              <img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="150px" height="150px">
+            </a>
+          </div>
+          
+          <div class="col-lg-6">
+            <h2 class="card-title">${cartList.gdsName}</h2>
+            <p class="card-text">
+            	<span>상품명 : </span> ${cartList.gdsName}<br />
+            	<span>개당 가격 : </span>
+            		<fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice}"/>원<br />
+            	<span>구입 수량 : </span>${cartList.cartStock}개<br />
+            	<span>최종 가격 : </span>
+            		<fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}"/>원<br />	
+            </p>
+            <a href="#" class="btn btn-primary">주문하기</a>
+            <a href="#" class="btn btn-primary">삭제</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted"></div>
+    </div>
+    
+    <!-- <div class="delete">
+     <button type="button" class="delete_btn">삭제</button>
+    </div> -->
+    
+  </c:forEach> 
+    	</tr>
+    </table> --%>
   <c:forEach items="${cartList}" var="cartList"> 
     <div class="card mb-4">
       <div class="card-body">
         <div class="row">
           <div class="col-lg-6">
             <a href="#">
-              <img class="img-fluid rounded" src="${cartList.gdsImg}" alt="">
+              <img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="200px" height="150px">
             </a>
-          </div>
+          </div> 
           <div class="col-lg-6">
             <h2 class="card-title">${cartList.gdsName}</h2>
             <p class="card-text">
             	<span>상품명 : </span> ${cartList.gdsName}<br />
             	<span>개당 가격 : </span>
-            		<fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice}"/><br />
-            	<span>구입 수량 : </span>${cartList.cartStock}<br />
+            		<fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice}"/>원<br />
+            	<span>구입 수량 : </span>${cartList.cartStock}개<br />
             	<span>최종 가격 : </span>
-            		<fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}"/><br />	
+            		<fmt:formatNumber pattern="###,###,###" value="${cartList.gdsPrice * cartList.cartStock}"/>원<br />	
             </p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <a href="#" class="btn btn-primary">주문하기</a>
+            <a href="#" class="btn btn-primary">삭제</a>
           </div>
         </div>
       </div>
-      <div class="card-footer text-muted">
-        Posted on January 1, 2017 by
-        <a href="#">Start Bootstrap</a>
-      </div>
+      <div class="card-footer text-muted"></div>
     </div>
     
-    <div class="delete">
+    <!-- <div class="delete">
      <button type="button" class="delete_btn">삭제</button>
-    </div>
+    </div> -->
     
-  </c:forEach> 
+    <!-- dd -->
+    
+  </c:forEach>  
 
  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
-   1.  shop매퍼에서 mysql 오라클 문법 구문 다른 거 수정하기!!~~ 
-   2.  webook 말고 다른 아이디로 카트담기 안됨 ㅠㅠㅠ 자증나 ㅎ
+   
+   1.  webook 말고 다른 아이디로 카트담기 안됨 ㅠㅠㅠ 자증나 ㅎ
+   2. 카트리스트 css 정리 
+   
   -->
 
 
