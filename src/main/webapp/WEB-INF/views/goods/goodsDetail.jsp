@@ -85,7 +85,6 @@ tr.space {
 <body>
 <%
 String userId = (String) session.getAttribute("userId");
-
 %>
 
  <!-- header -->

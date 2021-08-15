@@ -153,7 +153,6 @@
      <button type="button" class="delete_btn">삭제</button>
     </div> -->
     
-    <!-- dd -->
     
   </c:forEach>  
 
