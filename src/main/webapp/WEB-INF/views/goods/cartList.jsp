@@ -122,11 +122,28 @@
   </c:forEach> 
     	</tr>
     </table> --%>
+    
+	<ul>
+	 <li>
+  		<div class="allCheck">
+   			<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">모두 선택</label> 
+  		</div>
+  
+  		<div class="delBtn">
+   			<button type="button" class="selectDelete_btn">선택 삭제</button> 
+ 	 	</div>
+	 </li>
+	</ul>
+	    
+    
   <c:forEach items="${cartList}" var="cartList"> 
     <div class="card mb-4">
       <div class="card-body">
         <div class="row">
           <div class="col-lg-6">
+          <div class="checkBox">
+   			<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}" />
+  		  </div>
             <a href="#">
               <img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="200px" height="150px">
             </a>
