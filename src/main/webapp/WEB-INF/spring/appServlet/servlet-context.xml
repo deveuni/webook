@@ -21,7 +21,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.webook.controller" />
+	<context:component-scan base-package="com.webook.controller" use-default-filters="false">
+	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+
+</context:component-scan>
+	
+<!-- 	<context:component-scan base-package="com.webook.controller" /> -->
 	
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
 	<beans:bean id="naverLoginBO" class="com.webook.controller.NaverLoginBO" />
@@ -32,3 +37,5 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 </beans:beans>
+
+

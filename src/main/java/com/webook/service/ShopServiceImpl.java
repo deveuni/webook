@@ -34,7 +34,12 @@ public class ShopServiceImpl implements ShopService {
 		return sdao.cartList(userId);
 	}
 	
-	/*  */
+	/* 카트 삭제 */
+	@Override
+	public void deleteCart(CartVO cart) throws Exception {
+		sdao.deleteCart(cart);
+	}
+	
 	/*  */
 	
 }
