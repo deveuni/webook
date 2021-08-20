@@ -13,14 +13,14 @@
   <meta name="author" content="">
 
   <title>webook 온라인서점</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
   
-  <!-- 제이쿼리 -->
+   <!-- Bootstrap core CSS -->
+  <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
+  
   
 <style type="text/css">
 /*선택박스*/
@@ -72,8 +72,8 @@
 				if(confirm_val) {
 					var checkArr = new Array();
 
-					$("input[class = 'chBox']:checked").each(function(){
-						checkArr.push($(this).attr("data-carNum"));
+					$("input[class='chBox']:checked").each(function(){
+						checkArr.push($(this).attr("data-cartNum"));
 					});
 
 					$.ajax({
@@ -140,7 +140,33 @@
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
  	  			<a href="#" class="btn btn-primary">주문하기</a>
-            	<a href="#" class="btn btn-primary" data-cartNum="${cartList.cartNum}">삭제</a>
+            	<button type="button" class="btn btn-primary" id="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
+            	
+            	<script type="text/javascript">
+					$("#delete_${cartList.cartNum}_btn").click(function(){
+						var confirm_val = confirm("정말 삭제하시겠습니까?");
+
+						if(confirm_val) {
+							var checkArr = new Array();
+							
+							checkArr.push($(this).attr("data-cartNum"));
+
+							$.ajax({
+								url : "/goods/deleteCart",
+								type : "post",
+								data : { chbox : checkArr },
+								success : function(result){
+
+									if(result == 1) {
+										location.href = "/goods/cartList";
+									} else {
+										alert("삭제 실패");
+									}
+								}
+							});
+						}
+					});
+   		</script>
  	  		</td>
  	  	</tr>
  	  </tbody>
@@ -168,8 +194,9 @@
   <!-- footer -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
