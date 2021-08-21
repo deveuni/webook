@@ -219,6 +219,7 @@ String userId = (String) session.getAttribute("userId");
 						$(".numBox").val("1");
 					} else {
 						alert("로그인한 회원만 사용할 수 있습니다.");
+						$(".numBox").val("1");
 					}
 				},
 				error : function(){

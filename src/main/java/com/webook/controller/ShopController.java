@@ -36,13 +36,14 @@ public class ShopController {
 		int result = 0;
 		
 		MemberVO member = (MemberVO)session.getAttribute("member");
+		//MemberVO member = (MemberVO)session.getAttribute("userId");
 		
 		
-		 if(member != null) { cart.setUserId(member.getUserId());
-		 
+		 if(member != null) { 
+			cart.setUserId(member.getUserId());
 			service.addCart(cart);
-			
-			 result = 1; }
+			 result = 1; 
+		 }
 			 
 		return result;
 	}
