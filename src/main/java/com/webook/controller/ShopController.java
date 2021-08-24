@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
 import com.webook.domain.MemberVO;
+import com.webook.domain.OrderDetailVO;
+import com.webook.domain.OrderVO;
 import com.webook.service.ShopService;
 
 @Controller
@@ -89,13 +91,19 @@ public class ShopController {
 		return result;
 	}
 	
+	/* 주문 */
+	@RequestMapping(value = "/cartList", method = RequestMethod.POST)
+	public void order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
+		log.info("order");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = member.getUserId();
+		
+		service.orderInfo(order);
+		service.orderInfo_Details(orderDetail);
+	}
 	
-	// 상품테이블 gdsNum을 참조안하면 다른 아이디로 카트담기 되는데 연결된 상품 테이블이 없음!! 어케해결해야하지 
 	
-	
-	
-	
-	/*  */
 	/*  */
 	/*  */
 	

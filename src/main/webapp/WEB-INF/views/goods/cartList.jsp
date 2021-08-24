@@ -43,6 +43,17 @@
 .listResult::after { content:""; display:block; clear:both; }
 /* 총 합계 끝 */
 
+/* 주문정보 */
+.orderInfo { border:5px solid #eee; padding:20px; width: 1067px; display: none; }
+.orderInfo .inputArea { margin:10px 0; }
+.orderInfo .inputArea label { display:inline-block; width:120px; margin-right:10px; }
+.orderInfo .inputArea input { font-size:14px; padding:5px; }
+#userAddr2, #userAddr3 { width:250px; }
+
+.orderInfo .inputArea:last-child { margin-top:30px; }
+.orderInfo .inputArea button { font-size:15px; border:2px solid #ccc; padding:5px 10px;  margin-right:20px;}
+/* 주문정보 끝 */
+
 
 </style>  
 </head>
@@ -197,8 +208,72 @@
  	  </div>
  	  <div class="orderOpen">
  	  	<button type="button" id="orderOpen_btn"  class="btn btn-info">주문 정보 입력</button>
+ 	  	
+ 	  	<script type="text/javascript">
+			$("#orderOpen_btn").click(function(){
+				$(".orderInfo").slideDown();
+				$("#orderOpen_btn").slideUp();
+			});
+ 	  	</script>
+ 	  	
  	  </div>
  	</div>
+ 	
+ 	 <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+          	<div class="orderInfo"> 
+ 			  <form role="form" method="post" autocomplete="off">
+    
+  				<input type="hidden" name="amount" value="${sum}" />
+    
+  				<div class="inputArea">
+   				 <label for="">수령인</label>
+   				 <input type="text" name="orderRec" id="orderRec" required="required" />
+  				</div>
+  
+  				<div class="inputArea">
+   				 <label for="orderPhon">수령인 연락처</label>
+   				 <input type="text" name="orderPhon" id="orderPhon" required="required" />
+  				</div>
+  
+  				<div class="inputArea">
+   				 <label for="postcode">우편번호</label>
+   				 <input type="text" name="postcode" id="postcode" required="required" />
+  				</div>
+  
+  				<div class="inputArea">
+   				 <label for="userAddr1">1차 주소</label>
+   				 <input type="text" name="userAddr1" id="userAddr1" required="required" />
+  				</div>
+  
+  				<div class="inputArea">
+   				 <label for="userAddr2">2차 주소</label>
+   				 <input type="text" name="userAddr2" id="userAddr2" required="required" />
+  				</div>
+  
+  				<div class="inputArea">
+   				 <button type="submit" id="order_btn" class="btn btn-info">주문</button>
+   				 <button type="button" id="cancel_btn" class="btn btn-primary">취소</button> 
+   				 
+   				 <script type="text/javascript">
+					$("#cancel_btn").click(function(){
+						$(".orderInfo").slideUp();
+						$("#orderOpen_btn").slideDown();
+					});
+ 	  			</script>
+  				</div>
+ 			 </form> 
+			</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        Posted on January 1, 2017 by
+        <a href="#">Start Bootstrap</a>
+      </div>
+      </div>
 
 	<br>
  

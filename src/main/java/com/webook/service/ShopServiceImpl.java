@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
+import com.webook.domain.OrderDetailVO;
+import com.webook.domain.OrderVO;
 import com.webook.persistence.ShopDAO;
 
 @Service
@@ -40,6 +42,20 @@ public class ShopServiceImpl implements ShopService {
 		sdao.deleteCart(cart);
 	}
 	
+	/* 주문 정보 */
+	@Override
+	public void orderInfo(OrderVO order) throws Exception {
+		sdao.orderInfo(order);
+	}
+	
+	/* 주문 상세 정보 */
+	@Override
+	public void orderInfo_Details(OrderDetailVO orderDetail) throws Exception {
+		sdao.orderInfo_Details(orderDetail);
+	}
+	
+	/*  */
+	/*  */
 	/*  */
 	
 }

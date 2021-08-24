@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
+import com.webook.domain.OrderDetailVO;
+import com.webook.domain.OrderVO;
 
 @Repository
 public class ShopDAOImpl implements ShopDAO {
@@ -40,6 +42,20 @@ public class ShopDAOImpl implements ShopDAO {
 		sql.delete(namespace + ".deleteCart", cart);
 	}
 	
+	/* 주문 정보 */
+	@Override
+	public void orderInfo(OrderVO order) throws Exception {
+		sql.insert(namespace + ".orderInfo", order);
+	}
+	
+	/* 주문 상세 정보 */
+	@Override
+	public void orderInfo_Details(OrderDetailVO orderDetail) throws Exception {
+		sql.insert(namespace + ".orderInfo_Details", orderDetail);
+	}
+	
+	/*  */
+	/*  */
 	/*  */
 	
 	
