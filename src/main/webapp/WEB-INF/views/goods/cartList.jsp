@@ -33,6 +33,17 @@
 .checkBox { float:left; width:30px; }
 .checkBox input { width:16px; height:16px; }
 /*선택박스 끝*/
+
+/* 총 합계 */
+.listResult { padding:20px; background:#eee; }
+.listResult .sum { float:left; width:45%; font-size:22px; }
+
+.listResult .orderOpne { float:right; width:45%; text-align:right; }
+.listResult .orderOpne button { font-size:18px; padding:5px 10px; border:1px solid #999; background:#fff;}
+.listResult::after { content:""; display:block; clear:both; }
+/* 총 합계 끝 */
+
+
 </style>  
 </head>
 <body>
@@ -64,9 +75,9 @@
 		});
   	</script>
   	<div class="delBtn">
-   		<button type="button" class="selectDelete_btn">삭제</button> 
+   		<button type="button" id="selectDelete_btn" class="btn btn-info">삭제</button> 
    		<script type="text/javascript">
-			$(".selectDelete_btn").click(function(){
+			$("#selectDelete_btn").click(function(){
 				var confirm_val = confirm("정말 삭제하시겠습니까?");
 
 				if(confirm_val) {
@@ -106,6 +117,9 @@
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">주문</th>
  	  	</tr>
  	  </thead>
+ 	  
+ 	  <c:set var="sum" value="0"/>
+ 	  
  	  <c:forEach items="${cartList}" var="cartList">
  	  <tbody>
  	  	<tr>
@@ -170,11 +184,23 @@
  	  		</td>
  	  	</tr>
  	  </tbody>
+ 	  
+		<c:set var="sum" value="${sum + (cartList.gdsPrice * cartList.cartStock)}" />
+ 	  
  	  </c:forEach> 
  	</table>
  <!-- 카트리스트 끝-->
+ 	
+ 	<div class="listResult">
+ 	  <div class="sum">
+ 		총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/>원
+ 	  </div>
+ 	  <div class="orderOpen">
+ 	  	<button type="button" id="orderOpen_btn"  class="btn btn-info">주문 정보 입력</button>
+ 	  </div>
+ 	</div>
 
-
+	<br>
  
     <!-- Pagination -->
     <ul class="pagination justify-content-center mb-4">

@@ -25,9 +25,6 @@
             , (select @rownum := 0) as R
 	where c.userId = #{userId}
 </select>
- 
-
-
 
 <!-- 
 	select 
@@ -41,14 +38,26 @@
 
  -->
  
-<!-- 카트삭제  -->
+<!-- 카트삭제 -->
 <delete id="deleteCart">
 	delete from tbl_cart 
 	 where cartNum = #{cartNum} and userId = #{userId}
 </delete>
 
-<!--  -->
-<!--  -->
+<!-- 주문정보 -->
+<insert id="orderInfo">
+	insert into tbl_order(orderId, userId, orderRec, userAddr1, userAddr2, postcode, orderPhon, amount, orderDate) 
+	 valuse(#{orderId}, #{userId}, #{orderRec}, #{userAddr1}, #{userAddr2}, #{postcode}, #{orderPhon}, #{amount}, now())
+</insert>
+
+<!-- 주문상세정보 -->
+<insert id="orderInfo_Details">
+	insert into tbl_order_details(orderId, gdsNum, cartStock) 
+	 select #{orderId}, gdsNum, cartStock 
+	 	from tbl_cart
+</insert>
+
+
 <!--  -->
 <!--  -->
 
