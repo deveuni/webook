@@ -54,8 +54,18 @@ public class ShopDAOImpl implements ShopDAO {
 		sql.insert(namespace + ".orderInfo_Details", orderDetail);
 	}
 	
-	/*  */
-	/*  */
+	/* 카트 비우기 */
+	@Override
+	public void cartAllDelete(String userId) throws Exception {
+		sql.delete(namespace + ".cartAllDelete", userId);
+	}
+	
+	/* 주문 목록 */
+	@Override
+	public List<OrderVO> orderList(OrderVO order) throws Exception {
+		return sql.selectList(namespace + ".orderList", order);
+	}
+	
 	/*  */
 	
 	

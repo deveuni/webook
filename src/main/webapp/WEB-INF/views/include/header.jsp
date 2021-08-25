@@ -107,6 +107,9 @@
           <li class="nav-item">
 			<a class="nav-link" href="/goods/cartList">카트</a>
           </li>
+          <li class="nav-item">
+			<a class="nav-link" href="/goods/orderList">주문리스트</a>
+          </li>
          </c:if>    
          
          <!-- 관리자만 상품등록 보이기 -->

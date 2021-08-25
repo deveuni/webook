@@ -24,8 +24,12 @@ public interface ShopService {
 	/* 주문 상세 정보 */
 	public void orderInfo_Details(OrderDetailVO orderDetail) throws Exception;
 	
+	/* 카트 비우기 */
+	public void cartAllDelete(String userId) throws Exception;
 	
-	/*  */
+	/* 주문 목록 */
+	public List<OrderVO> orderList(OrderVO order) throws Exception;
+	
 	/*  */
 	
 }

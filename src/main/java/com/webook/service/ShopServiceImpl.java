@@ -19,7 +19,7 @@ public class ShopServiceImpl implements ShopService {
 
 	/* DB를 처리하기 위한 객체 주입 */ 
 	@Inject
-	private ShopDAO sdao;
+	private ShopDAO dao;
 	
 	private static final Logger log =
 			LoggerFactory.getLogger(GoodsServiceImpl.class);
@@ -27,35 +27,45 @@ public class ShopServiceImpl implements ShopService {
 	/* 카트담기 */
 	@Override
 	public void addCart(CartVO cart) throws Exception {
-		sdao.addCart(cart);
+		dao.addCart(cart);
 	}
 	
 	/* 카트 목록 */
 	@Override
 	public List<CartListVO> cartList(String userId) throws Exception {
-		return sdao.cartList(userId);
+		return dao.cartList(userId);
 	}
 	
 	/* 카트 삭제 */
 	@Override
 	public void deleteCart(CartVO cart) throws Exception {
-		sdao.deleteCart(cart);
+		dao.deleteCart(cart);
 	}
 	
 	/* 주문 정보 */
 	@Override
 	public void orderInfo(OrderVO order) throws Exception {
-		sdao.orderInfo(order);
+		dao.orderInfo(order);
 	}
 	
 	/* 주문 상세 정보 */
 	@Override
 	public void orderInfo_Details(OrderDetailVO orderDetail) throws Exception {
-		sdao.orderInfo_Details(orderDetail);
+		dao.orderInfo_Details(orderDetail);
 	}
 	
-	/*  */
-	/*  */
+	/* 카트 비우기 */
+	@Override
+	public void cartAllDelete(String userId) throws Exception {
+		dao.cartAllDelete(userId);
+	}
+	
+	/* 주문 목록 */
+	@Override
+	public List<OrderVO> orderList(OrderVO order) throws Exception {
+		return dao.orderList(order);
+	}
+	
 	/*  */
 	
 }
