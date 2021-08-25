@@ -63,6 +63,9 @@
           <li class="nav-item">
 			<a class="nav-link" href="/goods/cartList">카트</a>
           </li>
+           <li class="nav-item">
+			<a class="nav-link" href="/goods/orderList">주문리스트</a>
+          </li>
          </c:if> 
          <!-- 네이버 아이디 로그인 상태 --> 
          <c:if test="${naverUserId != null}">

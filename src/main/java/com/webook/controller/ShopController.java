@@ -20,6 +20,7 @@ import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
 import com.webook.domain.MemberVO;
 import com.webook.domain.OrderDetailVO;
+import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 import com.webook.service.ShopService;
 
@@ -144,6 +145,25 @@ public class ShopController {
 		model.addAttribute("orderList", orderList);
 	}
 	
+	/* 주문 상세 목록 */
+	@RequestMapping(value = "/orderView", method = RequestMethod.GET)
+	public void getOrderList(HttpSession session, 
+					@RequestParam("n") String orderId, OrderVO order, Model model) throws Exception {
+		log.info("get order view");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = member.getUserId();
+		
+		order.setUserId(userId);
+		order.setOrderId(orderId);
+		
+		List<OrderListVO> orderView = service.orderView(order);
+		
+		model.addAttribute("orderView", orderView);
+	}
+	
+	/*  */
+	/*  */
 	/*  */
 	
 }

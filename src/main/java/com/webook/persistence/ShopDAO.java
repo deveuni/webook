@@ -5,6 +5,7 @@ import java.util.List;
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
 import com.webook.domain.OrderDetailVO;
+import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 
 public interface ShopDAO {
@@ -30,6 +31,10 @@ public interface ShopDAO {
 	/* 주문 목록 */
 	public List<OrderVO> orderList(OrderVO order) throws Exception;
 	
+	/* 특정 주문 목록 */
+	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+	/*  */
+	/*  */
 	/*  */
 
 }

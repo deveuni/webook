@@ -34,25 +34,21 @@
 .checkBox input { width:16px; height:16px; }
 /*선택박스 끝*/
 
-/* 총 합계 */
-.listResult { padding:20px; background:#eee; }
-.listResult .sum { float:left; width:45%; font-size:22px; }
-
-.listResult .orderOpne { float:right; width:45%; text-align:right; }
-.listResult .orderOpne button { font-size:18px; padding:5px 10px; border:1px solid #999; background:#fff;}
-.listResult::after { content:""; display:block; clear:both; }
-/* 총 합계 끝 */
-
 /* 주문정보 */
-.orderInfo { border:5px solid #eee; padding:20px; width: 1067px; display: none; }
+/* .orderInfo { border:5px solid #eee; padding:20px; width: 1067px; display: none; }
 .orderInfo .inputArea { margin:10px 0; }
 .orderInfo .inputArea label { display:inline-block; width:120px; margin-right:10px; }
 .orderInfo .inputArea input { font-size:14px; padding:5px; }
 #userAddr2, #userAddr3 { width:250px; }
 
 .orderInfo .inputArea:last-child { margin-top:30px; }
-.orderInfo .inputArea button { font-size:15px; border:2px solid #ccc; padding:5px 10px;  margin-right:20px;}
+.orderInfo .inputArea button { font-size:15px; border:2px solid #ccc; padding:5px 10px;  margin-right:20px;} */
 /* 주문정보 끝 */
+
+/* orderInfo */
+.orderInfo { border:5px solid #eee; padding:10px 20px; margin:20px 0;}
+ .orderInfo span { font-size:20px; font-weight:bold; display:inline-block; width:90px; }
+/* orderInfo 끝 */
 
 
 </style>  
@@ -66,11 +62,24 @@
 
   <!-- Page Content -->
   <div class="container">
+  
+  
+ 
 
     <!-- 주문리스트 -->
     <h1 class="mt-4 mb-3">주문리스트</h1>
 
     <ol class="breadcrumb"></ol> 
+    
+    <div class="orderInfo">
+  		<c:forEach items="${orderView}" var="orderView" varStatus="status">
+   			<c:if test="${status.first}">
+    			<p><span>수령인</span>${orderView.orderRec}</p>
+    			<p><span>주소</span>(${orderView.postcode}) ${orderView.userAddr1} ${orderView.userAddr2}</p>
+    			<p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderView.amount}" /> 원</p>
+   			</c:if>
+  		</c:forEach>
+ </div>
 	
   	<div class="allCheck">
    		<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">전체선택</label> 
@@ -121,48 +130,48 @@
  	<table class="table" style="display:table;">
  	  <thead>
  	  	<tr>
- 	  		<th colspan="3" scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">주문번호</th>
- 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">수령인</th>
- 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">주소</th>
- 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">가격</th>
+ 	  		<th colspan="3" scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">상품명</th>
+ 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">개당가격</th>
+ 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">구입수량</th>
+ 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">최종가격</th>
+ 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;"></th>
  	  	</tr>
  	  </thead>
  	  
  	  <c:set var="sum" value="0"/>
  	  
- 	  <c:forEach items="${orderList}" var="orderList">
+ 	  <c:forEach items="${orderView}" var="orderView">
  	  <tbody>
  	  	<tr>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
- 	  	  		<%-- <div class="checkBox">
+ 	  	  		<div class="checkBox">
    					<input type="checkbox" name="chBox" class="chBox" data-cartNum="${orderList.orderId}" />
    					<script type="text/javascript">
 						$(".chBox").click(function(){
 							$("#allCheck").prop("checked", false);
 						});
    					</script>
-  		  		</div> --%>
- 	  	  		<%-- <a href="#">
-             		<img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="100px" height="150px">
-          		</a> --%>
+  		  		</div> 
+ 	  	  		<a href="#">
+             		<img class="img-fluid rounded" src="${orderView.gdsImg}" alt="" width="100px" height="150px">
+          		</a> 
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
- 	  			<a href = "/goods/orderView?n=${orderList.orderId}">${orderList.orderId}</a>
+ 	  			${orderView.gdsName}
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
-				  	
+ 	  		</td>
+ 	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
+				<fmt:formatNumber pattern="###,###,###" value="${orderView.gdsPrice}" /> 원<br />  	
  	  		</td> 
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
- 	  			${orderList.orderRec}
+ 	  			${orderView.cartStock} 개
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
-				(${orderList.postcode}) ${orderList.userAddr1} ${orderList.userAddr2}
+				<fmt:formatNumber pattern="###,###,###" value="${orderView.gdsPrice * orderView.cartStock}" /> 원 
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
-				<fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원
- 	  		</td>
- 	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
- 	  			<%-- <a href="#" class="btn btn-primary">주문하기</a>
+ 	  			<!-- <a href="#" class="btn btn-primary">주문하기</a> -->
             	<button type="button" class="btn btn-primary" id="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
             	
             	<script type="text/javascript">
@@ -189,7 +198,7 @@
 							});
 						}
 					});
-   		</script> --%>
+   		</script> 
  	  		</td>
  	  	</tr>
  	  </tbody>
@@ -200,79 +209,7 @@
  	</table>
  <!-- 주문리스트 끝-->
  	
- 	<%-- <div class="listResult">
- 	  <div class="sum">
- 		총 합계 : <fmt:formatNumber pattern="###,###,###" value="${sum}"/>원
- 	  </div>
- 	  <div class="orderOpen">
- 	  	<button type="button" id="orderOpen_btn"  class="btn btn-info">주문 정보 입력</button>
- 	  	
- 	  	<script type="text/javascript">
-			$("#orderOpen_btn").click(function(){
-				$(".orderInfo").slideDown();
-				$("#orderOpen_btn").slideUp();
-			});
- 	  	</script>
- 	  	
- 	  </div>
- 	</div> --%>
- 	
- 	<%--  <div class="card mb-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-lg-6">
-          	<div class="orderInfo"> 
- 			  <form role="form" method="post" autocomplete="off">
-    
-  				<input type="hidden" name="amount" value="${sum}" />
-    
-  				<div class="inputArea">
-   				 <label for="">수령인</label>
-   				 <input type="text" name="orderRec" id="orderRec" required="required" />
-  				</div>
-  
-  				<div class="inputArea">
-   				 <label for="orderPhon">수령인 연락처</label>
-   				 <input type="text" name="orderPhon" id="orderPhon" required="required" />
-  				</div>
-  
-  				<div class="inputArea">
-   				 <label for="postcode">우편번호</label>
-   				 <input type="text" name="postcode" id="postcode" required="required" />
-  				</div>
-  
-  				<div class="inputArea">
-   				 <label for="userAddr1">1차 주소</label>
-   				 <input type="text" name="userAddr1" id="userAddr1" required="required" />
-  				</div>
-  
-  				<div class="inputArea">
-   				 <label for="userAddr2">2차 주소</label>
-   				 <input type="text" name="userAddr2" id="userAddr2" required="required" />
-  				</div>
-  
-  				<div class="inputArea">
-   				 <button type="submit" id="order_btn" class="btn btn-info">주문</button>
-   				 <button type="button" id="cancel_btn" class="btn btn-primary">취소</button> 
-   				 
-   				 <script type="text/javascript">
-					$("#cancel_btn").click(function(){
-						$(".orderInfo").slideUp();
-						$("#orderOpen_btn").slideDown();
-					});
- 	  			</script>
-  				</div>
- 			 </form> 
-			</div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer text-muted">
-        Posted on January 1, 2017 by
-        <a href="#">Start Bootstrap</a>
-      </div>
-      </div>
- --%>
+ 
 	<br>
  
     <!-- Pagination -->

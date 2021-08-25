@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
 import com.webook.domain.OrderDetailVO;
+import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 
 @Repository
@@ -66,6 +67,14 @@ public class ShopDAOImpl implements ShopDAO {
 		return sql.selectList(namespace + ".orderList", order);
 	}
 	
+	/* 특정 주문 목록 */
+	@Override
+	public List<OrderListVO> orderView(OrderVO order) throws Exception {
+		return sql.selectList(namespace + ".orderView", order);
+	}
+	
+	/*  */
+	/*  */
 	/*  */
 	
 	

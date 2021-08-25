@@ -71,7 +71,21 @@
 		where userId = #{userId}	
 </select>
 
-<!--  -->
+<!-- 특정 주문 목록 -->
+<select id="orderView" resultType="com.webook.domain.OrderListVO">
+	select
+		o.orderId, o.userId, o.orderRec, o.postcode, o.userAddr1, o.userAddr2, o.orderPhon, o.amount, o.orderDate, 
+		d.orderDetailsNum, d.gdsNum, d.cartStock, 
+		g.gdsName, g.gdsImg, g.gdsPrice 
+	from tbl_order o 
+			inner join tbl_order_details d 
+				on o.orderId = d.orderId 
+			inner join tbl_goods g 
+				on d.gdsNum = g.gdsNum 
+		where o.userId = #{userId}
+			and o.orderId = #{orderId}	
+</select>
+
 <!--  -->
 
 
