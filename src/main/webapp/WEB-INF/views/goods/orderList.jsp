@@ -134,17 +134,14 @@
  	  <tbody>
  	  	<tr>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
- 	  	  		<%-- <div class="checkBox">
+ 	  	  		<div class="checkBox">
    					<input type="checkbox" name="chBox" class="chBox" data-cartNum="${orderList.orderId}" />
    					<script type="text/javascript">
 						$(".chBox").click(function(){
 							$("#allCheck").prop("checked", false);
 						});
    					</script>
-  		  		</div> --%>
- 	  	  		<%-- <a href="#">
-             		<img class="img-fluid rounded" src="${cartList.gdsImg}" alt="" width="100px" height="150px">
-          		</a> --%>
+  		  		</div> 
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
  	  			<a href = "/goods/orderView?n=${orderList.orderId}">${orderList.orderId}</a>
