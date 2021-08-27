@@ -86,6 +86,16 @@
 			and o.orderId = #{orderId}	
 </select>
 
+<!-- 모든 유저의 주문 목록 -->
+<select id="allOrderList" resultType="com.webook.domain.OrderVO">
+	select 
+		orderId, userId, orderRec, userAddr1, userAddr2, postcode, 
+		orderPhon, amount, orderDate, delivery 
+	from tbl_order
+</select>
+
+<!--  -->
+<!--  -->
 <!--  -->
 
 

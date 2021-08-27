@@ -13,10 +13,11 @@ public class OrderVO {
 	private String orderPhon;
 	private int amount;
 	private Timestamp orderDate;
+	private String delivery;
 	
 	public OrderVO() {}
 	public OrderVO(String orderId, String userId, String orderRec, String userAddr1, String userAddr2, String postcode,
-			String orderPhon, int amount, Timestamp orderDate) {
+			String orderPhon, int amount, Timestamp orderDate, String delivery) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
@@ -27,9 +28,9 @@ public class OrderVO {
 		this.orderPhon = orderPhon;
 		this.amount = amount;
 		this.orderDate = orderDate;
+		this.delivery = delivery;
 	}
-	
-	
+
 	public String getOrderId() {
 		return orderId;
 	}
@@ -84,13 +85,19 @@ public class OrderVO {
 	public void setOrderDate(Timestamp orderDate) {
 		this.orderDate = orderDate;
 	}
+	public String getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "OrderVO [orderId=" + orderId + ", userId=" + userId + ", orderRec=" + orderRec + ", userAddr1="
 				+ userAddr1 + ", userAddr2=" + userAddr2 + ", postcode=" + postcode + ", orderPhon=" + orderPhon
-				+ ", amount=" + amount + ", orderDate=" + orderDate + "]";
+				+ ", amount=" + amount + ", orderDate=" + orderDate + ", delivery=" + delivery + "]";
 	}
 	
 	
