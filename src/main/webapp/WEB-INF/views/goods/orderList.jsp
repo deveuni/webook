@@ -125,6 +125,7 @@
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">수령인</th>
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">주소</th>
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">가격</th>
+ 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">배송</th>
  	  	</tr>
  	  </thead>
  	  
@@ -159,6 +160,7 @@
 				<fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" /> 원
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
+ 	  			${orderList.delivery}
  	  			<%-- <a href="#" class="btn btn-primary">주문하기</a>
             	<button type="button" class="btn btn-primary" id="delete_${cartList.cartNum}_btn" data-cartNum="${cartList.cartNum}">삭제</button>
             	

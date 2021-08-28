@@ -64,17 +64,25 @@
 </delete>
 
 <!-- 특정 유저의 주문목록 -->
-<select id="orderList" resultType="com.webook.domain.OrderVO">
+<!-- <select id="orderList" resultType="com.webook.domain.OrderVO">
 	select 
 		orderId, userId, orderRec, userAddr1, userAddr2, postcode, orderPhon, amount, orderDate 
 	from tbl_order 
 		where userId = #{userId}	
+</select> -->
+
+<!-- 모든 유저의 주문 목록 -->
+<select id="orderList" resultType="com.webook.domain.OrderVO">
+	select 
+		orderId, userId, orderRec, userAddr1, userAddr2, postcode, 
+		orderPhon, amount, orderDate, delivery 
+	from tbl_order
 </select>
 
 <!-- 특정 주문 목록 -->
 <select id="orderView" resultType="com.webook.domain.OrderListVO">
 	select
-		o.orderId, o.userId, o.orderRec, o.postcode, o.userAddr1, o.userAddr2, o.orderPhon, o.amount, o.orderDate, 
+		o.orderId, o.userId, o.orderRec, o.postcode, o.userAddr1, o.userAddr2, o.orderPhon, o.amount, o.orderDate, o.delivery, 
 		d.orderDetailsNum, d.gdsNum, d.cartStock, 
 		g.gdsName, g.gdsImg, g.gdsPrice 
 	from tbl_order o 
@@ -86,15 +94,8 @@
 			and o.orderId = #{orderId}	
 </select>
 
-<!-- 모든 유저의 주문 목록 -->
-<select id="allOrderList" resultType="com.webook.domain.OrderVO">
-	select 
-		orderId, userId, orderRec, userAddr1, userAddr2, postcode, 
-		orderPhon, amount, orderDate, delivery 
-	from tbl_order
-</select>
 
-<!--  -->
+
 <!--  -->
 <!--  -->
 

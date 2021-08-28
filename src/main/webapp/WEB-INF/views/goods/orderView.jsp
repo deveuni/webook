@@ -134,6 +134,7 @@
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">개당가격</th>
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">구입수량</th>
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">최종가격</th>
+ 	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;">배송상태</th>
  	  		<th scope="col" style="display:table-cell; text-align:center; vertical-align:middle;"></th>
  	  	</tr>
  	  </thead>
@@ -169,6 +170,9 @@
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
 				<fmt:formatNumber pattern="###,###,###" value="${orderView.gdsPrice * orderView.cartStock}" /> 원 
+ 	  		</td>
+ 	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
+				${orderView.delivery}
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
  	  			<!-- <a href="#" class="btn btn-primary">주문하기</a> -->

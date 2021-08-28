@@ -33,6 +33,7 @@ public interface ShopDAO {
 	
 	/* 특정 주문 목록 */
 	public List<OrderListVO> orderView(OrderVO order) throws Exception;
+	
 	/*  */
 	/*  */
 	/*  */
