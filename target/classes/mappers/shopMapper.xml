@@ -94,9 +94,13 @@
 			and o.orderId = #{orderId}	
 </select>
 
+<!-- 배송상태 -->
+<update id="delivery">
+	update tbl_order 
+		set delivery = #{delivery} 
+	where orderId = #{orderId}
+</update>
 
-
-<!--  -->
 <!--  -->
 <!--  -->
 <!--  -->

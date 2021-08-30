@@ -162,7 +162,16 @@ public class ShopController {
 		model.addAttribute("orderView", orderView);
 	}
 	
-	/*  */
+	/* 주문 상세 목록 - 상태 변경 */
+	@RequestMapping(value = "/orderView", method = RequestMethod.POST)
+	public String delivery(OrderVO order) throws Exception {
+		log.info("post order view");
+		
+		service.delivery(order);
+		
+		return "redirect:/goods/orderView?n=" + order.getOrderId();
+	}
+	
 	/*  */
 	/*  */
 	

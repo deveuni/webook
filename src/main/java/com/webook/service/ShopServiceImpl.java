@@ -73,7 +73,13 @@ public class ShopServiceImpl implements ShopService {
 		return dao.orderView(order);
 	}
 	
-	/*  */
+	/* 배송 상태 */
+	/* 배송 상태 */
+	@Override
+	public void delivery(OrderVO order) throws Exception {
+		dao.delivery(order);
+	}	
+	
 	/*  */
 	/*  */
 	
