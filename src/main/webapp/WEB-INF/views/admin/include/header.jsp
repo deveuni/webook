@@ -53,11 +53,24 @@
           
           <c:if test="${member.verify == 9}">
            <li class="nav-item">
-            <a class="nav-link" href="/admin/index">관리자화면</a>
+            <a class="nav-link" href="/webook">일반화면</a>
+           </li> 
+           <li class="nav-item">
+            <a class="nav-link" href="/admin/goods/register">상품등록</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/admin/goods/list">상품목록</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="">상품소감</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="">유저목록</a>
            </li>
           </c:if>
+          </c:if>
           
-          <c:if test="${member.verify == 0}">
+         <%--  <c:if test="${member.verify == 0}">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               마이페이지
@@ -76,8 +89,10 @@
            <li class="nav-item">
 			<a class="nav-link" href="/goods/orderList">주문리스트</a>
           </li>
-         </c:if> 
-         <!-- 네이버 아이디 로그인 상태 --> 
+         </c:if>  --%>
+         
+         
+         <%-- <!-- 네이버 아이디 로그인 상태 --> 
          <c:if test="${naverUserId != null}">
           <li class="nav-item">
 			<p class="nav-link">${naverName}님 환영합니다.</p>
@@ -97,10 +112,10 @@
           <li class="nav-item">
 			<a class="nav-link" href="/goods/cartList">카트</a>
           </li>
-         </c:if>
+         </c:if> --%>
          
          <!-- 구글 아이디 로그인 상태 -->
-         <c:if test="${googleId != null}">
+        <%--  <c:if test="${googleId != null}">
           <li class="nav-item">
 			<p class="nav-link">${googleName}님 환영합니다.</p>
           </li>
@@ -133,7 +148,7 @@
           	</li>
           </c:if>
          </c:if>
-          
+           --%>
           
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -181,22 +196,22 @@
 
                 <ul class="navbar-nav w-100 justify-content-center px-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/goods/list?category=국내도서">국내도서</a>
+                        <a class="nav-link" href="/admin/goods/list?category=국내도서">국내도서</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=외국도서">외국도서</a>
+                        <a class="nav-link" href="/admin/goods/list?category=외국도서">외국도서</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=eBook">eBook</a>
+                        <a class="nav-link" href="/admin/goods/list?category=eBook">eBook</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=웹소설">웹소설</a>
+                        <a class="nav-link" href="/admin/goods/list?category=웹소설">웹소설</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=음반">음반</a>
+                        <a class="nav-link" href="/admin/goods/list?category=음반">음반</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=중고도서">중고도서</a>
+                        <a class="nav-link" href="/admin/goods/list?category=중고도서">중고도서</a>
                     </li>
                 </ul>
             </div>

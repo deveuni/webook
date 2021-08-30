@@ -17,8 +17,13 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		
-		if(member == null || member.getVerify() != 9) {
-			response.sendRedirect("/");
+		if(member == null) {
+			response.sendRedirect("/member/signin");
+			return false;
+		}
+		
+		if(member.getVerify() != 9) {
+			response.sendRedirect("/webook");
 			return false;
 		}
 		

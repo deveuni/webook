@@ -73,12 +73,7 @@
 				return false;
 		}
 	}
-
-	// 카테고리
-	$(function(){
-		$("#category").val("${goods.category}").attr("selected","true");
-	});
-  </script>
+</script>
 </head>
 <body>
 
@@ -100,7 +95,7 @@
     <!-- Contact Form -->
     <div class="row">
       <div class="col-lg-8 mb-4">
-        <form action="/goods/modify" method="post" enctype="multipart/form-data" name="fr" role="form" >
+        <form action="/admin/goods/modify" method="post" enctype="multipart/form-data" name="fr" role="form" >
         	<input type="hidden" name="gdsNum" value="${goods.gdsNum}">
 			 <input type="hidden" name="page" value="${cri.page}">
              <input type="hidden" name="pageSize" value="${cri.pageSize}">
@@ -205,6 +200,12 @@
 		}
 	}
  // 수정,목록,취소 버튼
+ 
+ // 카테고리
+ var select_category = '${goods.category}';
+	$("#category").val(select_category);
+
+ 
 </script> 
     </div>
     <!-- /.row -->

@@ -6,7 +6,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace : mapper를 외부에서 찾아오기 위한 속성 -->
-<mapper namespace="com.webook.mapper.GoodsMapper">
+<mapper namespace="com.webook.mapper.adminMapper">
 
 	<!-- 상품 등록 -->
 	<insert id="register" parameterType="com.webook.domain.GoodsVO">

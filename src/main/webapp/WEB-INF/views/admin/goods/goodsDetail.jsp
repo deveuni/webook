@@ -26,14 +26,14 @@
 
 	// 수정
 	$(document).on("click","#modify_Btn",function(){
-		location.href = '/goods/modify?gdsNum=${goods.gdsNum}';
+		location.href = '/admin/goods/modify?n=${goods.gdsNum}';
 	});
 
 	// 삭제
 	$(document).on("click","#delete_Btn",function(){
 		var con = confirm("정말로 삭제하시겠습니까?");
 		if(con){
-			location.href = '/goods/delete?gdsNum=${goods.gdsNum}';
+			location.href = '/admin/goods/delete?n=${goods.gdsNum}';
 		}
 	});
 }); 
@@ -209,7 +209,7 @@ String userId = (String) session.getAttribute("userId");
 					};
 
 			$.ajax({
-				url : "/goods/detail/addCart",
+				url : "/admin/goods/detail/addCart",
 				type : "post",
 				data : data, 
 				success : function(result){

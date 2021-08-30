@@ -12,7 +12,7 @@ import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 
 @Repository
-public class GoodsDAOImpl implements GoodsDAO {
+public class AdminDAOImpl implements AdminDAO {
 	
 	/* DB 연결하는 객체 주입 */
 	@Inject
@@ -20,7 +20,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	
 	/* Mapper를 구분하는 값 */
 	private static final String namespace
-		= "com.webook.mapper.GoodsMapper";
+		= "com.webook.mapper.adminMapper";
 	
 	/* 상품 등록 */
 	@Override

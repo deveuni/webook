@@ -23,7 +23,7 @@ public class ShopServiceImpl implements ShopService {
 	private ShopDAO dao;
 	
 	private static final Logger log =
-			LoggerFactory.getLogger(GoodsServiceImpl.class);
+			LoggerFactory.getLogger(AdminServiceImpl.class);
 
 	/* 카트담기 */
 	@Override

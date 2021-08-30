@@ -36,6 +36,14 @@
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
+	<beans:bean id="AdminInterceptor" class="com.webook.interceptor.AdminInterceptor"></beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**" />
+			<beans:ref bean="AdminInterceptor" />
+		</interceptor>
+	</interceptors>
 </beans:beans>
 
 

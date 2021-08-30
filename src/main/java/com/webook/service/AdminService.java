@@ -5,7 +5,7 @@ import java.util.List;
 import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 
-public interface GoodsService {
+public interface AdminService {
 	
 	/* 상품 등록 */
 	public void goodsRegister(GoodsVO vo) throws Exception;

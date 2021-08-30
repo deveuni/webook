@@ -58,11 +58,11 @@
       <c:forEach var="category" items="${categoryList}">
         <div class="col-lg-4 col-sm-6 portfolio-item"  style="text-align: center;">
         <div class="card h-100">
-         <a href="/goods/detail?gdsNum=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">
+         <a href="/admin/goods/detail?n=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">
          	<img class="card-img-top" src="${category.gdsImg}" alt="" width="400px" height="300px">
          </a>   
           <div class="card-body">
-              <a href="/goods/detail?gdsNum=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">${category.gdsName}</a> <br>
+              <a href="/admin/goods/detail?n=${category.gdsNum}&page=${pm.cri.page}&pageSize=${pm.cri.pageSize}">${category.gdsName}</a> <br>
             	${category.gdsAuthor} | ${category.gdsCompany}
             	<br>
             	<fmt:formatNumber value="${category.gdsPrice}" pattern="###,###,###"/>원
@@ -119,7 +119,7 @@
     <!-- 이전 -->
      <c:if test="${pm.prev}">
       <li class="page-item">
-        <a class="page-link" href="/goods/list?category=${category}&page=${pm.startPage-1}" aria-label="Previous">
+        <a class="page-link" href="/admin/goods/list?category=${category}&page=${pm.startPage-1}" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a>
@@ -132,7 +132,7 @@
       <li class="page-item"
       		${pm.cri.page == idx? 'class=active':''}
       >
-        <a class="page-link" href="/goods/list?category=${category}&page=${idx}">${idx}</a>
+        <a class="page-link" href="/admin/goods/list?category=${category}&page=${idx}">${idx}</a>
       </li>
      </c:forEach> 
      <!-- 페이지 번호 끝 --> 
@@ -140,7 +140,7 @@
       <!-- 다음 -->
       <c:if test="${pm.next && pm.endPage > 0}">
       <li class="page-item">
-        <a class="page-link" href="/goods/list?category=${category}&page=${pm.endPage+1}" aria-label="Next">
+        <a class="page-link" href="/admin/goods/list?category=${category}&page=${pm.endPage+1}" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
           <span class="sr-only">Next</span>
         </a>
