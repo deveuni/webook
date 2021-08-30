@@ -50,6 +50,11 @@
  .orderInfo span { font-size:20px; font-weight:bold; display:inline-block; width:90px; }
 /* orderInfo 끝 */
 
+/* 배송상태 */
+.deliveryChange { text-align:right; }
+.delivery1_btn, 
+.delivery2_btn { font-size:16px; background:#fff; border:1px solid #999; margin-left:10px; }
+/* 배송상태 끝 */
 
 </style>  
 </head>
@@ -74,9 +79,38 @@
     <div class="orderInfo">
   		<c:forEach items="${orderView}" var="orderView" varStatus="status">
    			<c:if test="${status.first}">
+   				<p><span>주문자</span>${orderView.userId}</p>
     			<p><span>수령인</span>${orderView.orderRec}</p>
     			<p><span>주소</span>(${orderView.postcode}) ${orderView.userAddr1} ${orderView.userAddr2}</p>
     			<p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderView.amount}" /> 원</p>
+    			<p><span>배송</span>${orderView.delivery}</p>
+    			
+    			<div class="deliveryChange">
+    			  <form role="form" method="post" class="deliveryForm">
+    			  
+    			    <input type="hidden" name="orderId" value="${orderView.orderId}">
+    			    <input type="hidden" name="delivery" class="delivery" value="">
+    			    
+    				<button type="button" class="delivery1_btn">배송중</button>
+    				<button type="button" class="delivery2_btn">배송완료</button>
+    				
+    				<script type="text/javascript">
+						$(".delivery1_btn").click(function(){
+							$(".delivery").val("배송중");
+							run();
+						});
+
+						$(".delivery2_btn").click(function(){
+							$(".delivery").val("배송완료");
+							run();
+						});
+
+						function run(){
+							$(".deliveryForm").submit();
+						}
+    				</script>
+    			  </form>
+    			</div>
    			</c:if>
   		</c:forEach>
  </div>
