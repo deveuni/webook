@@ -7,6 +7,20 @@
   
 <mapper namespace="com.webook.mapper.ShopMapper">
 
+<!-- 카테고리별 상품 목록 -->
+<select id="category" resultType="com.webook.domain.GoodsVO">
+	select * 
+	from tbl_goods 
+	where category = #{category}
+	order by gdsNum desc, gdsDate desc 
+	limit #{cri.pageStart},#{cri.pageSize}
+</select>
+	
+<!-- 카테고리별 상품글 개수 가져오는 처리 -->
+<select id="categoryCount" resultType="int">
+	select count(*) from tbl_goods where category = #{category}
+</select>
+
 <!-- 카트 담기 -->
 <insert id="addCart">
 	insert into tbl_cart (userId, gdsNum, cartStock, addDate) 
