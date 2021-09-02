@@ -4,11 +4,22 @@ import java.util.List;
 
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
+import com.webook.domain.Criteria;
+import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 
 public interface ShopService {
+	
+	/* 카테고리별 상품 목록 + 페이징 처리 */
+	public List<GoodsVO> goodsCategoryList(String category, Criteria cri) throws Exception;
+	
+	/* 카테고리별 글 개수 가져오는 처리 */
+	public int CategoryCount(String category) throws Exception;
+	
+	/* 상품 조회 */
+	public GoodsVO goodsDetail(int gdsNum) throws Exception;
 
 	/* 카트담기 */
 	public void addCart(CartVO cart) throws Exception;

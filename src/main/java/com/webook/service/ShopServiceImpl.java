@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
+import com.webook.domain.Criteria;
+import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
@@ -25,6 +27,35 @@ public class ShopServiceImpl implements ShopService {
 	private static final Logger log =
 			LoggerFactory.getLogger(AdminServiceImpl.class);
 
+	/* 카테고리별 상품 목록 + 페이징처리 */
+	@Override
+	public List<GoodsVO> goodsCategoryList(String category, Criteria cri) throws Exception {
+
+		System.out.println("S : 카테고리 분류");
+		System.out.println("S : 카테고리 실행 ? " + dao.goodsCategoryList(category, cri));
+		
+		return dao.goodsCategoryList(category, cri);
+	}
+	
+	/* 카테고리별 글 개수 가져오는 처리 */
+	@Override
+	public int CategoryCount(String category) throws Exception {
+		
+		int result = dao.CategoryCount(category);
+		
+		System.out.println("S : 카테고리글 개수 -> " + result);
+		
+		return result;
+	}
+
+	/* 상품 조회 */
+	@Override
+	public GoodsVO goodsDetail(int gdsNum) throws Exception {
+
+		System.out.println("S : 상품 조회");
+		return dao.goodsDetail(gdsNum);
+	}
+	
 	/* 카트담기 */
 	@Override
 	public void addCart(CartVO cart) throws Exception {

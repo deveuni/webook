@@ -181,19 +181,19 @@
 
                 <ul class="navbar-nav w-100 justify-content-center px-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/goods/list?category=국내도서">국내도서</a>
+                        <a class="nav-link" href="/shop/list?category=국내도서">국내도서</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=외국도서">외국도서</a>
+                        <a class="nav-link" href="/shop/list?category=외국도서">외국도서</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=eBook">eBook</a>
+                        <a class="nav-link" href="/shop/list?category=eBook">eBook</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=웹소설">웹소설</a>
+                        <a class="nav-link" href="/shop/list?category=웹소설">웹소설</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=음반">음반</a>
+                        <a class="nav-link" href="/shop/list?category=음반">음반</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/goods/list?category=중고도서">중고도서</a>

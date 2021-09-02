@@ -1,5 +1,6 @@
 package com.webook.persistence;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.webook.domain.CartListVO;
 import com.webook.domain.CartVO;
+import com.webook.domain.Criteria;
+import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
@@ -25,6 +28,36 @@ public class ShopDAOImpl implements ShopDAO {
 		= "com.webook.mapper.ShopMapper";
 	
 
+	/* 카테고리별 상품목록 + 페이징처리 */
+	@Override
+	public List<GoodsVO> goodsCategoryList(String category, Criteria cri) throws Exception {
+
+		System.out.println("DAO : 카테고리 분류");
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("category", category);
+		map.put("cri", cri);
+		
+		return sql.selectList(namespace + ".category", map);
+	}
+	
+	/* 카테고리별 상품 개수 가져오는 처리 */
+	@Override
+	public int CategoryCount(String category) throws Exception {
+		
+		int result = sql.selectOne(namespace + ".categoryCount", category);
+		
+		System.out.println("DAO : 카테고리글 개수 -> " + result);
+		return result;
+	}
+	
+	/* 상품 조회 */
+	@Override
+	public GoodsVO goodsDetail(int gdsNum) throws Exception {
+		
+		return sql.selectOne(namespace + ".goodsDetail", gdsNum);
+	}
+	
 	/* 카트 담기 */
 	@Override
 	public void addCart(CartVO cart) throws Exception {

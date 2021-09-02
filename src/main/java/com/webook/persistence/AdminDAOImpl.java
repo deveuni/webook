@@ -62,7 +62,6 @@ public class AdminDAOImpl implements AdminDAO {
 		return result;
 	}
 	
-	
 	/* 상품 조회 */
 	@Override
 	public GoodsVO goodsDetail(int gdsNum) throws Exception {

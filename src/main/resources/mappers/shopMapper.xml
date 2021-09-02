@@ -21,6 +21,13 @@
 	select count(*) from tbl_goods where category = #{category}
 </select>
 
+<!-- 상품 조회 -->
+<select id="goodsDetail" resultType="com.webook.domain.GoodsVO">
+	select * 
+	from tbl_goods 
+	where gdsNum = #{gdsNum} 
+</select>
+
 <!-- 카트 담기 -->
 <insert id="addCart">
 	insert into tbl_cart (userId, gdsNum, cartStock, addDate) 
