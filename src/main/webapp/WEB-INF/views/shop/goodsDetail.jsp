@@ -240,7 +240,7 @@ String userId = (String) session.getAttribute("userId");
 			              role="tab" aria-controls="description" aria-selected="true">도서정보</a>
 				</li>
 				<li class="nav-item">
-				  <a href="#review" class="nav-link" id="review-tab" data-toggle="tab" role="tab"
+				  <a href="#reply" class="nav-link" id="review-tab" data-toggle="tab" role="tab"
 					aria-controls="review" aria-selected="false">도서리뷰</a>
 				</li>
 			</ul>
@@ -255,28 +255,27 @@ String userId = (String) session.getAttribute("userId");
 				</div>
 				<!-- 상품정보 끝-->
 				
-				<!-- <script type="text/javascript">
-				$('#reviewToggle').hide();
-				$('#reviewToggleBtn').click(function(){
-					$('#reviewToggle').slideToggle();
-				});
-				</script> -->
-				
 				<!-- 상품리뷰 -->
-				<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+				<div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="review-tab">
+				
+					<c:if test="${member == null}">
+						<p>소감을 남기시려면 <a href="/member/signin">로그인</a>해주세요</p>
+					</c:if>
 					
-					<c:if test="${userId != null}">
-					<button class="btn btn-dark mt-3" id="reviewToggleBtn">리뷰쓰기</button>
-					<div class="card mb-2" id="reviewToggle">
-						 <form name="frRe" id="frRe" method="post">
+					<c:if test="${member != null}">
+					<!-- <button class="btn btn-dark mt-3" id="reviewToggleBtn">리뷰쓰기</button> -->
+					<div class="card mb-2" id="reviewToggle"> 
+					
+					<section class="replyForm">
+					  <form  role="form" method="post" autocomplete="off">
+						
 						<div class="card-header bg-light">
-	        				<i class="fa fa-comment fa"></i> 도서리뷰
-						</div>
+	        				<!-- <i class="fa fa-comment fa"></i> 도서리뷰 -->
+						</div> 
 						
 						<div class="card-body">
-						 
-							<ul class="list-group list-group-flush">
-		    					<li class="list-group-item">
+							<!-- <ul class="list-group list-group-flush">
+		    					<li class="list-group-item"> -->
 									<div class="form-inline mb-2">
 										<input type="hidden" name="reGdsNum" value="${goods.gdsNum}">
 										<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
@@ -284,27 +283,26 @@ String userId = (String) session.getAttribute("userId");
 										<!-- <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
-									<textarea class="form-control" name="reDes" id="exampleFormControlTextarea1" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
-									<!-- <button class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button>  -->
-		    					</li>
-							</ul>
+									<textarea class="form-control" name="reCon" id="reCon" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
+									
+									<button type="button" class="btn btn-dark mt-3" id="reply_btn" >등록</button> 
+		    				<!-- 	</li>
+							</ul> -->
 							</div>
+							
+							
 						   </form>	
-						   <button class="btn btn-dark mt-3" id="reviewBtn" onclick="clickedReviewBtn();">등록</button> 
-						  <!--  <button type="button" class="btn btn-dark mt-3" onClick="javascript:addReply();">등록</button> -->
-						</div>
+						 </section>
+						</div> 
+						</c:if>
+						
+						<section class="replyList">
+							<ol>
+								<li>댓글목록</li>
+							</ol>
+						</section>
 					
-					</c:if>
 					</div>
-					<!-- 리뷰 목록 -->
-				<%-- <%@ include file="../goods/goodsReview.jsp" %>  --%>
-<%-- 				<%@ include file="../goods/goodsReview.jsp" %>  --%>
-				<%-- 	<jsp:include page="goodsReview.jsp" /> --%>
-					<!-- 리뷰 목록 끝 -->
-					
-					
-					
-					
 				</div>
 				<!-- 상품리뷰 끝 -->
 			</div>		

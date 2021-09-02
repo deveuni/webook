@@ -196,7 +196,7 @@
                         <a class="nav-link" href="/shop/list?category=음반">음반</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/goods/list?category=중고도서">중고도서</a>
+                        <a class="nav-link" href="/shop/list?category=중고도서">중고도서</a>
                     </li>
                 </ul>
             </div>
