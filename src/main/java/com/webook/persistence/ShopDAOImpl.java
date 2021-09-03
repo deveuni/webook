@@ -15,6 +15,7 @@ import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyListVO;
 import com.webook.domain.ReplyVO;
 
 @Repository
@@ -65,7 +66,12 @@ public class ShopDAOImpl implements ShopDAO {
 		sql.insert(namespace + ".registReply", reply);
 	}
 	
-	/**/
+	/* 리뷰 리스트 */
+	@Override
+	public List<ReplyListVO> replyList(int gdsNum) throws Exception {
+		return sql.selectList(namespace + ".replyList", gdsNum);
+	}
+	
 	/**/
 	
 	/* 카트 담기 */

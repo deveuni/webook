@@ -15,6 +15,7 @@ import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyListVO;
 import com.webook.domain.ReplyVO;
 import com.webook.persistence.ShopDAO;
 
@@ -63,7 +64,12 @@ public class ShopServiceImpl implements ShopService {
 		dao.registReply(reply);
 	}
 	
-	/**/
+	/* 리뷰 리스트 */
+	@Override
+	public List<ReplyListVO> replyList(int gdsNum) throws Exception {
+		return dao.replyList(gdsNum);
+	}
+	
 	/**/
 	
 	/* 카트담기 */

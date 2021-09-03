@@ -80,6 +80,17 @@ tr.space {
   border-bottom: 10px solid #fff;
 }
 /* 도서정보 테이블 끝 */
+
+/* 리뷰 리스트 */
+ol {list-style: none;}
+section.replyList {padding: 30px 0;}
+section.replyList ol {padding: 0; margin: 0;}
+section.replyList ol li {padding: 10px 0; border-bottom: 2px solid #eee;}
+section.replyList div.userInfo {}
+section.replyList div.userInfo .userName {font-size: 24px; font-weight: bold;}
+section.replyList div.userInfo .date {color: #999; disply:inline-block; margin-left: 10px;}
+section.replyList div.replyContent {padding: 10px; margin: 20px 0;}
+/* 리뷰 리스트 끝 */
 </style>
 </head>
 <body>
@@ -299,7 +310,15 @@ String userId = (String) session.getAttribute("userId");
 						
 						<section class="replyList">
 							<ol>
-								<li>댓글목록</li>
+								<c:forEach items="${reply}" var="reply">
+								<li>
+									<div class="userInfo">
+									<span class="userName">${reply.userName}</span>
+									<span class="date"><fmt:formatDate value="${reply.repDate}" pattern="yyyy-MM-dd"/></span>
+									</div>
+									<div class="replyContent">${reply.repCon}</div>
+								</li>
+								</c:forEach>
 							</ol>
 						</section>
 					

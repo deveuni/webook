@@ -34,6 +34,17 @@
 		values (#{gdsNum}, #{userId}, #{repCon}, now())
 </insert>
 
+<!-- 리뷰(댓글) 리스트 -->
+<select id="replyList" resultType="com.webook.domain.ReplyListVO">
+	select 
+		r.gdsNum, r.userId, r.repNum, r.repCon, r.repDate, m.userName 
+		from tbl_reply r 
+			inner join tbl_member m 
+				on r.userId = m.userId
+		where gdsNum = #{gdsNum}
+		order by r.repDate desc
+</select>
+
 <!-- 카트 담기 -->
 <insert id="addCart">
 	insert into tbl_cart (userId, gdsNum, cartStock, addDate) 

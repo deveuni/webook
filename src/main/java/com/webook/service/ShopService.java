@@ -9,6 +9,7 @@ import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyListVO;
 import com.webook.domain.ReplyVO;
 
 public interface ShopService {
@@ -25,7 +26,9 @@ public interface ShopService {
 	/* 리뷰 작성 */
 	public void registReply(ReplyVO reply) throws Exception;
 	
-	/**/
+	/* 리뷰 리스트 */
+	public List<ReplyListVO> replyList(int gdsNum) throws Exception;
+	
 	/**/
 	
 	/* 카트담기 */

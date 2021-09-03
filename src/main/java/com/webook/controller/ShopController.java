@@ -40,6 +40,7 @@ import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 import com.webook.domain.PageMaker;
+import com.webook.domain.ReplyListVO;
 import com.webook.domain.ReplyVO;
 import com.webook.service.ShopService;
 
@@ -96,10 +97,24 @@ public class ShopController {
 		GoodsVO goods = service.goodsDetail(gdsNum);
 		model.addAttribute("goods", goods);
 		
-		// 리뷰 조회 후 출력
-		//model.addAttribute("reviewList", reService.reviewList(gdsNum));
+		// 리뷰 리스트
+		List<ReplyListVO> reply = service.replyList(gdsNum);
+		model.addAttribute("reply", reply);
 		
 		return "/shop/goodsDetail";
+	}
+	
+	/* 상품 상세페이지 - 리뷰 작성 */
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+	public String regisReply(ReplyVO reply, HttpSession session) throws Exception {
+		log.info("regist reply");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		reply.setUserId(member.getUserId());
+		
+		service.registReply(reply);
+		
+		return "redirect:/shop/detail?n=" + reply.getGdsNum();
 	}
 	
 	/* ck에디터 이미지 업로드 */
@@ -208,18 +223,7 @@ public class ShopController {
 	}
 	// ck 이미지 업로드
 	
-	/* 상품 상세페이지 리뷰 작성 */
-	@RequestMapping(value = "/detail", method = RequestMethod.POST)
-	public String regisReply(ReplyVO reply, HttpSession session) throws Exception {
-		log.info("regist reply");
-		
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		reply.setUserId(member.getUserId());
-		
-		service.registReply(reply);
-		
-		return "redirect:/shop/goodsDetail?n=" + reply.getGdsNum();
-	}
+	
 	
 	/* 카트담기 */
 	@ResponseBody
