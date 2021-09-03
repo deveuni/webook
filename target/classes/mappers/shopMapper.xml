@@ -28,6 +28,12 @@
 	where gdsNum = #{gdsNum} 
 </select>
 
+<!-- 리뷰(댓글) 작성 -->
+<insert id="registReply">
+	insert into tbl_reply (gdsNum, userId, repCon) 
+		values (#{gdsNum}, #{userId}, #{repCon})
+</insert>
+
 <!-- 카트 담기 -->
 <insert id="addCart">
 	insert into tbl_cart (userId, gdsNum, cartStock, addDate) 

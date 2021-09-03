@@ -269,6 +269,8 @@ String userId = (String) session.getAttribute("userId");
 					<section class="replyForm">
 					  <form  role="form" method="post" autocomplete="off">
 						
+						<input type="hidden" name="gdsNum" value="${goods.gdsNum}">
+						
 						<div class="card-header bg-light">
 	        				<!-- <i class="fa fa-comment fa"></i> 도서리뷰 -->
 						</div> 
@@ -277,7 +279,7 @@ String userId = (String) session.getAttribute("userId");
 							<!-- <ul class="list-group list-group-flush">
 		    					<li class="list-group-item"> -->
 									<div class="form-inline mb-2">
-										<input type="hidden" name="reGdsNum" value="${goods.gdsNum}">
+										
 										<label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
 										<input type="text" class="form-control ml-2" id="replyId" name="reUserId" value="<%=userId%>" readonly> 
 										<!-- <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
@@ -289,7 +291,6 @@ String userId = (String) session.getAttribute("userId");
 		    				<!-- 	</li>
 							</ul> -->
 							</div>
-							
 							
 						   </form>	
 						 </section>

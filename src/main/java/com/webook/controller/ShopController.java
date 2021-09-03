@@ -40,6 +40,7 @@ import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 import com.webook.domain.PageMaker;
+import com.webook.domain.ReplyVO;
 import com.webook.service.ShopService;
 
 @Controller
@@ -207,8 +208,18 @@ public class ShopController {
 	}
 	// ck 이미지 업로드
 	
-	
-	
+	/* 상품 상세페이지 리뷰 작성 */
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+	public String regisReply(ReplyVO reply, HttpSession session) throws Exception {
+		log.info("regist reply");
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		reply.setUserId(member.getUserId());
+		
+		service.registReply(reply);
+		
+		return "redirect:/shop/goodsDetail?n=" + reply.getGdsNum();
+	}
 	
 	/* 카트담기 */
 	@ResponseBody

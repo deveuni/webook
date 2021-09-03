@@ -15,6 +15,7 @@ import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderDetailVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyVO;
 import com.webook.persistence.ShopDAO;
 
 @Service
@@ -55,6 +56,15 @@ public class ShopServiceImpl implements ShopService {
 		System.out.println("S : 상품 조회");
 		return dao.goodsDetail(gdsNum);
 	}
+	
+	/* 리뷰 작성 */
+	@Override
+	public void registReply(ReplyVO reply) throws Exception {
+		dao.registReply(reply);
+	}
+	
+	/**/
+	/**/
 	
 	/* 카트담기 */
 	@Override
