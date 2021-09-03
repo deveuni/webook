@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -98,23 +99,48 @@ public class ShopController {
 		model.addAttribute("goods", goods);
 		
 		// 리뷰 리스트
-		List<ReplyListVO> reply = service.replyList(gdsNum);
-		model.addAttribute("reply", reply);
+		/*
+		 * List<ReplyListVO> reply = service.replyList(gdsNum);
+		 * model.addAttribute("reply", reply);
+		 */
 		
 		return "/shop/goodsDetail";
 	}
 	
 	/* 상품 상세페이지 - 리뷰 작성 */
-	@RequestMapping(value = "/detail", method = RequestMethod.POST)
-	public String regisReply(ReplyVO reply, HttpSession session) throws Exception {
+	/*
+	 * @RequestMapping(value = "/detail", method = RequestMethod.POST) public String
+	 * regisReply(ReplyVO reply, HttpSession session) throws Exception {
+	 * log.info("regist reply");
+	 * 
+	 * MemberVO member = (MemberVO)session.getAttribute("member");
+	 * reply.setUserId(member.getUserId());
+	 * 
+	 * service.registReply(reply);
+	 * 
+	 * return "redirect:/shop/detail?n=" + reply.getGdsNum(); }
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/detail/registReply", method = RequestMethod.POST)
+	public void registReply(ReplyVO reply, HttpSession session) throws Exception {
 		log.info("regist reply");
 		
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		reply.setUserId(member.getUserId());
 		
 		service.registReply(reply);
+	}
+	
+	
+	/* 리뷰 리스트 */
+	@ResponseBody
+	@RequestMapping(value = "/detail/replyList", method = RequestMethod.GET)
+	public List<ReplyListVO> getReplyList(@RequestParam("n") int gdsNum) throws Exception {
+		log.info("get reply list");
 		
-		return "redirect:/shop/detail?n=" + reply.getGdsNum();
+		List<ReplyListVO> reply = service.replyList(gdsNum);
+		
+		return reply;
 	}
 	
 	/* ck에디터 이미지 업로드 */

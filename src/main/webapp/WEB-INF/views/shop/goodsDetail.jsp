@@ -18,28 +18,7 @@
   <link href="${pageContext.request.contextPath}/resources/css/modern-business.css" rel="stylesheet">
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
-  
-<script type="text/javascript">
-// 수정/삭제 이동
- $(document).ready(function(){
-	var gdsNum = $('#gdsNum').val();
 
-	// 수정
-	$(document).on("click","#modify_Btn",function(){
-		location.href = '/admin/goods/modify?n=${goods.gdsNum}';
-	});
-
-	// 삭제
-	$(document).on("click","#delete_Btn",function(){
-		var con = confirm("정말로 삭제하시겠습니까?");
-		if(con){
-			location.href = '/admin/goods/delete?n=${goods.gdsNum}';
-		}
-	});
-}); 
-
-
-</script>
 <style type="text/css">
 /* 버튼 */
 .addCart_btn {
@@ -92,6 +71,58 @@ section.replyList div.userInfo .date {color: #999; disply:inline-block; margin-l
 section.replyList div.replyContent {padding: 10px; margin: 20px 0;}
 /* 리뷰 리스트 끝 */
 </style>
+
+
+
+ 
+<script type="text/javascript">
+// 수정/삭제 이동
+ $(document).ready(function(){
+	var gdsNum = $('#gdsNum').val();
+
+	// 수정
+	$(document).on("click","#modify_Btn",function(){
+		location.href = '/admin/goods/modify?n=${goods.gdsNum}';
+	});
+
+	// 삭제
+	$(document).on("click","#delete_Btn",function(){
+		var con = confirm("정말로 삭제하시겠습니까?");
+		if(con){
+			location.href = '/admin/goods/delete?n=${goods.gdsNum}';
+		}
+	});
+}); 
+
+// 리뷰 리스트/* 
+function replyList() {
+								
+	var gdsNum = ${goods.gdsNum};
+	$.getJSON("/shop/detail/replyList" + "?n=" + gdsNum, function(data){
+		var str = "";
+
+		$(data).each(function(){
+			console.log(data);
+
+			var repDate = new Date(this.repDate);
+			repDate = repDate.toLocaleDateString("ko-US")
+
+				str += "<li data-gdsNum='" + this.gdsNum + "'>"
+					+ "<div class='userInfo'>"
+					+ "<span class='userName'>" + this.userName + "</span>"
+					+ "<span class='date'>" + repDate + "</span>"
+					+ "</div>"
+					+ "<div class='replyContent'>" + this.repCon + "</div>"
+					+ "</li>";
+				});
+
+				$("section.replyList ol").html(str);
+		});
+	}
+
+
+</script>
+
 </head>
 <body>
 <%
@@ -280,7 +311,7 @@ String userId = (String) session.getAttribute("userId");
 					<section class="replyForm">
 					  <form  role="form" method="post" autocomplete="off">
 						
-						<input type="hidden" name="gdsNum" value="${goods.gdsNum}">
+						<input type="hidden" name="gdsNum" id="gdsNum" value="${goods.gdsNum}">
 						
 						<div class="card-header bg-light">
 	        				<!-- <i class="fa fa-comment fa"></i> 도서리뷰 -->
@@ -298,7 +329,32 @@ String userId = (String) session.getAttribute("userId");
 									</div> 
 									<textarea class="form-control" name="repCon" id="repCon" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
 									
-									<button type="submit" class="btn btn-dark mt-3" id="reply_btn" >등록</button> 
+									<button type="button" class="btn btn-dark mt-3" id="reply_btn" >등록</button> 
+									
+									<script type="text/javascript">
+										$("#reply_btn").click(function(){
+
+											var formObj = $(".replyForm form[role='form']");
+											var gdsNum = $("#gdsNum").val();
+											var repCon = $("#repCon").val();
+
+											var data = {
+													gdsNum : gdsNum, 
+													repCon : repCon
+												};
+
+											$.ajax({
+												url : "/shop/detail/registReply", 
+												type : "post", 
+												data : data, 
+												success : function(){
+													replyList();
+													$("#repCon").val("");
+												}
+											});
+										});
+									</script>
+									
 		    				<!-- 	</li>
 							</ul> -->
 							</div>
@@ -310,7 +366,7 @@ String userId = (String) session.getAttribute("userId");
 						
 						<section class="replyList">
 							<ol>
-								<c:forEach items="${reply}" var="reply">
+								<%-- <c:forEach items="${reply}" var="reply">
 								<li>
 									<div class="userInfo">
 									<span class="userName">${reply.userName}</span>
@@ -318,8 +374,12 @@ String userId = (String) session.getAttribute("userId");
 									</div>
 									<div class="replyContent">${reply.repCon}</div>
 								</li>
-								</c:forEach>
+								</c:forEach> --%>
 							</ol>
+							
+							<script type="text/javascript">
+								replyList();
+							</script>
 						</section>
 					
 					</div>
