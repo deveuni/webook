@@ -143,6 +143,30 @@ public class ShopController {
 		return reply;
 	}
 	
+	/* 리뷰 삭제 */
+	@ResponseBody
+	@RequestMapping(value = "/detail/deleteReply", method = RequestMethod.POST)
+	public int getReplyList(ReplyVO reply, HttpSession session) throws Exception {
+		log.info("post delete reply");
+		
+		int result = 0;
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = service.idCheck(reply.getRepNum());
+		
+		if(member.getUserId().equals(userId)) {
+			reply.setUserId(member.getUserId());
+			service.deleteReply(reply);
+			
+			result = 1;
+		}
+		
+		return result;
+	}
+	
+	/**/
+	/**/
+	
 	/* ck에디터 이미지 업로드 */
 	@RequestMapping(value = "/ckUpload", method = RequestMethod.POST)
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,

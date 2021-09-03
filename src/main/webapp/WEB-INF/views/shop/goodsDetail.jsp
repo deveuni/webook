@@ -69,6 +69,8 @@ section.replyList div.userInfo {}
 section.replyList div.userInfo .userName {font-size: 24px; font-weight: bold;}
 section.replyList div.userInfo .date {color: #999; disply:inline-block; margin-left: 10px;}
 section.replyList div.replyContent {padding: 10px; margin: 20px 0;}
+
+section.replyList div.replyFooter button {font-size: 14px; border: 1px solid #999; background: none; margin-right: 10px;}
 /* 리뷰 리스트 끝 */
 </style>
 
@@ -113,6 +115,11 @@ function replyList() {
 					+ "<span class='date'>" + repDate + "</span>"
 					+ "</div>"
 					+ "<div class='replyContent'>" + this.repCon + "</div>"
+
+					+ "<div class='replyFooter'>" 
+					+ "<button type='button' class='modify' data-repNum='" + this.repNum +"'>수정</button>" 
+					+ "<button type='button' class='delete' data-repNum='" + this.repNum +"'>삭제</button>" 
+
 					+ "</li>";
 				});
 
@@ -380,6 +387,37 @@ String userId = (String) session.getAttribute("userId");
 							<script type="text/javascript">
 								replyList();
 							</script>
+							
+							<script type="text/javascript">
+								$(document).on("click", ".delete", function(){
+
+								  var deleteConfirm = confrim("정말로 삭제하시겠습니까?");
+
+								  if(deleteConfirm) {
+
+									var data = { repNum : $(this).attr("data-repNum") };
+
+									$.ajax({
+										url : "/shop/detail/deleteReply", 
+										type : "post", 
+										data : data, 
+										success : function(result){
+											if(result == 1){
+												replyList();
+											} else {
+												alert("작성자 본인만 할 수 있습니다.");
+											}
+										}, 
+										error : function(){
+											alert("로그인하셔야합니다.");
+										}
+									});
+
+								  }
+								});
+							</script>
+							
+							
 						</section>
 					
 					</div>
