@@ -30,8 +30,8 @@
 
 <!-- 리뷰(댓글) 작성 -->
 <insert id="registReply">
-	insert into tbl_reply (gdsNum, userId, repCon) 
-		values (#{gdsNum}, #{userId}, #{repCon})
+	insert into tbl_reply (gdsNum, userId, repCon, repDate) 
+		values (#{gdsNum}, #{userId}, #{repCon}, now())
 </insert>
 
 <!-- 카트 담기 -->

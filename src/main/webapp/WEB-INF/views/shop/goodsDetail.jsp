@@ -285,9 +285,9 @@ String userId = (String) session.getAttribute("userId");
 										<!-- <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
-									<textarea class="form-control" name="reCon" id="reCon" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
+									<textarea class="form-control" name="repCon" id="repCon" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
 									
-									<button type="button" class="btn btn-dark mt-3" id="reply_btn" >등록</button> 
+									<button type="submit" class="btn btn-dark mt-3" id="reply_btn" >등록</button> 
 		    				<!-- 	</li>
 							</ul> -->
 							</div>

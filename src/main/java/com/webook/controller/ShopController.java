@@ -84,7 +84,7 @@ public class ShopController {
 	}
 	
 	/* 상품 상세페이지 */
-	@RequestMapping(value = "/detail", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String getGoodsDetail(@RequestParam("n") int gdsNum, Model model, HttpSession session) throws Exception {
 		
 		log.info("get goods detail");
