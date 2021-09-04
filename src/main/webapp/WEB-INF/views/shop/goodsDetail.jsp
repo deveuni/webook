@@ -477,5 +477,26 @@ String userId = (String) session.getAttribute("userId");
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+
+	<div class="replyModal">
+	
+		<div class="modalContent">
+		
+			<div>
+				<textarea class="modal_repCon" name="modal_repCon"></textarea>
+			</div>
+			
+			<div>
+				<button type="button" class="modal_modify_btn">수정</button>
+				<button type="button" class="modal_cancle">취소</button>
+			</div>
+		</div>
+		
+		<div class="modalBackground"></div>
+	</div>
+
+
+
+
 </body>
 </html>
