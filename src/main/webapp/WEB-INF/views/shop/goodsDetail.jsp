@@ -72,6 +72,15 @@ section.replyList div.replyContent {padding: 10px; margin: 20px 0;}
 
 section.replyList div.replyFooter button {font-size: 14px; border: 1px solid #999; background: none; margin-right: 10px;}
 /* 리뷰 리스트 끝 */
+
+/* 리뷰 수정 모달창 */
+div.replyModal { position:relative; z-index:1; display: none;}
+div.modalBackground { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); z-index:-1; }
+div.modalContent { position:fixed; top:20%; left:calc(50% - 250px); width:500px; height:250px; padding:20px 10px; background:#fff; border:2px solid #666; }
+div.modalContent textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px; height:200px; }
+div.modalContent button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
+div.modalContent button.modal_cancel { margin-left:20px; }
+/* 리뷰 수정 모달창 끝 */
 </style>
 
 
