@@ -116,22 +116,28 @@ function replyList() {
 			
 			console.log(data);
 
+			// 날짜 데이터를 보기 쉽게 변환 
 			var repDate = new Date(this.repDate);
 			repDate = repDate.toLocaleDateString("ko-US")
 
-				str += "<li data-repNum='" + this.repNum + "'>"
-					+ "<div class='userInfo'>"
-					+ "<span class='userName'>" + this.userName + "</span>"
-					+ "<span class='date'>" + repDate + "</span>"
-					+ "</div>"
-					+ "<div class='replyContent'>" + this.repCon + "</div>"
+			// HTML 코드 조립
+			str += "<li data-repNum='" + this.repNum + "'>"
+				+ "<div class='userInfo'>"
+				+ "<span class='userName'>" + this.userName + "</span>"
+				+ "<span class='date'>" + repDate + "</span>"
+				+ "</div>"
+				+ "<div class='replyContent'>" + this.repCon + "</div>"
 
-					+ "<div class='replyFooter'>" 
-					+ "<button type='button' class='modify' data-repNum='" + this.repNum +"'>수정</button>" 
-					+ "<button type='button' class='delete' data-repNum='" + this.repNum +"'>삭제</button>" 
+				+ "<c:if test='${member != null}'>"
+				
+				+ "<div class='replyFooter'>" 
+				+ "<button type='button' class='modify' data-repNum='" + this.repNum +"'>수정</button>" 
+				+ "<button type='button' class='delete' data-repNum='" + this.repNum +"'>삭제</button>" 
 
-					+ "</li>";
-				});
+				+ "</c:if>"
+				
+				+ "</li>";
+			});
 
 				$("section.replyList ol").html(str);
 		});
@@ -411,35 +417,7 @@ String userId = (String) session.getAttribute("userId");
 									$(".modal_modify_btn").attr("data-repNum", repNum);
 								});
 
-								// 리뷰 수정하기
-								$(".modal_modify_btn").click(function(){
-									var modifyConfirm = confirm("정말로 수정하시겠습니까?");
-
-									if(modifyConfirm) {
-										var data = {
-													repNum = $(this).attr("data-repNum"), 
-													repCon = $(".modal_repCon").val()
-												}; // ReplyVO 형태로 데이터 생성
-
-										$.ajax({
-											url : "/shop/detail/modifyReply", 
-											type : "post", 
-											data : data, 
-											success : function(result){
-
-												if(result == 1) {
-													replyList(); // 리스트 새로고침
-													$(".replyModal").fadeOut(200);
-												} else {
-													alert("작성자만 수정할 수 있습니다.");
-												}
-											}, 
-											error : function(){
-												alert("로그인이 필요합니다.");
-											}
-										});
-									}
-								});
+								
 								
 								// 리뷰 삭제하기
 								$(document).on("click", ".delete", function(){
@@ -468,6 +446,14 @@ String userId = (String) session.getAttribute("userId");
 
 								  }
 								});
+
+								
+
+
+
+
+
+								
 							</script>
 							
 							
@@ -550,6 +536,38 @@ String userId = (String) session.getAttribute("userId");
 	<!-- 리뷰 수정 모달창 끝 -->
 	
 	<script type="text/javascript">
+
+	// 리뷰 수정하기
+	$(".modal_modify_btn").click(function(){
+		var modifyConfirm = confirm("정말로 수정하시겠습니까?");
+
+		if(modifyConfirm) {
+			var data = {
+						repNum : $(this).attr("data-repNum"), 
+						repCon : $(".modal_repCon").val()
+					}; // ReplyVO 형태로 데이터 생성
+
+			$.ajax({
+				url : "/shop/detail/modifyReply", 
+				type : "post", 
+				data : data, 
+				success : function(result){
+
+					if(result == 1) {
+						replyList(); // 리스트 새로고침
+						$(".replyModal").fadeOut(200);
+					} else {
+						alert("작성자만 수정할 수 있습니다.");
+					}
+				}, 
+				error : function(){
+					alert("로그인이 필요합니다.");
+				}
+			});
+		}
+	});
+
+	// 리뷰 수정 취소하기
 	$(".modal_cancel").click(function(){
 		//$(".replyModal").attr("style", "display:none;");
 		$(".replyModal").fadeOut(200);
