@@ -45,6 +45,15 @@
 		order by r.repDate desc
 </select>
 
+<!-- 리뷰(댓글) 수정 -->
+<update id="modifyReply">
+	update tbl_reply
+		set
+			repCon = #{repCon} 
+		where repNum = #{repNum} 
+			and userId = #{userId}
+</update>
+
 <!-- 리뷰(댓글) 삭제 -->
 <delete id="deleteReply">
 	delete from tbl_reply 

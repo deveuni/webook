@@ -131,7 +131,6 @@ public class ShopController {
 		service.registReply(reply);
 	}
 	
-	
 	/* 리뷰 리스트 */
 	@ResponseBody
 	@RequestMapping(value = "/detail/replyList", method = RequestMethod.GET)
@@ -141,6 +140,27 @@ public class ShopController {
 		List<ReplyListVO> reply = service.replyList(gdsNum);
 		
 		return reply;
+	}
+	
+	/* 리뷰 수정 */
+	@ResponseBody
+	@RequestMapping(value = "/detail/modifyReply", method = RequestMethod.POST)
+	public int modifyReply(ReplyVO reply, HttpSession session) throws Exception {
+		log.info("modify reply");
+		
+		int result = 0;
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String userId = service.idCheck(reply.getRepNum());
+		
+		if(member.getUserId().equals(userId)) {
+			
+			reply.setUserId(member.getUserId());
+			service.modifyReply(reply);
+			result = 1;
+		}
+		
+		return result;
 	}
 	
 	/* 리뷰 삭제 */

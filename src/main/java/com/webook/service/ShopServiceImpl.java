@@ -70,6 +70,12 @@ public class ShopServiceImpl implements ShopService {
 		return dao.replyList(gdsNum);
 	}
 	
+	/* 리뷰 수정 */
+	@Override
+	public void modifyReply(ReplyVO reply) throws Exception {
+		dao.modifyReply(reply);
+	}
+	
 	/* 리뷰 삭제 */
 	@Override
 	public void deleteReply(ReplyVO reply) throws Exception {

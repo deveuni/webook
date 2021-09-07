@@ -29,6 +29,9 @@ public interface ShopService {
 	/* 리뷰 리스트 */
 	public List<ReplyListVO> replyList(int gdsNum) throws Exception;
 	
+	/* 리뷰 수정 */
+	public void modifyReply(ReplyVO reply) throws Exception;
+	
 	/* 리뷰 삭제 */
 	public void deleteReply(ReplyVO reply) throws Exception;
 	
