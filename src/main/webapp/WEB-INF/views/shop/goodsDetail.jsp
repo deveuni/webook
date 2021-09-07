@@ -105,7 +105,7 @@ div.modalContent button.modal_cancel { margin-left:20px; }
 	});
 }); 
 
-// 리뷰 리스트/* 
+// 리뷰 리스트
 function replyList() {
 								
 	var gdsNum = ${goods.gdsNum};
@@ -113,6 +113,7 @@ function replyList() {
 		var str = "";
 
 		$(data).each(function(){
+			
 			console.log(data);
 
 			var repDate = new Date(this.repDate);
@@ -135,7 +136,6 @@ function replyList() {
 				$("section.replyList ol").html(str);
 		});
 	}
-
 
 </script>
 
@@ -398,9 +398,16 @@ String userId = (String) session.getAttribute("userId");
 							</script>
 							
 							<script type="text/javascript">
+
+								// 리뷰 수정
+								$(document).on("click", ".modify", function(){
+									$(".replyModal").attr("style", "display:block;");
+								});
+								
+								// 리뷰 삭제
 								$(document).on("click", ".delete", function(){
 
-								  var deleteConfirm = confrim("정말로 삭제하시겠습니까?");
+								  var deleteConfirm = confirm("정말로 삭제하시겠습니까?");
 
 								  if(deleteConfirm) {
 
@@ -414,7 +421,7 @@ String userId = (String) session.getAttribute("userId");
 											if(result == 1){
 												replyList();
 											} else {
-												alert("작성자 본인만 할 수 있습니다.");
+												alert("작성자 본인만 삭제할 수 있습니다.");
 											}
 										}, 
 										error : function(){
@@ -486,7 +493,7 @@ String userId = (String) session.getAttribute("userId");
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
+	<!-- 리뷰 수정 모달창 -->
 	<div class="replyModal">
 	
 		<div class="modalContent">
@@ -497,14 +504,19 @@ String userId = (String) session.getAttribute("userId");
 			
 			<div>
 				<button type="button" class="modal_modify_btn">수정</button>
-				<button type="button" class="modal_cancle">취소</button>
+				<button type="button" class="modal_cancel">취소</button>
 			</div>
 		</div>
 		
 		<div class="modalBackground"></div>
 	</div>
-
-
+	<!-- 리뷰 수정 모달창 끝 -->
+	
+	<script type="text/javascript">
+	$(".modal_cancel").click(function(){
+		$(".replyModal").attr("style", "display:none;");
+	});
+	</script>
 
 
 </body>
