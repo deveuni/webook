@@ -83,8 +83,6 @@ div.modalContent button.modal_cancel { margin-left:20px; }
 /* 리뷰 수정 모달창 끝 */
 </style>
 
-
-
  
 <script type="text/javascript">
 // 수정/삭제 이동
@@ -147,9 +145,7 @@ function replyList() {
 
 </head>
 <body>
-<%
-String userId = (String) session.getAttribute("userId");
-%>
+<% String userId = (String) session.getAttribute("userId"); %>  
 
  <!-- header -->
  <jsp:include page="../include/header.jsp"/>
