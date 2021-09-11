@@ -150,8 +150,7 @@ function replyList() {
  <!-- header -->
  <jsp:include page="../include/header.jsp"/>
  <!-- header -->
- <!-- header -->
- <!-- header -->
+
  <br><br>
 
   <!-- Page Content -->
