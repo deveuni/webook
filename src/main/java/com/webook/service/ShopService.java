@@ -38,9 +38,6 @@ public interface ShopService {
 	/* 아이디 체크 */
 	public String idCheck(int repNum) throws Exception;
 	
-	
-	/**/
-	
 	/* 카트담기 */
 	public void addCart(CartVO cart) throws Exception;
 	

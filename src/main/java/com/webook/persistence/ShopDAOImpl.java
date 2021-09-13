@@ -90,10 +90,6 @@ public class ShopDAOImpl implements ShopDAO {
 		return sql.selectOne(namespace + ".replyUserIdCheck", repNum);
 	}
 	
-	/**/
-	/**/
-	/**/
-	
 	/* 카트 담기 */
 	@Override
 	public void addCart(CartVO cart) throws Exception {

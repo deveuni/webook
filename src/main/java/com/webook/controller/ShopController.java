@@ -184,9 +184,6 @@ public class ShopController {
 		return result;
 	}
 	
-	/**/
-	/**/
-	
 	/* ck에디터 이미지 업로드 */
 	@RequestMapping(value = "/ckUpload", method = RequestMethod.POST)
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
@@ -292,8 +289,6 @@ public class ShopController {
 		}
 	}
 	// ck 이미지 업로드
-	
-	
 	
 	/* 카트담기 */
 	@ResponseBody

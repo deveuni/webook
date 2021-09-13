@@ -150,8 +150,6 @@ function replyList() {
  <!-- header -->
  <jsp:include page="../include/header.jsp"/>
  <!-- header -->
- <!-- header -->
- <!-- header -->
 
  <br><br>
 
@@ -272,7 +270,7 @@ function replyList() {
 					};
 
 			$.ajax({
-				url : "/admin/goods/detail/addCart",
+				url : "/shop/detail/addCart",
 				type : "post",
 				data : data, 
 				success : function(result){
@@ -281,7 +279,7 @@ function replyList() {
 						alert("카트 담기 성공");
 						$(".numBox").val("1");
 					} else {
-						alert("로그인한 회원만 사용할 수 있습니다.");
+						alert("로그인이 필요합니다.");
 						$(".numBox").val("1");
 					}
 				},

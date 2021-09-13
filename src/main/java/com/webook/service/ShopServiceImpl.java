@@ -88,10 +88,6 @@ public class ShopServiceImpl implements ShopService {
 		return dao.idCheck(repNum);
 	}
 	
-	
-	/**/
-	/**/
-	
 	/* 카트담기 */
 	@Override
 	public void addCart(CartVO cart) throws Exception {
