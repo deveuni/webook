@@ -71,10 +71,10 @@
           </c:if>
           
           <li class="nav-item">
-			<a class="nav-link" href="/goods/cartList">카트</a>
+			<a class="nav-link" href="/shop/cartList">카트</a>
           </li>
            <li class="nav-item">
-			<a class="nav-link" href="/goods/orderList">주문리스트</a>
+			<a class="nav-link" href="/shop/orderList">주문리스트</a>
           </li>
          </c:if> 
          <!-- 네이버 아이디 로그인 상태 --> 
@@ -95,7 +95,7 @@
 			  <a class="dropdown-item" href="/member/infoDelete">회원탈퇴</a>            </div>
           </li>
           <li class="nav-item">
-			<a class="nav-link" href="/goods/cartList">카트</a>
+			<a class="nav-link" href="/shop/cartList">카트</a>
           </li>
          </c:if>
          
@@ -118,10 +118,10 @@
             </div>
           </li>
           <li class="nav-item">
-			<a class="nav-link" href="/goods/cartList">카트</a>
+			<a class="nav-link" href="/shop/cartList">카트</a>
           </li>
           <li class="nav-item">
-			<a class="nav-link" href="/goods/orderList">주문리스트</a>
+			<a class="nav-link" href="/shop/orderList">주문리스트</a>
           </li>
          </c:if>    
          
