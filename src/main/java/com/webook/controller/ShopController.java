@@ -384,7 +384,7 @@ public class ShopController {
 		// 카트비우기
 		service.cartAllDelete(userId);
 		
-		return "redirect:/orderList";
+		return "redirect:/shop/orderList";
 	}
 	
 	/* 주문 목록 */
