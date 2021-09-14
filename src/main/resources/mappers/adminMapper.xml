@@ -8,61 +8,83 @@
 <!-- namespace : mapper를 외부에서 찾아오기 위한 속성 -->
 <mapper namespace="com.webook.mapper.adminMapper">
 
-	<!-- 상품 등록 -->
-	<insert id="register" parameterType="com.webook.domain.GoodsVO">
-		insert into tbl_goods (gdsName, gdsAuthor, gdsCompany, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
+<!-- 상품 등록 -->
+<insert id="register" parameterType="com.webook.domain.GoodsVO">
+	insert into tbl_goods (gdsName, gdsAuthor, gdsCompany, category, gdsPrice, gdsStock, gdsDes, gdsImg, gdsDate) 
 		values (#{gdsName}, #{gdsAuthor}, #{gdsCompany}, #{category}, #{gdsPrice}, #{gdsStock}, #{gdsDes}, #{gdsImg}, now())
-	</insert>
+</insert>
 	
-	<!-- 상품 목록  -->
-	<select id="goodsList" resultType="com.webook.domain.GoodsVO">
-		select * 
-		from tbl_goods 
-		order by gdsNum desc, gdsDate desc
-	</select>
+<!-- 상품 목록  -->
+<select id="goodsList" resultType="com.webook.domain.GoodsVO">
+	select * 
+	from tbl_goods 
+	order by gdsNum desc, gdsDate desc
+</select>
 	
-	<!-- 카테고리별 상품 목록 -->
-	<select id="category" resultType="com.webook.domain.GoodsVO">
-		select * 
-		from tbl_goods 
-		where category = #{category}
-		order by gdsNum desc, gdsDate desc 
-		limit #{cri.pageStart},#{cri.pageSize}
-	</select>
+<!-- 카테고리별 상품 목록 -->
+<select id="category" resultType="com.webook.domain.GoodsVO">
+	select * 
+	from tbl_goods 
+	where category = #{category}
+	order by gdsNum desc, gdsDate desc 
+	limit #{cri.pageStart},#{cri.pageSize}
+</select>
 	
-	<!-- 카테고리별 상품글 개수 가져오는 처리 -->
-	<select id="categoryCount" resultType="int">
-		select count(*) from tbl_goods where category = #{category}
-	</select>
+<!-- 카테고리별 상품글 개수 가져오는 처리 -->
+<select id="categoryCount" resultType="int">
+	select count(*) from tbl_goods where category = #{category}
+</select>
 	
-	<!-- 상품 조회 -->
-	<select id="goodsDetail" resultType="com.webook.domain.GoodsVO">
-		select * 
-		from tbl_goods 
-		where gdsNum = #{gdsNum} 
-	</select>
+<!-- 상품 조회 -->
+<select id="goodsDetail" resultType="com.webook.domain.GoodsVO">
+	select * 
+	from tbl_goods 
+	where gdsNum = #{gdsNum} 
+</select>
 	
-	<!-- 상품 수정 -->
-	<update id="goodsModify">
-		update tbl_goods 
-		 set 
-		  gdsName = #{gdsName}, 
-		  gdsAuthor = #{gdsAuthor},
-		  gdsCompany = #{gdsCompany},  
-		  category = #{category}, 
-		  gdsPrice = #{gdsPrice}, 
-		  gdsStock = #{gdsStock}, 
-		  gdsDes = #{gdsDes}
-		 where gdsNum = #{gdsNum} 
-	</update>
+<!-- 상품 수정 -->
+<update id="goodsModify">
+	update tbl_goods 
+	 set 
+	  gdsName = #{gdsName}, 
+	  gdsAuthor = #{gdsAuthor},
+	  gdsCompany = #{gdsCompany},  
+	  category = #{category}, 
+	  gdsPrice = #{gdsPrice}, 
+	  gdsStock = #{gdsStock}, 
+	  gdsDes = #{gdsDes}
+	 where gdsNum = #{gdsNum} 
+</update>
 
-	<!-- 상품 삭제 -->
-	<delete id="goodsDelete">
-		delete from tbl_goods 
-		where gdsNum = #{gdsNum}
-	</delete>
+<!-- 상품 삭제 -->
+<delete id="goodsDelete">
+	delete from tbl_goods 
+	where gdsNum = #{gdsNum}
+</delete>
 	
-	<!--  -->
+<!-- 모든 유저의 주문 목록 -->
+<select id="orderList" resultType="com.webook.domain.OrderVO">
+	select 
+		orderId, userId, orderRec, userAddr1, userAddr2, postcode, 
+		orderPhon, amount, orderDate, delivery 
+	from tbl_order
+</select>
+	
+<!-- 특정 주문 목록 -->
+<select id="orderView" resultType="com.webook.domain.OrderListVO">
+	select
+		o.orderId, o.userId, o.orderRec, o.postcode, o.userAddr1, o.userAddr2, o.orderPhon, o.amount, o.orderDate, o.delivery, 
+		d.orderDetailsNum, d.gdsNum, d.cartStock, 
+		g.gdsName, g.gdsImg, g.gdsPrice 
+	from tbl_order o 
+			inner join tbl_order_details d 
+				on o.orderId = d.orderId 
+			inner join tbl_goods g 
+				on d.gdsNum = g.gdsNum 
+		where o.userId = #{userId}
+			and o.orderId = #{orderId}	
+</select>
+	
 	<!--  -->
 	<!--  -->
 	<!--  -->

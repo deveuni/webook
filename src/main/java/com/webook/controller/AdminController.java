@@ -31,6 +31,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
+import com.webook.domain.OrderListVO;
+import com.webook.domain.OrderVO;
 import com.webook.domain.PageMaker;
 import com.webook.service.AdminService;
 
@@ -290,9 +292,30 @@ public class AdminController {
 	}
 	// ck 이미지 업로드
 	
+	/* 주문 목록 */
+	@RequestMapping(value = "/shop/orderList", method = RequestMethod.GET)
+	public void getOrderList(Model model) throws Exception {
+		log.info("get order list");
+		
+		List<OrderVO> orderList = adminService.orderList();
+		
+		model.addAttribute("orderList", orderList);
+	}
 	
-	/**/
-	/**/
+	/* 주문 상세 목록 */
+	@RequestMapping(value = "/shop/orderView", method = RequestMethod.GET)
+	public void getOrderList(@RequestParam("n") String orderId, 
+							OrderVO order, Model model) throws Exception {
+		
+		log.info("get order view");
+		
+		order.setOrderId(orderId);
+		//List<OrderListVO> orderView = adminService.orderView(order);
+		
+		model.addAttribute("orderView", adminService.orderView(order));
+		
+	}
+	
 	/**/
 	/**/
 

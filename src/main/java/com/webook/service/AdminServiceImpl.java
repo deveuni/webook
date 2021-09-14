@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
+import com.webook.domain.OrderListVO;
+import com.webook.domain.OrderVO;
 import com.webook.persistence.AdminDAO;
 
 @Service
@@ -89,6 +91,19 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
+	/* 모든 유저 주문 목록 */
+	@Override
+	public List<OrderVO> orderList() throws Exception {
+		return dao.orderList();
+	}
+	
+	/* 특정 주문 목록 */
+	@Override
+	public List<OrderListVO> orderView(OrderVO order) throws Exception {
+		return dao.orderView(order);
+	}
+	
+	/**/
 	/**/
 	/**/
 	
