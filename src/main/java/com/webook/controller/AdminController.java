@@ -297,9 +297,9 @@ public class AdminController {
 	public void getOrderList(Model model) throws Exception {
 		log.info("get order list");
 		
-		List<OrderVO> orderList = adminService.orderList();
+		//List<OrderVO> orderList = adminService.orderList();
 		
-		model.addAttribute("orderList", orderList);
+		model.addAttribute("orderList", adminService.orderList());
 	}
 	
 	/* 주문 상세 목록 */
