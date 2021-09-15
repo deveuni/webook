@@ -103,7 +103,12 @@ public class AdminServiceImpl implements AdminService {
 		return dao.orderView(order);
 	}
 	
-	/**/
+	/* 배송 상태 */
+	@Override
+	public void delivery(OrderVO order) throws Exception {
+		dao.delivery(order);
+	}
+	
 	/**/
 	/**/
 	

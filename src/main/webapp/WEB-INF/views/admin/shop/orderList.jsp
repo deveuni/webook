@@ -145,7 +145,7 @@
   		  		</div> 
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
- 	  			<a href = "/shop/orderView?n=${orderList.orderId}">${orderList.orderId}</a>
+ 	  			<a href = "/admin/shop/orderView?n=${orderList.orderId}">${orderList.orderId}</a>
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
 				  	

@@ -310,13 +310,22 @@ public class AdminController {
 		log.info("get order view");
 		
 		order.setOrderId(orderId);
-		//List<OrderListVO> orderView = adminService.orderView(order);
+		List<OrderListVO> orderView = adminService.orderView(order);
 		
-		model.addAttribute("orderView", adminService.orderView(order));
+		model.addAttribute("orderView", orderView);
 		
 	}
 	
-	/**/
+	/* 주문 상세 목록 - 상태 변경 */
+	@RequestMapping(value = "/shop/orderView", method = RequestMethod.POST)
+	public String delivery(OrderVO order) throws Exception {
+		log.info("post order view");
+		
+		adminService.delivery(order);
+		
+		return "redirect:/admin/shop/orderView?n=" + order.getOrderId();
+	}
+	
 	/**/
 
 }

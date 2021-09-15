@@ -127,18 +127,10 @@
 <!-- 특정 유저의 주문목록 -->
 <select id="orderList" resultType="com.webook.domain.OrderVO">
 	select 
-		orderId, userId, orderRec, userAddr1, userAddr2, postcode, orderPhon, amount, orderDate 
+		orderId, userId, orderRec, userAddr1, userAddr2, postcode, orderPhon, amount, orderDate, delivery
 	from tbl_order 
 		where userId = #{userId}	
 </select>
-
-<!-- 모든 유저의 주문 목록 -->
-<!-- <select id="orderList" resultType="com.webook.domain.OrderVO">
-	select 
-		orderId, userId, orderRec, userAddr1, userAddr2, postcode, 
-		orderPhon, amount, orderDate, delivery 
-	from tbl_order
-</select> -->
 
 <!-- 특정 주문 목록 -->
 <select id="orderView" resultType="com.webook.domain.OrderListVO">
