@@ -321,9 +321,21 @@ public class AdminController {
 	public String delivery(OrderVO order) throws Exception {
 		log.info("post order view");
 		
+		// 배송 상태
 		adminService.delivery(order);
 		
-		return "redirect:/admin/shop/orderView?n=" + order.getOrderId();
+		// 상품 수량 조절
+		List<OrderListVO> orderView = adminService.orderView(order);
+		GoodsVO goods = new GoodsVO();
+		
+		for(OrderListVO i : orderView) {
+			goods.setGdsNum(i.getGdsNum());
+			goods.setGdsStock(i.getCartStock());
+			adminService.changeStock(goods);
+		}
+		
+		
+		return "redirect:/shop/orderView?n=" + order.getOrderId();
 	}
 	
 	/**/
