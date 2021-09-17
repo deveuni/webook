@@ -216,6 +216,8 @@ function replyList() {
 				<td>가격</td>
 				<td><b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b></td>
 			</tr>
+			
+			<c:if test="${goods.gdsStock != 0}">
 			<tr class="space">
 				<td>수량</td>
 				<td>
@@ -223,7 +225,8 @@ function replyList() {
 				 <input type="number" class="numBox" min="1" max="${goods.gdsStock}" value="1" readonly style="width: 42px;"/>
 				 <button type="button" class="minus">-</button>
 				</td> 
-			</tr>   
+			</tr>
+			</c:if> 
          </table>
          <br>
          <button type="button" class="addCart_btn">카트에 넣기</button>
@@ -231,6 +234,10 @@ function replyList() {
       </div> 
     </div>
     <!-- 본문 끝 -->
+    
+    <c:if test="${goods.gdsStock == 0}">
+    	<p>상품 수량이 부족합니다.</p>
+    </c:if>
     
     <script type="text/javascript">
 
@@ -289,7 +296,6 @@ function replyList() {
 			});
 		});
     </script>
-    
     <br>
     <br>
 
