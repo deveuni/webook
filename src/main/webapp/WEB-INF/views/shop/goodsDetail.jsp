@@ -214,7 +214,12 @@ function replyList() {
          	</tr>
 			<tr class="space">
 				<td>가격</td>
-				<td><b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b></td>
+				<td><b><fmt:formatNumber value="${goods.gdsPrice}" pattern="###,###,###"/></b>원</td>
+			</tr>
+			
+			<tr class="space">
+				<td>재고</td>
+				<td><b><fmt:formatNumber value="${goods.gdsStock}" pattern="###,###,###"/></b></td>
 			</tr>
 			
 			<c:if test="${goods.gdsStock != 0}">
