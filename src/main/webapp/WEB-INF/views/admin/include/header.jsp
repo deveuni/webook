@@ -65,7 +65,7 @@
             <a class="nav-link" href="/admin/shop/orderList">주문목록</a>
            </li>
            <li class="nav-item">
-            <a class="nav-link" href="">상품소감</a>
+            <a class="nav-link" href="/admin/shop/allReply">상품소감</a>
            </li>
            <li class="nav-item">
             <a class="nav-link" href="">유저목록</a>
