@@ -48,6 +48,7 @@ public interface AdminDAO {
 	
 	/* 상품 리뷰 삭제 */
 	public void deleteReply(int repNum) throws Exception;
+	
 	/**/
 
 }

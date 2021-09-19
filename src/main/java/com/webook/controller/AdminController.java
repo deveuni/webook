@@ -338,6 +338,18 @@ public class AdminController {
 		return "redirect:/shop/orderView?n=" + order.getOrderId();
 	}
 	
+	/* 모든 상품 리뷰 */
+	@RequestMapping(value = "/shop/allReply", method = RequestMethod.GET)
+	public void getAllReply(Model model) throws Exception {
+		log.info("get all reply");
+		
+		model.addAttribute("reply", adminService.allReply());
+	}
+	
+	//// 2021.09.19 여기까지!!!!!!!!!!!!!!!!
+	
+	/**/
+	/**/
 	/**/
 
 }

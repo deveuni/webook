@@ -12,6 +12,7 @@ import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyListVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -109,6 +110,18 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public void changeStock(GoodsVO goods) throws Exception {
 		sql.update(namespace + ".changeStock", goods);
+	}
+	
+	/* 모든 상품 리뷰 */
+	@Override
+	public List<ReplyListVO> allReply() throws Exception {
+		return sql.selectList(namespace + ".allReply");
+	}
+	
+	/* 상품 리뷰 삭제 */
+	@Override
+	public void deleteReply(int repNum) throws Exception {
+		sql.delete(namespace + ".deleteReply", repNum);
 	}
 	
 	/**/

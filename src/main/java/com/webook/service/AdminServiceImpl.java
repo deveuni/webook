@@ -12,6 +12,7 @@ import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyListVO;
 import com.webook.persistence.AdminDAO;
 
 @Service
@@ -115,6 +116,19 @@ public class AdminServiceImpl implements AdminService {
 		dao.changeStock(goods);
 	}
 	
+	/* 모든 상품 리뷰 */
+	@Override
+	public List<ReplyListVO> allReply() throws Exception {
+		return dao.allReply();
+	}
+	
+	/* 상품 리뷰 삭제 */
+	@Override
+	public void deleteReply(int repNum) throws Exception {
+		dao.deleteReply(repNum);
+	}
+	
+	/**/
 	/**/
 	
 	
