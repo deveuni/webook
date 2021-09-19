@@ -6,6 +6,7 @@ import com.webook.domain.Criteria;
 import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
+import com.webook.domain.ReplyListVO;
 
 public interface AdminDAO {
 	
@@ -42,6 +43,11 @@ public interface AdminDAO {
 	/* 상품 수량 조절 */
 	public void changeStock(GoodsVO goods) throws Exception;
 	
+	/* 모든 상품 리뷰 */
+	public List<ReplyListVO> allReply() throws Exception;
+	
+	/* 상품 리뷰 삭제 */
+	public void deleteReply(int repNum) throws Exception;
 	/**/
 
 }

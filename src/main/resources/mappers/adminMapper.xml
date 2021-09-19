@@ -107,8 +107,22 @@
 		where orderId = #{orderId}
 </select>
 
-<!--  -->
-<!--  -->
+<!-- 모든 상품 리뷰(댓글) -->
+<select id="allReply" resultType="com.webook.domain.ReplyListVO">
+	select 
+		r.gdsNum, r.userId, r.repNum, r.repCon, r.repDate, 
+		m.userName 
+	from tbl_reply r 
+		inner join tbl_member m 
+			on r.userId = m.userId
+</select>
+
+<!-- 상품 리뷰(댓글) 삭제 -->
+<delete id="deleteReply">
+	delete from tbl_reply 
+		where repNum = #{repNum}
+</delete>
+
 <!--  -->
 
 </mapper>
