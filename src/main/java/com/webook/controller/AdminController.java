@@ -40,152 +40,154 @@ import com.webook.service.AdminService;
 @RequestMapping("/admin/*")
 public class AdminController {
 
-	private static final Logger log = LoggerFactory.getLogger(AdminController.class); 
+	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 
 	/* 서비스 처리 객체 주입 */
 	@Inject
 	private AdminService adminService;
-	
-	
+
 	/* 관리자화면 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void getIndex() throws Exception {
 		log.info("get index");
 	}
-	
+
 	/* 상품 등록 */
 	@RequestMapping(value = "/goods/register", method = RequestMethod.GET)
-	public String getGoodsRegister(Model model, HttpSession session, Criteria cri, @ModelAttribute("category") String category) throws Exception {
-		
+	public String getGoodsRegister(Model model, HttpSession session, Criteria cri,
+			@ModelAttribute("category") String category) throws Exception {
+
 		log.info("get goods register");
-		
+
 		model.addAttribute("userId", (String) session.getAttribute("userId"));
 		model.addAttribute("category", category);
 		model.addAttribute("cri", cri);
-		
+
 		return "/admin/goods/goodsRegister";
 	}
-	
+
 	@RequestMapping(value = "/goods/register", method = RequestMethod.POST)
-	public String postGoodsRegister(GoodsVO vo, Criteria cri, @ModelAttribute("category") String category) throws Exception {
-		
-		// 본문 첫번째 이미지 섬네일로 
+	public String postGoodsRegister(GoodsVO vo, Criteria cri, @ModelAttribute("category") String category)
+			throws Exception {
+
+		// 본문 첫번째 이미지 섬네일로
 		String DesImg = vo.getGdsDes();
-		
-		if(DesImg.indexOf("src=")!=-1) { // 본문에 'src='가 포함되어 있을 경우
-			
+
+		if (DesImg.indexOf("src=") != -1) { // 본문에 'src='가 포함되어 있을 경우
+
 			log.info("본문에 이미지 존재@@@@");
-			
+
 			// 본문 첫번째 이미지 메인이미지로
 			String[] result = DesImg.split("<img src=\"");
-			
+
 			log.info("@@@@@@@@@@@@@@@@@@@섬넬 이미지1 : " + result[1]);
-			
+
 			// 한번 더 split
 			String resultTwo = result[1];
 			String[] resultTwoPath = resultTwo.split("style");
-				
+
 			// split한 문자열을 GdsImg로 넣기
 			vo.setGdsImg(resultTwoPath[0]);
-			
-			log.info("작성글내용 파싱1: "+resultTwoPath[0]);
-			log.info("작성글내용: "+vo);
-			
+
+			log.info("작성글내용 파싱1: " + resultTwoPath[0]);
+			log.info("작성글내용: " + vo);
+
 		}
-		
-		// 상품 등록 서비스 
+
+		// 상품 등록 서비스
 		adminService.goodsRegister(vo);
-		
-		System.out.println("C 상품등록완료 : " + vo );
-		
+
+		System.out.println("C 상품등록완료 : " + vo);
+
 		return "redirect:/admin/index";
 	}
-	
+
 	/* 상품 목록 + 카테고리 분류 + 페이징처리 */
 	@RequestMapping(value = "/goods/list", method = RequestMethod.GET)
-	public String getGoodsList(Model model, HttpSession session, @ModelAttribute("cri") Criteria cri, String category) throws Exception {
-		
+	public String getGoodsList(Model model, HttpSession session, @ModelAttribute("cri") Criteria cri, String category)
+			throws Exception {
+
 		log.info("get goods list");
-		
+
 		// id 세션값
 		model.addAttribute("userId", (String) session.getAttribute("userId"));
-		
+
 		// 상품 목록
 		List<GoodsVO> list = adminService.goodsList();
 		model.addAttribute("list", list);
-		
+
 		// 페이징 처리된 카테고리 목록
 		model.addAttribute("categoryList", adminService.goodsCategoryList(category, cri));
-		
+
 		// 카테고리
 		model.addAttribute("category", category);
-		
+
 		// 페이징처리
 		PageMaker pm = new PageMaker(cri);
-		//pm.setCri(cri);
+		// pm.setCri(cri);
 		pm.setTotalCount(adminService.CategoryCount(category));
 		model.addAttribute("pm", pm);
-		
-		
+
 		return "/admin/goods/goodsList";
-		
+
 	}
-	
+
 	/* 상품 상세페이지 */
 	@RequestMapping(value = "/goods/detail", method = { RequestMethod.GET, RequestMethod.POST })
 	public String getGoodsDetail(@RequestParam("n") int gdsNum, Model model, HttpSession session) throws Exception {
-		
+
 		log.info("get goods detail");
-		
+
 		// 아이디 세션값
 		model.addAttribute("userId", (String) session.getAttribute("userId"));
-		
+
 		// 상세페이지 출력
 		GoodsVO goods = adminService.goodsDetail(gdsNum);
 		model.addAttribute("goods", goods);
-		
+
 		// 리뷰 조회 후 출력
-		//model.addAttribute("reviewList", reService.reviewList(gdsNum));
-		
+		// model.addAttribute("reviewList", reService.reviewList(gdsNum));
+
 		return "/admin/goods/goodsDetail";
 	}
-	
+
 	/* 상품 수정 */
 	@RequestMapping(value = "/goods/modify", method = RequestMethod.GET)
 	public String getGoodsModify(@RequestParam("n") int gdsNum, Model model, HttpSession session) throws Exception {
-		
+
 		log.info("get goods modify");
-		
+
 		// 아이디 세션값
 		model.addAttribute("userId", (String) session.getAttribute("userId"));
-		
+
 		// 상품 수정 페이지 입력된 값 서비스
 		model.addAttribute("goods", adminService.goodsDetail(gdsNum));
-		
+
 		return "/admin/goods/goodsModify";
 	}
-	
+
 	@RequestMapping(value = "/goods/modify", method = RequestMethod.POST)
 	public String postGoodsModify(GoodsVO vo) throws Exception {
-		
+
 		log.info("post goods modify");
-		
+
 		// 상품 수정 서비스 호출
 		adminService.goodsModify(vo);
-		
+
 		return "redirect:/admin/index";
 	}
-	
+
 	/* 상품 삭제 */
-	@RequestMapping(value = "/goods/delete", method = {RequestMethod.GET, RequestMethod.POST})
-	public String postGoodsDelete(@RequestParam("n") int gdsNum, Model model, RedirectAttributes rttr) throws Exception {
-		
+	@RequestMapping(value = "/goods/delete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String postGoodsDelete(@RequestParam("n") int gdsNum, Model model, RedirectAttributes rttr)
+			throws Exception {
+
 		// 상품 삭제 서비스 호출
 		adminService.goodsDelete(gdsNum);
-		
+
 		return "redirect:/admin/index";
 	}
-	
+
 	/* ck에디터 이미지 업로드 */
 	@RequestMapping(value = "/goods/ckUpload", method = RequestMethod.POST)
 	public void imageUpload(HttpServletRequest request, HttpServletResponse response,
@@ -291,64 +293,79 @@ public class AdminController {
 		}
 	}
 	// ck 이미지 업로드
-	
+
 	/* 주문 목록 */
 	@RequestMapping(value = "/shop/orderList", method = RequestMethod.GET)
 	public void getOrderList(Model model) throws Exception {
 		log.info("get order list");
-		
-		//List<OrderVO> orderList = adminService.orderList();
-		
+
+		// List<OrderVO> orderList = adminService.orderList();
+
 		model.addAttribute("orderList", adminService.orderList());
 	}
-	
+
 	/* 주문 상세 목록 */
 	@RequestMapping(value = "/shop/orderView", method = RequestMethod.GET)
-	public void getOrderList(@RequestParam("n") String orderId, 
-							OrderVO order, Model model) throws Exception {
-		
+	public void getOrderList(@RequestParam("n") String orderId, OrderVO order, Model model) throws Exception {
+
 		log.info("get order view");
-		
+
 		order.setOrderId(orderId);
 		List<OrderListVO> orderView = adminService.orderView(order);
-		
+
 		model.addAttribute("orderView", orderView);
-		
+
 	}
-	
+
 	/* 주문 상세 목록 - 상태 변경 */
 	@RequestMapping(value = "/shop/orderView", method = RequestMethod.POST)
 	public String delivery(OrderVO order) throws Exception {
 		log.info("post order view");
-		
+
 		// 배송 상태
 		adminService.delivery(order);
-		
+
 		// 상품 수량 조절
 		List<OrderListVO> orderView = adminService.orderView(order);
 		GoodsVO goods = new GoodsVO();
-		
-		for(OrderListVO i : orderView) {
+
+		for (OrderListVO i : orderView) {
 			goods.setGdsNum(i.getGdsNum());
 			goods.setGdsStock(i.getCartStock());
 			adminService.changeStock(goods);
 		}
-		
-		
+
 		return "redirect:/shop/orderView?n=" + order.getOrderId();
 	}
-	
+
 	/* 모든 상품 리뷰 */
-	@RequestMapping(value = "/shop/allReply", method = RequestMethod.GET)
+	@RequestMapping(value = "/shop/allReply", method = {RequestMethod.GET, RequestMethod.POST})
 	public void getAllReply(Model model) throws Exception {
 		log.info("get all reply");
-		
+
 		model.addAttribute("reply", adminService.allReply());
+		
+		// 상품 리뷰 삭제
+		//adminService.deleteReply(repNum);
 	}
+
+	/*
+	 * 상품 리뷰 삭제 public void postAllReplyDelete(@RequestParam("n") int repNum, Model
+	 * model)
+	 */
+
+	/*
+	 * @RequestMapping(value = "/goods/delete", method = {RequestMethod.GET,
+	 * RequestMethod.POST}) public String postGoodsDelete(@RequestParam("n") int
+	 * gdsNum, Model model, RedirectAttributes rttr) throws Exception {
+	 * 
+	 * // 상품 삭제 서비스 호출 adminService.goodsDelete(gdsNum);
+	 * 
+	 * return "redirect:/admin/index"; }
+	 */
 	
-	//// 2021.09.19 여기까지!!!!!!!!!!!!!!!!
-	
-	/**/
+	// !!!!!!!!!!!2021.09.22 여기까지 리뷰삭제 -,,-오류 
+
 	/**/
 	/**/
 

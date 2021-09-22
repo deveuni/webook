@@ -68,6 +68,12 @@
 .replyInfo { background:#eee; padding:10px; font-size:18px; }
 .replyInfo span { font-size:20px; font-weight:bold; margin-right:20px; }
 .replyContent { padding:10px; }
+
+/* 삭제 버튼 */
+.replyControll {text-align:right; padding:10px; }
+.replyControll button { border:2px solid #999; background:#fff; }
+/* 삭제 버튼 끝 */
+
 </style>
 
 </head>
@@ -92,6 +98,17 @@
    		 </div>
    	 	 <div class="replyContent">
     		${reply.repCon}
+   		 </div>
+   		 
+   		 <div class ="replyControll">
+   		 
+   		   <form role="form" method="post">
+   		   	
+   		   	<input type="hidden" name="repNum" value="${reply.repNum}" />
+   		 	<button type="submit" class="delete_${reply.repNum}_btn">삭제</button>
+   		 	
+   		   </form>
+   		   	
    		 </div>
   		</li>     
   		</c:forEach>
