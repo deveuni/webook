@@ -34,6 +34,7 @@ import com.webook.domain.GoodsVO;
 import com.webook.domain.OrderListVO;
 import com.webook.domain.OrderVO;
 import com.webook.domain.PageMaker;
+import com.webook.domain.ReplyVO;
 import com.webook.service.AdminService;
 
 @Controller
@@ -339,32 +340,23 @@ public class AdminController {
 	}
 
 	/* 모든 상품 리뷰 */
-	@RequestMapping(value = "/shop/allReply", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/shop/allReply", method = RequestMethod.GET)
 	public void getAllReply(Model model) throws Exception {
 		log.info("get all reply");
 
 		model.addAttribute("reply", adminService.allReply());
 		
-		// 상품 리뷰 삭제
-		//adminService.deleteReply(repNum);
 	}
-
-	/*
-	 * 상품 리뷰 삭제 public void postAllReplyDelete(@RequestParam("n") int repNum, Model
-	 * model)
-	 */
-
-	/*
-	 * @RequestMapping(value = "/goods/delete", method = {RequestMethod.GET,
-	 * RequestMethod.POST}) public String postGoodsDelete(@RequestParam("n") int
-	 * gdsNum, Model model, RedirectAttributes rttr) throws Exception {
-	 * 
-	 * // 상품 삭제 서비스 호출 adminService.goodsDelete(gdsNum);
-	 * 
-	 * return "redirect:/admin/index"; }
-	 */
 	
-	// !!!!!!!!!!!2021.09.22 여기까지 리뷰삭제 -,,-오류 
+	/* 상품 리뷰 삭제 */
+	@RequestMapping(value = "/shop/allReply", method = RequestMethod.POST)
+	public String postAllReply(ReplyVO reply) throws Exception {
+		log.info("post all reply");
+		
+		adminService.deleteReply(reply.getRepNum());
+		
+		return "redirect:/admin/shop/allReply";
+	}
 
 	/**/
 	/**/

@@ -74,6 +74,8 @@
 .replyControll button { border:2px solid #999; background:#fff; }
 /* 삭제 버튼 끝 */
 
+ul{ list-style:none; }
+
 </style>
 
 </head>
@@ -82,7 +84,9 @@
  <!-- header -->
  <jsp:include page="../include/header.jsp"/>
  <!-- header -->
- <br><br>
+ <br><br><br><br>
+ 
+ <div class="container">
 
 	<div id="container_box">
  	  <ul>
@@ -115,7 +119,7 @@
  	 </ul>
 	</div>
 
-
+</div>
 
 
   <%-- <!-- Page Content -->
