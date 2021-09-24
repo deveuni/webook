@@ -91,7 +91,7 @@
     			    <input type="hidden" name="orderId" value="${orderView.orderId}">
     			    <input type="hidden" name="delivery" class="delivery" value="">
     			    
-    				<button type="button" class="delivery1_btn">배송중</button>
+    				<!-- <button type="button" class="delivery1_btn">배송중</button>
     				<button type="button" class="delivery2_btn">배송완료</button>
     				
     				<script type="text/javascript">
@@ -108,7 +108,7 @@
 						function run(){
 							$(".deliveryForm").submit();
 						}
-    				</script>
+    				</script> -->
     			  </form>
     			</div>
    			</c:if>
