@@ -137,7 +137,6 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	/* 배송 상태 */
-	/* 배송 상태 */
 	@Override
 	public void delivery(OrderVO order) throws Exception {
 		dao.delivery(order);
