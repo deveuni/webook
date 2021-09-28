@@ -27,7 +27,7 @@ public class PaymentController {
 	@RequestMapping(value = "/payment", method = RequestMethod.GET)
 	public String detailPayment() throws Exception {
 		
-		return "";
+		return "/pay/paymentDetail";
 	}
 	
 	@ResponseBody
