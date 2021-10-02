@@ -30,6 +30,8 @@
    <jsp:include page="../include/footer.jsp"/>
 <%--   <%@ include file="../include/footer.jsp" %> --%>
   <!-- footer -->
+  <!-- footer -->
+  <!-- footer -->
 
 </body>
 </html>
