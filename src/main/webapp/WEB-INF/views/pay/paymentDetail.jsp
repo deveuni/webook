@@ -116,28 +116,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-12">
-					<h1 class="my-4">최종 결제</h1>
-					<div class="tab-content" id="nav-tabContent">
-						<div class="tab-pane fade show active" id="nav-home"
-							role="tabpanel" aria-labelledby="nav-home-tab">
-							<table class="table" cellspacing="0">
-								<thead>
-									<tr>
-										<th>판매물품 명</th>																			
-										<th>판매물품 최종가격</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>${gvo.gname}</a></td>																				
-										<td>${gvo.finalprice}원</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 			<br>
 			<div class="pay_ok" style="margin-left: 40%;">
