@@ -119,14 +119,7 @@
 				
 			</div>
 			<br>
-			<div class="pay_ok" style="margin-left: 40%;">
-				<input type="hidden" name="gname" value="${gvo.gname}"> <input
-					type="hidden" name="gno" value="${gvo.gno}"> <input
-					type="hidden" name="finalprice" value="${gvo.finalprice}">
-				<input type="button" value="결제하기" id="btn1" class="payMove">
-				<input type="button" value="취소하기" onclick="back()"
-					class="payMoveFail">
-			</div>
+			
 		</div>
 	</form>
  
