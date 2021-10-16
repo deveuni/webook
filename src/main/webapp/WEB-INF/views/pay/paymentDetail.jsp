@@ -25,8 +25,19 @@
 <!-- header -->
  <jsp:include page="../include/header.jsp"/>
  <!-- header -->
- <!-- header -->
- <!-- header -->
+ 
+ div class="form-group">
+                        <label for="date" class="col-sm-3 control-label">상세주소</label>
+                        <div class="col-sm-9">                        	
+                            <input type="text" class="form-control" id="re_addr2" name="re_addr2">                           
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                            <button type="button" class="btn btn-default preview-add-button" onclick="javascript:same_info(document.order_form)">
+                                <span class="glyphicon glyphicon-plus"></span> 주문자 정보와 동일하게
+                            </button>
+                        </div>
  
  
  
