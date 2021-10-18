@@ -38,6 +38,18 @@
                                 <span class="glyphicon glyphicon-plus"></span> 주문자 정보와 동일하게
                             </button>
                         </div>
+                        
+                        <div class="form-group">
+                        <label for="date" class="col-sm-3 control-label">주소</label>
+                        <div class="col-sm-9">
+                           <input id="postcode1" type="hidden" value="" style="width:50px;" readonly/>
+                           <input id="postcode2" type="hidden" value="" style="width:50px;" readonly/>
+                           <input id="zonecode" type="hidden" value="" style="width:50px;" readonly/>
+                           <input type="text" class="form-control" id="re_addr1" name="re_addr1" readonly style="width:218px;display: inline-block;">  
+                           <input type="button" class="payMove" onClick="openDaumZipAddress();" value = "주소 찾기" style="padding: 8px 10px;font-size: 14px;">                              
+                        </div>
+                        
+                    </div> 
  
  
  
