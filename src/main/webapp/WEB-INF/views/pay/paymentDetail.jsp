@@ -26,6 +26,22 @@
  <jsp:include page="../include/header.jsp"/>
  <!-- header -->
  
+ <h4>배송지 정보</h4>
+            <div class="panel panel-default">
+                <div class="panel-body form-horizontal payment-form">
+                    <div class="form-group">
+                        <label for="concept" class="col-sm-3 control-label">이름</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="re_username" name="re_username">
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label for="amount" class="col-sm-3 control-label">연락처</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="re_phone" name="re_phone">
+                        </div>
+                    </div>        
+ 
  div class="form-group">
                         <label for="date" class="col-sm-3 control-label">상세주소</label>
                         <div class="col-sm-9">                        	
