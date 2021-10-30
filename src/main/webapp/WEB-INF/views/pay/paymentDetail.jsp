@@ -56,6 +56,39 @@
   </table>
 </div><!-- 결제창  -->
 
+<script type="text/javascript">
+	function same_info(f) {
+			f.re_username.value = f.username.value;
+			f.re_phone.value = f.phone.value;
+			f.re_addr1.value = f.addr1.value;
+			f.re_addr2.value = f.addr2.value;
+	}	
+
+	function openDaumZipAddress() {
+
+		new daum.Postcode({
+
+			oncomplete:function(data) {
+
+				jQuery("#postcode1").val(data.postcode1);
+
+				jQuery("#postcode2").val(data.postcode2);
+
+				jQuery("#zonecode").val(data.zonecode);
+
+				jQuery("#re_addr1").val(data.address);
+
+				jQuery("#re_addr2").focus();
+
+				console.log(data);
+
+			}
+
+		}).open();
+
+	}	
+</script>
+
  
  
  
