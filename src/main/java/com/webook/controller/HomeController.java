@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bestpricemarket.domain.PageMaker;
 import com.webook.domain.Criteria;
 import com.webook.service.MemberService;
 import com.webook.service.ShopService;
@@ -59,6 +60,19 @@ public class HomeController {
 		
 		// 슬라이드 출력 - 구매수??
 		model.addAttribute("top3goods");
+		
+		// 하단부 페이징처리(검색)
+				//PageMaker pageMaker = new PageMaker(cri);
+				//int totalCount = gservice.getTotalCount(cri);
+				pageMaker.setTotalCount(totalCount);
+				model.addAttribute("pm",pageMaker);
+				
+				//옵션바 출력
+				model.addAttribute("orderbyNew", gservice.orderbyNew(cri));
+				model.addAttribute("orderbyDuedate", gservice.orderbyDuedate(cri));
+				model.addAttribute("orderbyBest", gservice.orderbyBest(cri));
+		
+		
 	}
 	
 }
