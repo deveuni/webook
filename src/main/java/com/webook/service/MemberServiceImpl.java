@@ -127,12 +127,12 @@ public class MemberServiceImpl implements MemberService {
 		// Mail Server 설정
 				String charSet = "utf-8";
 				String hostSMTP = "smtp.naver.com";
-				String hostSMTPid = "vividdream0215@naver.com";
-				String hostSMTPpwd = "dmsdl@0615";
+				String hostSMTPid = "test_webook@naver.com";
+				String hostSMTPpwd = "webook@1212";
 
 				// 보내는 사람 EMail, 제목, 내용
-				String fromEmail = "vividdream0215@naver.com";
-				String fromName = "webook";
+				String fromEmail = "test_webook@naver.com";
+				String fromName = "webook온라인서점";
 				String subject = "";
 				String msg = "";
 				
@@ -177,7 +177,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		// 아이디가 없으면
 		if(mdao.userIdCheck(vo.getUserId()) == null) {
-			out.print("아이디가 없습니다.");
+			out.print("등록된 아이디가 없습니다.");
 			out.close();
 		}
 		
