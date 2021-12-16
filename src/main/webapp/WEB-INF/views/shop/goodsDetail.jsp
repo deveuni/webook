@@ -331,7 +331,7 @@ function replyList() {
 				<div class="tab-pane fade" id="reply" role="tabpanel" aria-labelledby="review-tab">
 				
 					<c:if test="${member == null}">
-						<p>소감을 남기시려면 <a href="/member/signin">로그인</a>해주세요</p>
+						<p>도서리뷰를 남기시려면 <a href="/member/signin">로그인</a>이 필요합니다.</p>
 					</c:if>
 					
 					<c:if test="${member != null}">
@@ -357,7 +357,7 @@ function replyList() {
 										<!-- <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
 										  <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"> -->
 									</div> 
-									<textarea class="form-control" name="repCon" id="repCon" rows="3" placeholder="한글 기준 2000자까지 작성가능합니다."></textarea>
+									<textarea class="form-control" name="repCon" id="repCon" rows="3" placeholder="도서 리뷰를 작성해주세요."></textarea>
 									
 									<button type="button" class="btn btn-dark mt-3" id="reply_btn" >등록</button> 
 									
@@ -444,7 +444,7 @@ function replyList() {
 											if(result == 1){
 												replyList();
 											} else {
-												alert("작성자 본인만 삭제할 수 있습니다.");
+												alert("작성자만 삭제할 수 있습니다.");
 											}
 										}, 
 										error : function(){
