@@ -32,7 +32,7 @@
 	<beans:bean id="naverLoginBO" class="com.webook.controller.NaverLoginBO" />
 	
 	<!-- ck에디터 파일 업로드 경로 -->
-	<resources mapping="/ckUpload/**" location="/resources/ckUpload/" />
+	<resources mapping="/ckUpload/**" location="${pageContext.request.contextPath}/resources/ckUpload/" />
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 

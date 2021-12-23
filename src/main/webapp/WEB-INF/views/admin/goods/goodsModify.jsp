@@ -166,8 +166,8 @@
    					resize_enaleb : false,
    					enterMode : CKEDITOR.ENTER_BR,
    					shiftEnterMode : CKEDITOR.ENTER_P,
-   					uploadUrl: "/goods/ckUpload",
-   					filebrowserUploadUrl : "/goods/ckUpload"
+   					uploadUrl: "/admin/goods/ckUpload",
+   					filebrowserUploadUrl : "/admin/goods/ckUpload"
  				};
  
 				 CKEDITOR.replace("gdsDes", ckeditor_config);
