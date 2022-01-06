@@ -149,7 +149,7 @@
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
  	  			${cartList.gdsName}
- 	  			sdfs 
+ 	  			
  	  		</td>
  	  		<td style="display:table-cell; text-align:center; vertical-align:middle;">
 				  	
@@ -270,8 +270,6 @@
         </div>
       </div>
       <div class="card-footer text-muted">
-        Posted on January 1, 2017 by
-        <a href="#">Start Bootstrap</a>
       </div>
       </div>
 

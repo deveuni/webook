@@ -99,13 +99,13 @@
 					});
 
 					$.ajax({
-						url : "/goods/deleteCart",
+						url : "/shop/deleteOrder",
 						type : "post",
 						data : { chbox : checkArr },
 						success : function(result){
 
 							if(result == 1) {
-								location.href = "/goods/cartList";
+								location.href = "/shop/orderList";
 							} else {
 								alert("삭제 실패");
 							}

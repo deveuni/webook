@@ -419,6 +419,30 @@ public class ShopController {
 		model.addAttribute("orderView", orderView);
 	}
 	
+	/* 주문목록 삭제 */
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "/deleteOrder", method = RequestMethod.POST) public
+	 * int deleteOrder(HttpSession session,
+	 * 
+	 * @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws
+	 * Exception {
+	 * 
+	 * log.info("delete order");
+	 * 
+	 * MemberVO member = (MemberVO)session.getAttribute("member"); String userId =
+	 * member.getUserId();
+	 * 
+	 * int result = 0; int cartNum = 0;
+	 * 
+	 * if(member != null) { cart.setUserId(userId);
+	 * 
+	 * for(String i : chArr) { cartNum = Integer.parseInt(i);
+	 * cart.setCartNum(cartNum); service.deleteCart(cart); } result = 1; } return
+	 * result; }
+	 */
+	
 	/* 주문 상세 목록 - 상태 변경 */
 	/*
 	 * @RequestMapping(value = "/orderView", method = RequestMethod.POST) public
