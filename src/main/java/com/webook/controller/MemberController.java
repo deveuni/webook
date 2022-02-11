@@ -84,7 +84,7 @@ public class MemberController {
 		
 		MemberVO idCheck = service.userIdCheck(userId);
 		
-		if(idCheck != null) return 1;
+		if(idCheck != null) return 1; // 아이디 중복
 		else return 0;
 	}
 	
