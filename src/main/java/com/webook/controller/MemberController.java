@@ -93,6 +93,7 @@ public class MemberController {
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public void getSignin(HttpSession session, Model model) throws Exception{
 		
+		// 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		 
 		log.info("C : 네이버로그인 => " + naverAuthUrl);

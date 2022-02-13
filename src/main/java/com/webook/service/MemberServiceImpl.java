@@ -89,6 +89,7 @@ public class MemberServiceImpl implements MemberService {
 			log.info("S : 구글 아이디 로그인 정보 => " + vo);
 		} catch (Exception e) {
 			e.printStackTrace();
+			// 실행하다 문제가 발생했을 때, 해당 데이터를 보내지 않겠다는 예외처리
 			returnVO = null;
 		}
 		return returnVO;
