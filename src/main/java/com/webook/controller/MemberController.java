@@ -341,16 +341,18 @@ public class MemberController {
 		// 세션에 있는 member를 가져와 member변수에 넣는다.
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		
-		// 세선에 있는 비밀번호
+		// 세션에 있는 비밀번호
 		String sessionPass = member.getUserPass();
 		// vo로 들어오는 비밀번호 
 		String voPass = vo.getUserPass();
 		
-		if(!(sessionPass.equals(voPass))) {
+		if(!(sessionPass.equals(voPass))) { // 세션에 있는 비번과 vo객체에 있는 비번이 같지 않으면
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/member/infoDelete";
 		}
+		// 회원탈퇴 동작
 		service.deleteMember(vo);
+		// 세션 초기화
 		session.invalidate();
 		return "redirect:/webook";
 	}
