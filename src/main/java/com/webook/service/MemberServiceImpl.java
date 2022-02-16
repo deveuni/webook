@@ -229,7 +229,7 @@ public class MemberServiceImpl implements MemberService {
 		response.setContentType("text/html;charset=utf-8");
 		MemberVO ck = mdao.readMember(vo.getUserId());
 		PrintWriter out = response.getWriter();
-		if(!oldPw.equals(ck.getUserPass())) {
+		if(!oldPw.equals(ck.getUserPass())) { // 입력한 기존 비밀번호화 DB의 비밀번호가 일치하지 않으면
 			out.println("<script>");
 			out.println("alert('기존비밀번호가 일치하지 않습니다.')");
 			out.println("history.go(-1);");
@@ -237,6 +237,7 @@ public class MemberServiceImpl implements MemberService {
 			out.close();
 			return null;
 		} else {
+			// 입력한 기존 비밀번호화 DB의 비밀번호가 일치하면
 			mdao.updatePw(vo);
 			return ck;
 		}
